@@ -1,0 +1,204 @@
+/* You can add global styles to this file, and also import other style files */
+
+html { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; height: 100%; }
+
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+ }
+ /* Track */
+ ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(7, 112, 211, 0.418);
+  border-radius: 10px;
+ }
+
+ /* Handle */
+ ::-webkit-scrollbar-thumb {
+  background:  rgba(7, 112, 211, 0.418);
+ }
+
+ mat-form-field{
+  width: 100%;
+ }
+.snackbar-warning{
+  width: 40%;
+  position: absolute;
+  text-align: center;
+  padding: 15px !important; // spacing between the text and boundary
+  background-color: #ee4c0cc5;
+  color: white;
+  left:30%;
+  top: 25%;
+
+  .mat-button-wrapper {
+      color: #fff !important; // action text color
+      border: 1px solid #fff;
+      padding: 5px;
+      border-radius: 5px;
+  }
+}
+.snackbar-verificacion{
+  width: 1000px;
+  position: absolute;
+  text-align: center;
+  font-size: large;
+  padding: 15px !important; // spacing between the text and boundary
+  background-color: #0c88eec5;
+  color: white;
+  left:30%;
+  top: 25%;
+
+  .mat-button-wrapper {
+      color: #fff !important; // action text color
+      border: 1px solid #fff;
+      padding: 5px;
+      border-radius: 5px;
+  }
+}
+.main-cont-div{
+  width: 80%;
+  margin:auto;
+  min-height: 600px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px rgb(238, 232, 232);
+  padding: 2%;
+}
+.cont-div{
+  width: 70%;
+  margin:auto;
+  min-height: 600px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px 3px rgb(238, 232, 232);
+  padding: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.titulo-seccion{
+  width: 98%;
+  font-size: large;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-weight: bold;
+}
+.sub-titulo-seccion{
+  font-size: 16px;
+  width: 98%;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-weight: bold;
+}
+.form-container-div{
+   width: 80%;
+   margin: auto;
+   padding: 1%;
+}
+.titulo-formulario{
+  width: 70%;
+  margin: auto;
+  font-size: 18px;
+  font-weight: bold;
+}
+.form-div{
+  width: 95%;
+  padding: 1%;
+  margin: auto;
+}
+.campoForm{
+  width: 100%;
+  padding: 1%;
+  margin: auto;
+}
+.buscar{
+  width: 95%;
+  margin: auto;
+
+}
+.cont{
+  width: 80%;
+  margin: auto;
+  padding: 1%;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+}
+.campo{
+  width: 90%;
+  margin: auto;
+  padding: 1%;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+}
+.campoDoble{
+  float: left;
+  width: 50%;
+}
+mat-form-field{
+  width: 80%;
+  margin: auto;
+}
+.titulo{
+  margin-top: 30px;
+  text-align: center;
+}
+table.customTable {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 0px;
+  border-color: #FFFFFF;
+  border-style: solid;
+  color: #454545;
+}
+table.customTable tr:hover{
+  transition: 0.5s;
+  transform: 0.5s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+}
+
+table.customTable tr:hover{
+  background-color: #3ba3e9;
+  color: #FFFFFF;
+}
+table.customTable th {
+  border-width: 0px;
+  border-color: #000;
+  border-style: solid;
+  padding: 5px;
+  text-transform: uppercase;
+}
+table.customTable td{
+  border-width: 0px;
+  border-color: #FFFFFF;
+  border-style: solid;
+  padding: 5px;
+  text-align: center;
+}
+
+table.customTable thead {
+  background-color: #3498DB;
+  color: #FFFFFF;
+}
+.resumen{
+  border: 1px solid #000;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-top: 3%;
+  width: 100%;
+
+}
+.celda{
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
+
+

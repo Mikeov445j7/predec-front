@@ -1,0 +1,77 @@
+.cont{
+  width: 80%;
+  margin: auto;
+  padding: 1%;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+}
+.campo{
+  width: 90%;
+  margin: auto;
+  padding: 1%;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+}
+.campoDoble{
+  float: left;
+  width: 50%;
+}
+mat-form-field{
+  width: 80%;
+  margin: auto;
+}
+.titulo{
+  margin-top: 30px;
+  text-align: center;
+}
+table.customTable {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 0px;
+  border-color: #FFFFFF;
+  border-style: solid;
+  color: #454545;
+}
+table.customTable tr:hover{
+  transition: 0.5s;
+  transform: 0.5s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+}
+
+table.customTable tr:hover{
+  background-color: #3ba3e9;
+  color: #FFFFFF;
+}
+table.customTable th {
+  border-width: 0px;
+  border-color: #000;
+  border-style: solid;
+  padding: 5px;
+  text-transform: uppercase;
+}
+table.customTable td{
+  border-width: 0px;
+  border-color: #FFFFFF;
+  border-style: solid;
+  padding: 5px;
+}
+
+table.customTable thead {
+  background-color: #3498DB;
+  color: #FFFFFF;
+}
+.resumen{
+  border: 1px solid #000;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-top: 3%;
+  width: 100%;
+
+}
+.celda{
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
+
+

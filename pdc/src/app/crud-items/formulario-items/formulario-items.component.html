@@ -1,0 +1,48 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">FORMULARIO INSUMOS: {{titulo}}</div>
+  <div class="form-div">
+      <form #itemForm = "ngForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>DESCRIPCION</mat-label>
+          <input required matInput name="descripcion" #descripcion [(ngModel)]="model.descripcion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>UNIDAD</mat-label>
+          <input  required matInput name="unidad" #unidad [(ngModel)]="model.unidad">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>P.U. (Precio Unitario)</mat-label>
+          <input  required type="number" matInput name="PU" #PU [(ngModel)]="model.PU">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" *ngIf="tabla===2">
+          <mat-label>JORNAL</mat-label>
+          <input type="number" matInput name="jornal" #jornal [(ngModel)]="model.jornal">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" *ngIf="tabla===2">
+          <mat-label>MES</mat-label>
+          <input type="number" matInput name="mes" #mes [(ngModel)]="model.mes">
+        </mat-form-field>
+      </form>
+      <div style="width: 100%; text-align: center;">
+        <button *ngIf="edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+          GUARDAR CAMBIOS
+        <mat-icon>save</mat-icon>
+        </button>
+        <button  *ngIf="!edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+          GUARDAR INSUMO
+        <mat-icon>save</mat-icon>
+        </button>
+      </div>
+
+      <div style="width: 100%; text-align: right; margin-top: 5%;">
+        <button *ngIf="edit" mat-raised-button style="width:20%" color="warn" [disabled]="itemForm.invalid" (click)="borrar()">
+          BORRAR
+        <mat-icon>delete</mat-icon>
+        </button>
+       </div>
+  </div>
+</div>

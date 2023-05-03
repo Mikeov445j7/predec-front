@@ -1,0 +1,55 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">Lista de Proyectos</div>
+
+ <div class="list" *ngIf="results.length">
+  <div class="buscar">
+    <div class="tit-seccion"><h2>Busqueda</h2></div>
+    <mat-form-field class="input-buscar" appearance="fill">
+       <mat-label>Buscar</mat-label>
+       <input  required="true" matInput placeholder="NOMBRE PROYECTO" #buscar  (keydown.enter)="buscarItem(buscar.value)" >
+    </mat-form-field>
+    <button mat-fab color="primary"  type="submit" (click)="buscarItem(buscar.value)">
+    <mat-icon>search</mat-icon>
+    </button>
+    <button mat-raised-button color="primary"  type="submit" (click)="agregarItem()">
+      NUEVO PROYECTO<mat-icon>add</mat-icon>
+    </button>
+   </div>
+
+  <table class="customTable">
+    <thead>
+      <tr style="border-bottom: 1px solid;">
+        <th>nombre</th>
+        <th>codigo</th>
+        <th>Fecha de Creacion</th>
+        <th>Beneficios Sociales</th>
+        <th>IVA</th>
+        <th>Herramientas Menores</th>
+        <th>Gastos Generales</th>
+        <th>Utilidad</th>
+        <th>IT</th>
+        <th>cliente</th>
+        <th>Tipo de Cambio</th>
+        <th>Ubicacion</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of results" style="border-bottom: 1px solid;" (click)="selecItem(item)">
+      <td>{{item.nombre}}</td>
+      <td>{{item.codigo}}</td>
+      <td>{{item.fecha_creacion}}</td>
+      <td>{{item.Ben_Soc}}</td>
+      <td>{{item.iva}}</td>
+      <td>{{item.he_men}}</td>
+      <td>{{item.g_grales}}</td>
+      <td>{{item.utilidad}} </td>
+      <td>{{item.IT}}</td>
+      <td>{{item.cliente}}</td>
+      <td>{{item.tip_cambio}}</td>
+      <td>{{item.ubicacion}}</td>
+    </tr >
+  </tbody>
+  </table>
+ </div>
+
+ </div>

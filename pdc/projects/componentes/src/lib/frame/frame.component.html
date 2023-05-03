@@ -1,0 +1,40 @@
+
+
+<div class="header">
+  <div class="logo" style="background-image: url('assets/img/titulo.png');">
+
+  </div>
+  <div class="boton">
+    <button mat-mini-fab  color="primary" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button></div>
+</div>
+<mat-drawer-container class="example-container" autosize [hasBackdrop]="true">
+  <mat-drawer #drawer class="sidenav" mode="side" position="end">
+    <div class="perfil">
+      <div class="profilePic"   [matMenuTriggerFor]="menu2" style="text-align:center; line-height:50px; background-image: url({{foto}});">
+        <mat-menu #menu2="matMenu" style="float:left;">
+          <span mat-menu-item (click)="logOut()"> <mat-icon>logout</mat-icon>Cerrar Sesión</span>
+        </mat-menu>
+      </div>
+      <div class="name" style="font-size: small; font-weight: bold; width: 70%; margin: auto;">
+        {{name}}
+      </div>
+    </div>
+
+    <mat-selection-list [multiple]="false">
+
+      <div *ngFor = "let links of menu">
+        <mat-list-option >
+          <mat-list-item (click)="drawer.toggle()"  routerLink="{{links.ruta}}">
+            <mat-icon color="primary"> {{links.icono}}</mat-icon> &nbsp;&nbsp; {{links.label}}
+           </mat-list-item>
+        </mat-list-option>
+      </div>
+    </mat-selection-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+</mat-drawer-container>

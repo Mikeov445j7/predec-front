@@ -1,0 +1,36 @@
+<div class="main">
+  <div class="div-form" *ngIf="spinner">
+    <div class="loading" style="width: 100%;" >
+      <div class="spin" style="width: 50%; margin: auto;" >
+        <mat-spinner style="width: 50%; margin: auto;" [diameter]="35" ></mat-spinner>
+        <h2>Cargando....</h2>
+      </div>
+    </div>
+  </div>
+    <div class="div-form" *ngIf="!spinner">
+      <mat-label><h2>INICIO DE SESIÓN</h2></mat-label>
+      <form  #loginForm="ngForm">
+        <div class="campoForm">
+          <mat-label><h4>NOMBRE DE USUARIO</h4></mat-label>
+          <mat-form-field>
+            <input  type="text" matInput  required name="username" placeholder="USUARIO" #usuario [(ngModel)]="dataLog.username">
+          </mat-form-field>
+        </div>
+        <div class="campoForm">
+          <mat-label><h4>INSERTAR SU CONTRASEÑA</h4></mat-label>
+          <mat-form-field>
+            <input  type="password" matInput  required name="password"  placeholder="CONTRASEÑA"  #password [(ngModel)]="dataLog.password">
+          </mat-form-field>
+        </div>
+      </form>
+      <div >
+        <button mat-raised-button color="primary"  (click)="login(loginForm.value)"> INGRESAR <mat-icon>login</mat-icon></button>
+      </div>
+
+      <div class="btnDiv">
+        <button type="button"  class="login-with-google-btn" (click)="loginWithGoogle()" >
+          Entrar con Google
+        </button>
+      </div>
+    </div>
+</div>

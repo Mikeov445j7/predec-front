@@ -1,0 +1,76 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">FORMULARIO: {{titulo}}</div>
+  <div class="form-div">
+      <form #itemForm = "ngForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>NOMBRE</mat-label>
+          <input required matInput name="nombre" #nombre [(ngModel)]="proyectos.nombre">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>CODIGO</mat-label>
+          <input  required matInput name="codigo" #codigo [(ngModel)]="proyectos.codigo">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>FECHA</mat-label>
+          <input type="date" required matInput name="fecha_creacion" #fecha_creacion [(ngModel)]="proyectos.fecha_creacion">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>BENEFICIOS SOCIALES</mat-label>
+          <input type="number" matInput name="Ben_Soc" #Ben_Soc [(ngModel)]="proyectos.Ben_Soc">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" >
+          <mat-label>I.V.A.</mat-label>
+          <input type="number" matInput name="iva" #iva [(ngModel)]="proyectos.iva">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>HERRRAMIENTAS MENORES</mat-label>
+          <input type="number" matInput name="he_men" #he_men [(ngModel)]="proyectos.he_men">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>GASTOS GENERALES</mat-label>
+          <input type="number" matInput name="g_grales" #g_grales [(ngModel)]="proyectos.g_grales">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>UTILIDAD</mat-label>
+          <input type="number" matInput name="utilidad" #utilidad [(ngModel)]="proyectos.utilidad">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>IT</mat-label>
+          <input type="number" matInput name="IT" #IT [(ngModel)]="proyectos.IT">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>CLIENTE</mat-label>
+          <input  matInput name="cliente" #cliente [(ngModel)]="proyectos.cliente">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>TIPO DE CAMBIO</mat-label>
+          <input type="number" matInput name="tip_cambio" #tip_cambio [(ngModel)]="proyectos.tip_cambio">
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+          <mat-label>UBICACION</mat-label>
+          <input matInput name="ubicacion" #ubicacion [(ngModel)]="proyectos.ubicacion">
+        </mat-form-field>
+      </form>
+      <div style="width: 100%; text-align: center;">
+        <button *ngIf="edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+          GUARDAR CAMBIOS
+        <mat-icon>save</mat-icon>
+        </button>
+        <button  *ngIf="!edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+          REGISTRAR PROYECTO
+        <mat-icon>save</mat-icon>
+        </button>
+      </div>
+
+      <div style="width: 100%; text-align: right; margin-top: 5%;">
+        <button *ngIf="edit" mat-raised-button style="width:20%" color="warn" [disabled]="itemForm.invalid" (click)="borrar()">
+          BORRAR
+        <mat-icon>delete</mat-icon>
+        </button>
+       </div>
+  </div>
+</div>
