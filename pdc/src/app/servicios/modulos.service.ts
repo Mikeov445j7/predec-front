@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ModulosService {
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/modulos.php';
+  API:string='http://localhost/pdc/pdc-back/apis/cruds/modulos.php';//http://boliviadark.com/apis/
+  //API:string='https://boliviadark.com/apis/modulos.php';
   constructor(
     private _Http: HttpClient
   ) { }
@@ -17,6 +18,7 @@ export class ModulosService {
     getACtividadesModulo(id_modulo:any){
       return this._Http.get(this.API+"?modulo="+id_modulo);
     }
+
     ver(){
       return this._Http.get(this.API);
     }
@@ -38,6 +40,10 @@ export class ModulosService {
     }
     add(data:any){
       return this._Http.post(this.API+"?insertar=1", data);
+    }
+    agregarActividad(id:any, data:any){
+      return this._Http.post(this.API+"?agregarAct="+id, data);
+
     }
     editar(id:any, data:any){
       return this._Http.post(this.API+"?actualizar="+id, data);

@@ -19,6 +19,7 @@ import { FormModuloComponent } from './modulos/form-modulo/form-modulo.component
 import { VerProyectoComponent } from './proyectos/ver-proyecto/ver-proyecto.component';
 import { ComponentesModule } from 'projects/componentes/src/lib/componentes.module';
 import { ModalComponent } from './modal/modal.component';
+import { AgregarActividadComponent } from './modulos/agregar-actividad/agregar-actividad.component';
 
 
 
@@ -35,6 +36,7 @@ import { ModalComponent } from './modal/modal.component';
       ActividadesComponent,
       VerProyectoComponent,
       ModalComponent,
+      AgregarActividadComponent
 
    ],
   imports: [

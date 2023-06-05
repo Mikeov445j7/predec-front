@@ -58,7 +58,8 @@ export class VerProyectoComponent {
 
   selecItem(item:any){
     console.log(item.id_modulo);
-    this.modServ.getACtividadesModulo(item.id_modulo).subscribe(act=>{
+    this.router.navigate(['ver-modulo/'+item.id_modulo]);
+    /*this.modServ.getACtividadesModulo(item.id_modulo).subscribe(act=>{
       if(act){
         console.log(act);
         this.actividades = act
@@ -84,7 +85,7 @@ export class VerProyectoComponent {
           }
         });
       }
-    });
+    });*/
 
   }
 

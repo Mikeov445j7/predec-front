@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 export class ManoDeObraService {
 
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/manoDeObra.php';
+  API:string='http://localhost/pdc/pdc-back/apis/cruds/manoDeObra.php';//http://boliviadark.com/apis/
+  //API:string='https://boliviadark.com/apis/manoDeObra.php';
   constructor(
       private _Http: HttpClient
   ) { }

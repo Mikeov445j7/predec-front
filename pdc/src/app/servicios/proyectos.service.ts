@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class ProyectosService {
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/proyectos.php';
+  API:string='http://localhost/pdc/pdc-back/apis/cruds/proyectos.php';//http://boliviadark.com/apis/
+  //API:string='https://boliviadark.com/apis/proyectos.php';
   constructor(
     private _Http: HttpClient
   ) { }

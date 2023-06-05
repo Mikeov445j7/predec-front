@@ -1,9 +1,66 @@
 
 <div class="main-cont-div">
-  <div class="seccion" *ngIf="data">
-  <div class="sub-titulo-seccion">{{data.tipo}} {{data.modulo.nombre}}</div>
+  <div class="seccion" *ngIf="actividad">
 
-  <table class="customTable" *ngIf="data.data">
+    <div class="sub-titulo-seccion">{{data.mensaje}}</div>
+    <div class="ver-actividad">
+      <div class="insumos"> Materiales </div>
+      <table class="customTable" *ngIf="actividad.materiales!=='SIN MATERIALES'">
+        <thead>
+          <tr style="border-bottom: 1px solid;">
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>unidad</th>
+            <th>P/U</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of actividad.materiales" style="border-bottom: 1px solid;"  >
+          <td>{{item.descripcion}}</td>
+          <td>{{item.cant_por_acti}}</td>
+          <td>{{item.unidad}}</td>
+          <td>{{item.PU}}</td>
+        </tr >
+      </table>
+      <div class="msj" *ngIf="actividad.materiales==='SIN MATERIALES'">SIN MATERIALES</div>
+      <div class="insumos"> Mano de Obra </div>
+      <table class="customTable" *ngIf="actividad.manoObra!=='SIN MANO DE OBRA'">
+        <thead>
+          <tr style="border-bottom: 1px solid;">
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>unidad</th>
+            <th>P/U</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of actividad.manoObra" style="border-bottom: 1px solid;"  >
+          <td>{{item.descripcion}}</td>
+          <td>{{item.cant}}</td>
+          <td>{{item.unidad}}</td>
+          <td>{{item.PU}}</td>
+        </tr >
+      </table>
+      <div class="msj" *ngIf="actividad.manoObra==='SIN MANO DE OBRA'">SIN MANO DE OBRA</div>
+      <div class="insumos"> Equipamiento </div>
+      <table class="customTable" *ngIf="actividad.equipo!=='SIN EQUIPO'">
+        <thead>
+          <tr style="border-bottom: 1px solid;">
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>unidad</th>
+            <th>P/U</th>
+          </tr>
+        </thead>
+        <tr *ngFor="let item of actividad.equipo" style="border-bottom: 1px solid;"  >
+          <td>{{item.descripcion}}</td>
+          <td>{{item.cant}}</td>
+          <td>{{item.unidad}}</td>
+          <td>{{item.PU}}</td>
+        </tr >
+      </table>
+      <div class="msj" *ngIf="actividad.equipo==='SIN EQUIPO'">SIN EQUIPO</div>
+    </div>
+  <!--
+    <table class="customTable" *ngIf="data.data">
     <thead>
       <tr style="border-bottom: 1px solid;">
         <th>Nombre</th>
@@ -11,20 +68,19 @@
         <th>unidad</th>
         <th>P/U</th>
         <th>Total</th>
-
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of data.data" style="border-bottom: 1px solid;" >
+    <tr *ngFor="let item of data.data" style="border-bottom: 1px solid;" (click)="verAct(item)" >
       <td>{{item.descripcion}}</td>
       <td>{{item.catidad}}</td>
       <td>{{item.unidad}}</td>
       <td>{{item.unitario}}</td>
       <td>{{item.total}}</td>
-
     </tr >
   </tbody>
   </table>
+  -->
   </div>
   <div style=" margin:auto; text-align: center; width: 50%;">
     <button mat-flat-button color="warn"  style="margin:5%;" (click)="cerrarDialogo()">CERRAR</button>

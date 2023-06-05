@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
   })
 export class EquipoService {
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/equipo.php';
+  API:string='http://localhost/pdc/pdc-back/apis/cruds/equipo.php';////http://boliviadark.com/apis/
+  //API:string='https://boliviadark.com/apis/equipo.php';
   constructor(
       private _Http: HttpClient
   ) { }

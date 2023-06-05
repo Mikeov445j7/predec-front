@@ -12,14 +12,14 @@ import { LoginComponent } from 'projects/componentes/src/lib/login/login.compone
 
 const routes: Routes = [
 
-  { path: '', component: ProyectosComponent },
+  { path: '', component: CrudItemsComponent },
   { path: 'crud-items', component: CrudItemsComponent },
   { path: 'formulario-item/:tabla', component: FormularioItemsComponent},
   { path: 'formulario-item/:tabla/:idItem', component: FormularioItemsComponent},
   { path: 'proyectos', component: ProyectosComponent},
   { path: 'nuevo-proyecto', component: FormProyectoComponent},
   { path: 'editar-proyecto/:idProyecto', component: FormProyectoComponent},
-  { path: 'modulos/:idProyecto', component: ModulosComponent},
+  { path: 'ver-modulo/:idModulo', component: ModulosComponent},
   { path: 'nuevo-modulo/:idProyecto', component: FormModuloComponent},
   { path: 'editar-modulo/:idProyecto/:idModulo', component: FormModuloComponent},
   { path: 'ver-proyecto/:idProyecto', component:VerProyectoComponent},

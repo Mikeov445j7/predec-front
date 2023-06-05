@@ -8,12 +8,13 @@ import { Observable } from 'rxjs';
   })
 export class MaterialesService {
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/materiales.php';
+  API:string='http://localhost/pdc/pdc-back/apis/cruds/materiales.php';//http://boliviadark.com/apis/
+  //API:string='https://boliviadark.com/apis/materiales.php';
 constructor(
   private _Http: HttpClient
 ) { }
   ver(){
-    return this._Http.get(this.API);
+    return this._Http.get(this.API+"?listar=1");
   }
   getUno(id:any){
     return this._Http.get(this.API+"?consultar="+id);
