@@ -5,7 +5,7 @@
 
   </div>
   <div class="boton">
-    <button mat-mini-fab  color="primary" (click)="drawer.toggle()">
+    <button mat-mini-fab  style="background-color:#4F4F4F; color:#EAB127;" (click)="drawer.toggle()">
     <mat-icon>menu</mat-icon>
   </button></div>
 </div>
@@ -27,7 +27,7 @@
       <div *ngFor = "let links of menu">
         <mat-list-option >
           <mat-list-item (click)="drawer.toggle()"  routerLink="{{links.ruta}}">
-            <mat-icon color="primary"> {{links.icono}}</mat-icon> &nbsp;&nbsp; {{links.label}}
+            <mat-icon style="color:#4F4F4F;"> {{links.icono}}</mat-icon> &nbsp;&nbsp; {{links.label}}
            </mat-list-item>
         </mat-list-option>
       </div>

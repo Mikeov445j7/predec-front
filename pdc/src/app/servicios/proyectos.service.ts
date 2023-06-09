@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProyectosService {
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/proyectos.php';//http://boliviadark.com/apis/
-  //API:string='https://boliviadark.com/apis/proyectos.php';
+  public API = environment.url+"proyectos.php";
   constructor(
     private _Http: HttpClient
   ) { }

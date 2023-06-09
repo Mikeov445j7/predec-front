@@ -1,22 +1,22 @@
 <div class="main-cont-div">
   <div class="sub-titulo-seccion">Lista de Proyectos</div>
 
- <div class="list" *ngIf="results.length">
+ <div class="list" >
   <div class="buscar">
     <div class="tit-seccion"><h2>Busqueda</h2></div>
     <mat-form-field class="input-buscar" appearance="fill">
        <mat-label>Buscar</mat-label>
        <input  required="true" matInput placeholder="NOMBRE PROYECTO" #buscar  (keydown.enter)="buscarItem(buscar.value)" >
     </mat-form-field>
-    <button mat-fab color="primary"  type="submit" (click)="buscarItem(buscar.value)">
+    <button mat-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="buscarItem(buscar.value)">
     <mat-icon>search</mat-icon>
     </button>
-    <button mat-raised-button color="primary"  type="submit" (click)="agregarItem()">
+    <button  mat-raised-button style="background-color:  #4F4F4F; color:#EAB127;"   type="submit" (click)="agregarItem()">
       NUEVO PROYECTO<mat-icon>add</mat-icon>
     </button>
    </div>
 
-  <table class="customTable">
+  <table class="customTable" *ngIf="results.length">
     <thead>
       <tr style="border-bottom: 1px solid;">
         <th>nombre</th>
@@ -47,9 +47,12 @@
       <td>{{item.cliente}}</td>
       <td>{{item.tip_cambio}}</td>
       <td>{{item.ubicacion}}</td>
+      <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="EditItem(item)"><mat-icon >edit</mat-icon></button></td>
+      <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)"><mat-icon >visibility</mat-icon></button></td>
     </tr >
   </tbody>
   </table>
+
  </div>
 
  </div>

@@ -13,14 +13,16 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of modulos" style="border-bottom: 1px solid;" (click)="selecItem(item)">
+    <tr *ngFor="let item of modulos" style="border-bottom: 1px solid;">
       <td>{{item.nombre}}</td>
       <td>{{item.codigo}}</td>
       <td>{{item.fecha_inicio}}</td>
       <td>{{item.orden}}</td>
+      <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)"><mat-icon >visibility</mat-icon></button></td>
 
     </tr >
   </tbody>
   </table>
+  <div><button (click)="agregarModulo()" class="btnAgregar"  type="submit"><b>+</b> AGREGAR MODULO</button></div>
   </div>
 </div>

@@ -52,7 +52,7 @@ MODULOS
       this.listar();
   }
   listar(){
-     this.proyecServ.getProyectosUsuario(1).subscribe(p=>{
+     this.proyecServ.getProyectosUsuario(localStorage.getItem('id')).subscribe(p=>{
         if(p){
           this.results = p;
           console.log(this.results);
@@ -80,9 +80,14 @@ MODULOS
     this.router.navigate(['ver-proyecto/'+i.id_proyec]);
     //this.router.navigate(['editar-proyecto/'+i.id_proyec]);
   }
+  EditItem(i:any){
+    console.log(i.id_proyec);
+    this.router.navigate(['editar-proyecto/'+i.id_proyec]);
+  }
 
   agregarItem(){
     this.router.navigate(['nuevo-proyecto']);
   }
+
 
 }

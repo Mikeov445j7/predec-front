@@ -1,3 +1,34 @@
-<p>
-  form-modulo works!
-</p>
+<div class="main-cont-div">
+  <div class="seccion" *ngIf="data">
+    <div class="sub-titulo-seccion">AGREGAR MODULOS</div>
+    <form #modform = "ngForm">
+      <mat-form-field class="example-full-width">
+        <mat-label>NOMBRE</mat-label>
+        <input required matInput name="nombre" #nombre [(ngModel)]="modulo.nombre">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>CODIGO</mat-label>
+        <input required matInput name="codigo" #codigo [(ngModel)]="modulo.codigo">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>FECHA</mat-label>
+        <input type="datetime-local" required matInput name="fecha_inicio" #fecha_inicio [(ngModel)]="modulo.fecha_inicio">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>ORDEN EJECUCION</mat-label>
+        <input type="number" required matInput name="ordenado" #ordenado [(ngModel)]="modulo.ordenado">
+      </mat-form-field>
+    </form>
+    <div style="width: 100%; text-align: center;">
+      <button *ngIf="edit" mat-raised-button    style="width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="modform.invalid" (click)="eventoBtn(modform.value)">
+        <mat-icon>save</mat-icon>
+        GUARDAR CAMBIOS
+      </button>
+
+      <button  *ngIf="!edit" mat-raised-button   style="width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="modform.invalid" (click)="eventoBtn(modform.value)">
+        <mat-icon>save</mat-icon>
+        AGREGAR MODULO
+      </button>
+    </div>
+  </div>
+</div>

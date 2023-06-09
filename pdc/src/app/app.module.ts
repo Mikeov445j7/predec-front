@@ -20,6 +20,7 @@ import { VerProyectoComponent } from './proyectos/ver-proyecto/ver-proyecto.comp
 import { ComponentesModule } from 'projects/componentes/src/lib/componentes.module';
 import { ModalComponent } from './modal/modal.component';
 import { AgregarActividadComponent } from './modulos/agregar-actividad/agregar-actividad.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 
@@ -51,7 +52,7 @@ import { AgregarActividadComponent } from './modulos/agregar-actividad/agregar-a
 
   ],
   providers: [
-
+    { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

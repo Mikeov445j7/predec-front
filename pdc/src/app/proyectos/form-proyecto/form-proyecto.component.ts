@@ -91,6 +91,7 @@ export class FormProyectoComponent implements OnInit {
     this.proyecServ.add(data).subscribe(r=>{
       if(r){
         console.log(r);
+        this.router.navigate(['/proyectos']);
       }
     });
 
@@ -102,6 +103,7 @@ export class FormProyectoComponent implements OnInit {
     this.proyecServ.editar(this.idProyecto, data).subscribe(r=>{
       if(r){
         console.log(r);
+        this.router.navigate(['/proyectos']);
 
       }
     });

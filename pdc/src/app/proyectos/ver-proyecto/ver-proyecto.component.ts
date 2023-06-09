@@ -6,6 +6,7 @@ import { ProyectosService } from '../../servicios/proyectos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../modal/modal.component';
 import * as moment from 'moment';
+import {FormModuloComponent} from '../../modulos/form-modulo/form-modulo.component';
 
 @Component({
   selector: 'app-ver-proyecto',
@@ -59,34 +60,28 @@ export class VerProyectoComponent {
   selecItem(item:any){
     console.log(item.id_modulo);
     this.router.navigate(['ver-modulo/'+item.id_modulo]);
-    /*this.modServ.getACtividadesModulo(item.id_modulo).subscribe(act=>{
-      if(act){
-        console.log(act);
-        this.actividades = act
-        for(let i=0; i<this.actividades.length; i++){
-          this.actividades[i].total = Number(this.actividades[i].catidad) * Number(this.actividades[i].unitario)
-        }
-        this.dialogo.open( ModalComponent, {
-            width: '80%',
-            data: {
-              tipo: 'Actividades',
-              data: this.actividades,
-              modulo: item,
-              mensaje: 'Actividades del Modulo: '+item.nombre,
-              cod:1
-            }
-        })
-        .afterClosed()
-        .subscribe((confirmado:any) => {
-          if (confirmado.resultado) {
-          }
-          else {
-              console.log(confirmado.data);
-          }
-        });
-      }
-    });*/
 
+  }
+  agregarModulo(){
+    this.dialogo.open( FormModuloComponent, {
+      width: '80%',
+      data: {
+        Proyecto: this.proyecto,
+        tipo: "Crear",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
   }
 
 }

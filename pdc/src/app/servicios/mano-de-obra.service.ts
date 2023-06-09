@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,7 @@ import { Observable } from 'rxjs';
 export class ManoDeObraService {
 
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/manoDeObra.php';//http://boliviadark.com/apis/
-  //API:string='https://boliviadark.com/apis/manoDeObra.php';
+  public API = environment.url+'manoDeObra.php';
   constructor(
       private _Http: HttpClient
   ) { }

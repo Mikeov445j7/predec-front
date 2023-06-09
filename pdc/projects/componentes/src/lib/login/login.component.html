@@ -7,13 +7,13 @@
       </div>
     </div>
   </div>
-    <div class="div-form" *ngIf="!spinner">
+    <div class="div-form" *ngIf="!registro">
       <mat-label><h2>INICIO DE SESIÓN</h2></mat-label>
       <form  #loginForm="ngForm">
         <div class="campoForm">
-          <mat-label><h4>NOMBRE DE USUARIO</h4></mat-label>
+          <mat-label><h4>CORREO ELECTRONICO</h4></mat-label>
           <mat-form-field>
-            <input  type="text" matInput  required name="username" placeholder="USUARIO" #usuario [(ngModel)]="dataLog.username">
+            <input  type="text" matInput  required name="mail" placeholder="Email" #mail [(ngModel)]="dataLog.mail">
           </mat-form-field>
         </div>
         <div class="campoForm">
@@ -24,13 +24,47 @@
         </div>
       </form>
       <div >
-        <button mat-raised-button color="primary"  (click)="login(loginForm.value)"> INGRESAR <mat-icon>login</mat-icon></button>
+        <button mat-raised-button style="background-color:#4F4F4F; color:#EAB127;"  (click)="login(loginForm.value)"> INGRESAR <mat-icon>login</mat-icon></button>
       </div>
 
       <div class="btnDiv">
-        <button type="button"  class="login-with-google-btn" (click)="loginWithGoogle()" >
-          Entrar con Google
-        </button>
+          <span (click)="formRegistro()">REGISTRARSE</span>
+      </div>
+    </div>
+    <div class="div-form" *ngIf="registro">
+      <mat-label><h2>REGISTRARSE</h2></mat-label>
+      <form  #regForm="ngForm">
+        <div class="campoForm">
+          <mat-label><h4>CORREO ELECTRONICO</h4></mat-label>
+          <mat-form-field>
+            <input  type="email" matInput  required name="mail" placeholder="EMAIL" #mail [(ngModel)]="userReg.mail">
+          </mat-form-field>
+        </div>
+        <div class="campoForm">
+          <mat-label><h4>INSERTAR SU CONTRASEÑA</h4></mat-label>
+          <mat-form-field>
+            <input  type="password" matInput  required name="password"  placeholder="CONTRASEÑA"  #password [(ngModel)]="userReg.password">
+          </mat-form-field>
+        </div>
+        <div class="campoForm">
+          <mat-label><h4>NOMBRES</h4></mat-label>
+          <mat-form-field>
+            <input  type="text" matInput  required name="nombre" placeholder="NOMBRES" #nombre [(ngModel)]="userReg.nombre">
+          </mat-form-field>
+        </div>
+        <div class="campoForm">
+          <mat-label><h4>APELLIDOS</h4></mat-label>
+          <mat-form-field>
+            <input  type="text" matInput  required name="apellido"  placeholder="APELLIDOS"  #apellido [(ngModel)]="userReg.apellido">
+          </mat-form-field>
+        </div>
+      </form>
+      <div >
+        <button mat-raised-button style="background-color:#4F4F4F; color:#EAB127;" (click)="verificarUser(regForm.value)"> REGISTRARSE <mat-icon>login</mat-icon></button>
+      </div>
+
+      <div class="btnDiv" (click)="NoformRegistro()">
+          <span>INGRESAR</span>
       </div>
     </div>
 </div>

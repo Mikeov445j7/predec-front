@@ -24,22 +24,11 @@ export class FrameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(localStorage.getItem('email')&&localStorage.getItem('id')){
+    console.log(localStorage.getItem('mail'));
+
+    if(localStorage.getItem('mail')&&localStorage.getItem('id')){
       this.verMenu = true;
-      console.log('holaaaaaaaa');
-
-      if(localStorage.getItem('photoUrl')){
-        this.foto = localStorage.getItem('photoUrl');
-      }else{
-        this.foto = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png';
-      }
-      if(localStorage.getItem('name')){
-        this.name = localStorage.getItem('name');
-      }else{
-        this.name = '';
-      }
-      console.log(this.foto);
-
+      this.name = localStorage.getItem('name');
     }else{
       this.router.navigate(['login']);
     }

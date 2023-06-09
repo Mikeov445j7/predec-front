@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModulosService {
 
-  API:string='http://localhost/pdc/pdc-back/apis/cruds/modulos.php';//http://boliviadark.com/apis/
-  //API:string='https://boliviadark.com/apis/modulos.php';
+  public API = environment.url+'modulos.php';
+
   constructor(
     private _Http: HttpClient
   ) { }
@@ -43,7 +44,9 @@ export class ModulosService {
     }
     agregarActividad(id:any, data:any){
       return this._Http.post(this.API+"?agregarAct="+id, data);
-
+    }
+    quitarActividad(id:any){
+      return this._Http.post(this.API+"?quitarAct="+id, id);
     }
     editar(id:any, data:any){
       return this._Http.post(this.API+"?actualizar="+id, data);

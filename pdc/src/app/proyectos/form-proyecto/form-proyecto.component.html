@@ -56,13 +56,15 @@
         </mat-form-field>
       </form>
       <div style="width: 100%; text-align: center;">
-        <button *ngIf="edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+        <button *ngIf="edit" mat-raised-button    style="width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+          <mat-icon>save</mat-icon>
           GUARDAR CAMBIOS
-        <mat-icon>save</mat-icon>
+
         </button>
-        <button  *ngIf="!edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+        <button  *ngIf="!edit" mat-raised-button   style="width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">
+          <mat-icon>save</mat-icon>
           REGISTRAR PROYECTO
-        <mat-icon>save</mat-icon>
+
         </button>
       </div>
 

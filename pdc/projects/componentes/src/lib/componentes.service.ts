@@ -7,9 +7,11 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class ComponentesService {
+   API:string='http://localhost/pdc/pdc-back/apis/cruds/user.php';
 
+   //API:string='https://boliviadark.com/apis/user.php';
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
   ) { }
   loginGmail(SocialU:any){
     const Email= SocialU.email;
@@ -29,5 +31,27 @@ export class ComponentesService {
     localStorage.removeItem('id');
     localStorage.removeItem('photoUrl');
     return "sesion terminada";
+  }
+  usersListar(){
+    return this.http.get(this.API+"?listar=1");
+  }
+  userLogin(data:any){
+    return this.http.post(this.API+"?login=1", data);
+  }
+
+  usersBuscar(parm:any){
+    return this.http.get(this.API+"?buscar="+parm);
+  }
+  verificaUser(mail:any){
+    return this.http.get(this.API+"?verificauser="+mail);
+  }
+  usersAdd(data:any){
+    return this.http.post(this.API+"?insertar=1", data);
+  }
+  usersEditar(id:any, data:any){
+    return this.http.post(this.API+"?actualizar="+id, data);
+  }
+  usersBorrar(id:any){
+    return this.http.post(this.API+"?borrar="+id, id);
   }
 }

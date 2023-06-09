@@ -55,24 +55,6 @@ export class ModulosComponent {
           this.actividades[i].total = Number(this.actividades[i].catidad) * Number(this.actividades[i].unitario)
         }
 
-       /* this.dialogo.open( ModalComponent, {
-            width: '80%',
-            data: {
-              tipo: 'Actividades',
-              data: this.actividades,
-              modulo: item,
-              mensaje: 'Actividades del Modulo: '+item.nombre,
-              cod:1
-            }
-        })
-        .afterClosed()
-        .subscribe((confirmado:any) => {
-          if (confirmado.resultado) {
-          }
-          else {
-              console.log(confirmado.data);
-          }
-        });*/
       }
     });
   }
@@ -101,23 +83,37 @@ export class ModulosComponent {
   }
 
   agregarActividad(){
-    ;
+
     this.dialogo.open( AgregarActividadComponent, {
       width: '80%',
       data: {
-        tipo: 1,
-
+        modulo: this.modulo,
+        tipo: 2,
         cod:1
       }
-  })
-  .afterClosed()
-  .subscribe((confirmado:any) => {
-    if (confirmado.resultado) {
-    }
-    else {
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+          this.verActividades();
+      }
+      else {
         console.log(confirmado.data);
-    }
-  });
+        this.verActividades();
+      }
+        this.verActividades();
+    });
   }
 
+  quitar(id:any){
+    console.log(id);
+    this.modServ.quitarActividad(id).subscribe(m=>{
+      if(m){
+        console.log(m);
+        this.verActividades();
+      }
+    });
+
+
+  }
 }

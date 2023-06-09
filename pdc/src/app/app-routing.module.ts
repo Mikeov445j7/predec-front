@@ -8,11 +8,12 @@ import { FormProyectoComponent } from './proyectos/form-proyecto/form-proyecto.c
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './proyectos/ver-proyecto/ver-proyecto.component';
 import { LoginComponent } from 'projects/componentes/src/lib/login/login.component';
+import {ActividadesComponent} from './actividades/actividades.component';
 
 
 const routes: Routes = [
 
-  { path: '', component: CrudItemsComponent },
+  { path: '', component: ProyectosComponent },
   { path: 'crud-items', component: CrudItemsComponent },
   { path: 'formulario-item/:tabla', component: FormularioItemsComponent},
   { path: 'formulario-item/:tabla/:idItem', component: FormularioItemsComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'editar-modulo/:idProyecto/:idModulo', component: FormModuloComponent},
   { path: 'ver-proyecto/:idProyecto', component:VerProyectoComponent},
   { path: 'login', component: LoginComponent },
+  { path: 'ver-actividad', component: ActividadesComponent}
 ];
 
 @NgModule({
