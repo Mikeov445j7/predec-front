@@ -1,0 +1,15 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">ANALISIS DE PRECIOS UNITARIOS: {{modulo.nombre}}</div>
+  <div *ngIf="act" class="report" id="report" >
+    <div *ngFor="let a of act" >
+      <div [innerHTML]="a.html"></div>
+    </div>
+  </div>
+  <div style="width: 30%;" >
+    <button mat-flat-button   style="background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="act">
+      EXCEL <mat-icon>table</mat-icon>
+    </button>
+  </div>
+</div>
+
+

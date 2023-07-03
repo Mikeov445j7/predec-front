@@ -21,12 +21,15 @@ import { ComponentesModule } from 'projects/componentes/src/lib/componentes.modu
 import { ModalComponent } from './modal/modal.component';
 import { AgregarActividadComponent } from './modulos/agregar-actividad/agregar-actividad.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { FormActividadComponent } from './actividades/form-actividad/form-actividad.component';
+import { ActInsumosComponent } from './actividades/act-insumos/act-insumos.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
       CrudItemsComponent,
       FormularioItemsComponent,
@@ -37,8 +40,10 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
       ActividadesComponent,
       VerProyectoComponent,
       ModalComponent,
-      AgregarActividadComponent
-
+      AgregarActividadComponent,
+      FormActividadComponent,
+      ActInsumosComponent,
+      ReportesComponent
    ],
   imports: [
     BrowserModule,

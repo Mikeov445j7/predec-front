@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,8 +34,18 @@ export class ActividadesService {
   borrar(id:any){
     return this._Http.post(this.API+"?borrar="+id, id);
   }
+  getGrupos(){
+    return this._Http.get(this.API+"?gruposA=1");
+  }
   verunitAct(){
     return this._Http.get("http://localhost/pdc/pdc-back/apis/cruds/reportes.php");
+  }
+
+  relActvInsumo(data:any){
+    return this._Http.post(this.API+"?relActvInsumo=1", data);
+  }
+  quitarRelActvInsumo(data:any){
+    return this._Http.post(this.API+"?quitarRelActvInsumo=1", data);
   }
 
 }

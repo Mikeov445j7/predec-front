@@ -16,7 +16,7 @@ export class ManoDeObraService {
       private _Http: HttpClient
   ) { }
   ver(){
-    return this._Http.get(this.API);
+    return this._Http.get(this.API+"?listar=1");
   }
   getUno(id:any){
     return this._Http.get(this.API+"?consultar="+id);

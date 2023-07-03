@@ -1,0 +1,9 @@
+.list{
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+table.customTable tr:hover{
+  background-color:#4F4F4F;
+  color:#EAB127;
+}

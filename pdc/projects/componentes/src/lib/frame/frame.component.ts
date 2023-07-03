@@ -14,6 +14,7 @@ export class FrameComponent implements OnInit {
   public menu = [
     {ruta:'proyectos', label: 'PROYECTOS', icono:'home'},
     {ruta:'crud-items', label: 'CRUD ITEMS', icono:'list'},
+    {ruta:'actividades', label: 'ACTIVIDADES', icono:'list'},
   ];
   public verMenu= false;
   public foto:any;

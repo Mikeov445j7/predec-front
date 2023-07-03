@@ -7,9 +7,9 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class ComponentesService {
-   API:string='http://localhost/pdc/pdc-back/apis/cruds/user.php';
+   //API:string='http://localhost/pdc/pdc-back/apis/cruds/user.php';
 
-   //API:string='https://boliviadark.com/apis/user.php';
+   API:string='https://boliviadark.com/apis/user.php';
   constructor(
     private http:HttpClient,
   ) { }

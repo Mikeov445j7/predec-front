@@ -24,7 +24,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     RouterModule,
     BrowserModule,
-    SocialLoginModule,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -35,20 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     ComponentesService,
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(
-              '681433507045-5v28s0h3fvluf9cvb5j7gqekjgaulbts.apps.googleusercontent.com'
-            )
-          }
-        ]
-      } as SocialAuthServiceConfig,
-    }
+
   ]
 })
 export class ComponentesModule { }

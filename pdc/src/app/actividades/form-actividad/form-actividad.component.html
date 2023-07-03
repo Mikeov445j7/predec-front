@@ -1,0 +1,174 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">CREAR ACTIVIDAD</div>
+  <div class="form-div">
+      <form #formActividad = "ngForm">
+        <mat-form-field class="example-full-width">
+          <mat-label>GRUPO ACTIVIDAD</mat-label><br>
+           <mat-select  matInput placeholder="GRUPO" required name="grupos_actividad" #grupos_actividad [(ngModel)]="actividad.grupos_actividad">
+              <mat-option *ngFor="let g of grupos" value="{{g.id_grupos_actividad}}" >
+                {{g.nombre}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>NOMBRE</mat-label>
+          <input required matInput name="descripcion" #descripcion [(ngModel)]="actividad.descripcion">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>UNIDAD</mat-label>
+          <input required matInput name="unidad" #unidad [(ngModel)]="actividad.unidad">
+        </mat-form-field>
+      </form>
+      <div style="width: 100%; text-align: center;">
+        <button *ngIf="edit" mat-raised-button    style="background-color:#4F4F4F; color:#EAB127;"  [disabled]="formActividad.invalid" (click)="editar(formActividad.value)">
+          <mat-icon>save</mat-icon>
+          GUARDAR CAMBIOS
+        </button>
+        <button  *ngIf="!edit" mat-raised-button   style="background-color:#4F4F4F; color:#EAB127;"  [disabled]="formActividad.invalid" (click)="eventoBtn(formActividad.value)">
+          <mat-icon>save</mat-icon>
+          REGISTRAR ACTIVIDAD
+        </button>
+      </div>
+  </div>
+  <div style="width: 100%;">
+    <div class="insumosAct">
+      <div class="ver-actividad" *ngIf="act">
+        <div class="sub-titulo-seccion"> Materiales </div>
+        <table class="customTable" *ngIf="act.materiales!=='SIN MATERIALES'">
+          <thead>
+            <tr style="border-bottom: 1px solid;">
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>unidad</th>
+              <th>P/U</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let item of act.materiales" style="border-bottom: 1px solid;"  >
+            <td>{{item.descripcion}}</td>
+            <td>{{item.cant_por_acti}}</td>
+            <td>{{item.unidad}}</td>
+            <td>{{item.PU}}</td>
+            <td>
+              <button mat-mini-fab color="warn" (click)="quitarInsumo(1,item)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr >
+          <tr style="border-bottom: 1px solid;"  >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarInsumos(1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </td>
+          </tr >
+        </table>
+        <div class="msj" *ngIf="act.materiales==='SIN MATERIALES'">
+
+          <table class="customTable">
+            <tr>
+              <td>SIN MATERIALES</td>
+              <td>
+                <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarInsumos(1)">
+                <mat-icon>add</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+
+        </div>
+        <div class="sub-titulo-seccion"> Mano de Obra </div>
+        <table class="customTable" *ngIf="act.manoObra!=='SIN MANO DE OBRA'">
+          <thead>
+            <tr style="border-bottom: 1px solid;">
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>unidad</th>
+              <th>P/U</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let item of act.manoObra" style="border-bottom: 1px solid;"  >
+            <td>{{item.descripcion}}</td>
+            <td>{{item.cant}}</td>
+            <td>{{item.unidad}}</td>
+            <td>{{item.PU}}</td>
+            <td>
+              <button mat-mini-fab color="warn" (click)="quitarInsumo(2,item)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr >
+          <tr style="border-bottom: 1px solid;"  >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarInsumos(2)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </td>
+          </tr >
+        </table>
+        <div class="msj" *ngIf="act.manoObra==='SIN MANO DE OBRA'">
+          <table class="customTable">
+            <tr>
+              <td>SIN MANO DE OBRA</td>
+              <td>
+                <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarInsumos(2)">
+                <mat-icon>add</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="sub-titulo-seccion"> Equipamiento </div>
+        <table class="customTable" *ngIf="act.equipo!=='SIN EQUIPO'">
+          <thead>
+            <tr style="border-bottom: 1px solid;">
+              <th>Nombre</th>
+              <th>Cantidad</th>
+              <th>unidad</th>
+              <th>P/U</th>
+            </tr>
+          </thead>
+          <tr *ngFor="let item of act.equipo" style="border-bottom: 1px solid;"  >
+            <td>{{item.descripcion}}</td>
+            <td>{{item.cant}}</td>
+            <td>{{item.unidad}}</td>
+            <td>{{item.PU}}</td>
+            <td>
+              <button mat-mini-fab color="warn" (click)="quitarInsumo(3,item)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr >
+          <tr style="border-bottom: 1px solid;"  >
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarInsumos(3)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </td>
+          </tr >
+        </table>
+        <div class="msj" *ngIf="act.equipo==='SIN EQUIPO'">
+
+          <table class="customTable">
+            <tr>
+              <td>SIN EQUIPO</td>
+              <td>
+                <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarInsumos(3)">
+                <mat-icon>add</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { AgregarActividadComponent } from './agregar-actividad/agregar-actividad.component';
+import { ReportesComponent } from '../reportes/reportes.component';
 
 @Component({
   selector: 'app-modulos',
@@ -26,14 +27,12 @@ export class ModulosComponent {
   ngOnInit(){
     if(this.route.snapshot.params['idModulo']){
       console.log("");
-
       this.idModulo = Number(this.route.snapshot.params['idModulo']);
       console.log(this.idModulo);
-
       this.verModulo();
     }
-
   }
+
   verModulo(){
     this.modServ.getUno(this.idModulo).subscribe(m=>{
 
@@ -48,12 +47,20 @@ export class ModulosComponent {
 
   verActividades(){
     this.modServ.getACtividadesModulo(this.idModulo).subscribe(act=>{
+      let a:any;
       if(act){
-        console.log(act);
-        this.actividades = act
-        for(let i=0; i<this.actividades.length; i++){
-          this.actividades[i].total = Number(this.actividades[i].catidad) * Number(this.actividades[i].unitario)
+        a = act;
+        if(a.success!=0){
+          this.actividades = act
+          for(let i=0; i<this.actividades.length; i++){
+            this.actividades[i].total = Number(this.actividades[i].catidad) * Number(this.actividades[i].unitario)
+          }
         }
+        else{
+          console.log("sin datos");
+
+        }
+        console.log(this.actividades);
 
       }
     });
@@ -110,10 +117,38 @@ export class ModulosComponent {
     this.modServ.quitarActividad(id).subscribe(m=>{
       if(m){
         console.log(m);
-        this.verActividades();
+        window.location.reload();
       }
     });
+  }
 
+
+  pu(){
+    let data = {
+      idModulo:this.idModulo,
+      id_proyec: this.modulo.id_proyec,
+      mod: this.modulo
+    }
+
+    this.dialogo.open( ReportesComponent, {
+      width: '80%',
+      data: {
+        idModulo:this.idModulo,
+        id_proyec: this.modulo.id_proyec,
+        mod: this.modulo
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+          this.verActividades();
+      }
+      else {
+        console.log(confirmado.data);
+        this.verActividades();
+      }
+        this.verActividades();
+    });
 
   }
 }

@@ -82,7 +82,7 @@ export class AgregarActividadComponent implements OnInit {
         console.log(this.actividad);
         this.relACtMod.id_actividad = item.id_actividad;
         this.relACtMod.id_modulo = this.data.modulo.id_modulo;
-        this.relACtMod.unitario = this.calculaUnitario();
+        this.relACtMod.unitario = Number(this.calculaUnitario());
         console.log(this.relACtMod);
         this.mostrar = false;
         this.listo = true;
@@ -97,7 +97,6 @@ export class AgregarActividadComponent implements OnInit {
          if(m){
           console.log(m);
           this.confirmado();
-
          }
       });
   }
@@ -109,23 +108,28 @@ export class AgregarActividadComponent implements OnInit {
     console.log("MATERIALES-------------->>");
     if(this.actividad.materiales!='SIN MATERIALES'){
       for(let i = 0; i<this.actividad.materiales.length; i++){
-        materiales += Number(this.actividad.materiales[i].PU);
+        materiales += Number(this.actividad.materiales[i].PU*this.actividad.materiales[i].cant_por_acti);
       }
     }
 
     console.log("MANODE OBRA-------------->>");
     if(this.actividad.manoObra!='SIN MANO DE OBRA'){
       for(let i = 0; i<this.actividad.manoObra.length; i++){
-        manoObra += Number(this.actividad.manoObra[i].PU);
+        manoObra += Number(this.actividad.manoObra[i].PU*this.actividad.manoObra[i].cant);
       }
     }
 
     console.log("EQUIPO-------------->>");
     if(this.actividad.equipo!='SIN EQUIPO'){
       for(let i = 0; i<this.actividad.equipo.length; i++){
-        equipo += Number(this.actividad.equipo[i].PU);
+        equipo += Number(this.actividad.equipo[i].PU*this.actividad.manoObra[i].cant);
       }
     }
+    materiales = Number(materiales);
+    manoObra = Number(manoObra);
+    equipo = Number(equipo);
+    console.log("Materiales:",materiales, "Mano de Obra:",manoObra, "Equipo:",equipo);
+
 
     return materiales + manoObra + equipo;
 

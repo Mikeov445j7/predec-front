@@ -1,0 +1,58 @@
+<div class="main-cont-div">
+  <div>
+    <div class="tit-seccion" style="width: 100%; text-align: center;"><h2>{{data.msj}}</h2></div>
+    <div class="buscar" *ngIf="!select">
+      <div class="tit-seccion"><h2>Busqueda Items</h2></div>
+      <mat-form-field class="input-buscar" appearance="fill">
+         <mat-label>Buscar</mat-label>
+         <input  required="true" matInput placeholder="DECRIPCION" #buscar  (keydown.enter)="getInsumos(buscar.value)"  (keyup)="getInsumos(buscar.value)">
+      </mat-form-field>
+      <button mat-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="getInsumos(buscar.value)">
+      <mat-icon>search</mat-icon>
+      </button>
+    </div>
+
+
+    <div class="tit-seccion" *ngIf="!mostrar&&select">
+      <mat-form-field class="input-buscar" appearance="fill">
+        <mat-label>AGREGAR CANTIDAD</mat-label>
+        <input type="number" required="true" matInput placeholder="CANTIDAD" #cantidad>
+     </mat-form-field>
+     <button  mat-flat-button style="width: 10%; background-color:#4F4F4F; color:#EAB127;" (click)="agregar(cantidad.value)">AGREGAR <mat-icon>add</mat-icon></button>
+    </div>
+
+
+    <div class="list" *ngIf="mostrar&&!select">
+      <table class="customTable" *ngIf="results.length">
+        <thead>
+          <tr style="border-bottom: 1px solid;">
+            <th>id</th>
+            <th>descripcion</th>
+            <th>unidad</th>
+            <th>PU Bs.</th>
+            <th *ngIf="tipoInsumo===2">MES</th>
+            <th *ngIf="tipoInsumo===2">JORNAL</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let items of results" style="border-bottom: 1px solid;" (click)="selecItem(items)">
+          <td *ngIf="tipoInsumo===1">{{items.id_mat}}</td>
+          <td *ngIf="tipoInsumo===3">{{items.id_equip}}</td>
+          <td *ngIf="tipoInsumo===2">{{items.id_mo}}</td>
+          <td>{{items.descripcion}}</td>
+          <td>{{items.unidad}}</td>
+          <td>{{items.PU}}</td>
+          <td *ngIf="tipoInsumo===2">{{items.jornal}}</td>
+          <td *ngIf="tipoInsumo===2">{{items.mes}}</td>
+          <!--
+            <td>{{item.grupo_insumo}}</td>
+          -->
+        </tr >
+      </tbody>
+      </table>
+    </div>
+   </div>
+  <div style=" margin:auto; text-align: center; width: 50%;">
+    <button mat-flat-button color="warn"  style="margin:5%;" (click)="cerrarDialogo()">CANCELAR</button>
+  </div>
+</div>

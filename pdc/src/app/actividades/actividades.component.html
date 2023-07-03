@@ -1,1 +1,41 @@
-<p>actividades works!</p>
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">ACTIVIDADES</div>
+  <div class="list" >
+    <button  mat-raised-button style="background-color:  #4F4F4F; color:#EAB127;"   type="submit" (click)="agregarItem(1)">
+      NUEVA ACATIVIDAD<mat-icon>add</mat-icon>
+    </button>
+    <div class="buscar">
+      <div class="tit-seccion"><h2>Busqueda</h2></div>
+      <mat-form-field class="input-buscar">
+         <mat-label>Buscar</mat-label>
+         <input  required="true" matInput placeholder="NOMBRE PROYECTO" #buscar  (keydown.enter)="buscarItem(buscar.value)" (keyup)="buscarItem(buscar.value)" >
+      </mat-form-field>
+      <button mat-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="buscarItem(buscar.value)">
+      <mat-icon>search</mat-icon>
+      </button>
+
+     </div>
+     <div class="list" *ngIf="actividades.length && mostrar">
+      <table class="customTable" >
+        <thead>
+          <tr style="border-bottom: 1px solid;">
+            <th>Nombre</th>
+            <th>Unidad</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of actividades" style="border-bottom: 1px solid;" >
+          <td>{{item.descripcion}}</td>
+          <td>{{item.unidad}}</td>
+          <td>
+            <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)">
+            <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </tr >
+      </tbody>
+      </table>
+     </div>
+
+   </div>
+</div>

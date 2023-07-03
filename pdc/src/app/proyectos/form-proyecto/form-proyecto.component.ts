@@ -86,7 +86,7 @@ export class FormProyectoComponent implements OnInit {
 
   registarProyecto(data:any){
     console.log(data);
-    data.id_us = 1;
+    data.id_us = localStorage.getItem('id');
     data.id_proyecOr=1;
     this.proyecServ.add(data).subscribe(r=>{
       if(r){

@@ -9,6 +9,8 @@ import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './proyectos/ver-proyecto/ver-proyecto.component';
 import { LoginComponent } from 'projects/componentes/src/lib/login/login.component';
 import {ActividadesComponent} from './actividades/actividades.component';
+import { FormActividadComponent } from './actividades/form-actividad/form-actividad.component';
+import { ReportesComponent } from './reportes/reportes.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,10 @@ const routes: Routes = [
   { path: 'editar-modulo/:idProyecto/:idModulo', component: FormModuloComponent},
   { path: 'ver-proyecto/:idProyecto', component:VerProyectoComponent},
   { path: 'login', component: LoginComponent },
-  { path: 'ver-actividad', component: ActividadesComponent}
+  { path: 'actividades', component: ActividadesComponent},
+  { path: 'form-actividad', component:FormActividadComponent},
+  { path: 'form-actividad/:id_actividad', component:FormActividadComponent},
+  { path: 'reportes', component: ReportesComponent}
 ];
 
 @NgModule({

@@ -48,10 +48,18 @@ export class VerProyectoComponent {
   }
 
   getModulos(){
+    let m:any;
     this.modServ.getModulosProyecto(this.idProyecto).subscribe(mod=>{
       if(mod){
-        this.modulos = mod;
-        console.log(this.modulos);
+        m=mod;
+        if(m.success!=0){
+          this.modulos = mod;
+          console.log(this.modulos);
+        } else {
+          console.log("no data");
+
+        }
+
       }
     });
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ComponentesService } from '../componentes.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
+//import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 
 
 
@@ -27,15 +27,15 @@ export class LoginComponent implements OnInit {
   public googleLogoURL = "https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg";
   public subscription:any;
   public user:any;
-  public isLoggedin: boolean | undefined;
-  public  socialUser: SocialUser | undefined;
+  //public isLoggedin: boolean | undefined;
+  //public  socialUser: SocialUser | undefined;
   public dataLog = {
     mail: '',
     password: ''
   }
   constructor(
     public serv: ComponentesService,
-    private socialAuthService: SocialAuthService,
+   // private socialAuthService: SocialAuthService,
     public _router: Router,
     public _location: Location,
     private _snackBar: MatSnackBar
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  loginWithGoogle(): void {
+ /* loginWithGoogle(): void {|
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
     this.socialAuthService.authState.subscribe((user) => {
       if(user){
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['']);
        }
      });
-  }
+  }*/
 
 
   mostrarMensaje(msj:any){
@@ -106,6 +106,7 @@ export class LoginComponent implements OnInit {
         resp = v;
           if(resp.success==0){
 
+            console.log("VERIFICADOOO", v);
 
             this.registrar(ver);
           }
