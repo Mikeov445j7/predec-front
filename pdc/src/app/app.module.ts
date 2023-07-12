@@ -24,12 +24,14 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { FormActividadComponent } from './actividades/form-actividad/form-actividad.component';
 import { ActInsumosComponent } from './actividades/act-insumos/act-insumos.component';
 import { ReportesComponent } from './reportes/reportes.component';
+import { PxUactModComponent } from './reportes/pxUactMod/pxUactMod.component';
+import { RpresuXmodComponent } from './reportes/RpresuXmod/RpresuXmod.component';
 
 
 
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
       CrudItemsComponent,
       FormularioItemsComponent,
@@ -43,7 +45,9 @@ import { ReportesComponent } from './reportes/reportes.component';
       AgregarActividadComponent,
       FormActividadComponent,
       ActInsumosComponent,
-      ReportesComponent
+      ReportesComponent,
+      PxUactModComponent,
+      RpresuXmodComponent
    ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../modal/modal.component';
 import { AgregarActividadComponent } from './agregar-actividad/agregar-actividad.component';
 import { ReportesComponent } from '../reportes/reportes.component';
+import { PxUactModComponent } from '../reportes/pxUactMod/pxUactMod.component';
 
 @Component({
   selector: 'app-modulos',
@@ -130,7 +131,7 @@ export class ModulosComponent {
       mod: this.modulo
     }
 
-    this.dialogo.open( ReportesComponent, {
+    this.dialogo.open( PxUactModComponent, {
       width: '80%',
       data: {
         idModulo:this.idModulo,

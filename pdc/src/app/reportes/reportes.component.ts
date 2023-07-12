@@ -20,6 +20,7 @@ export class ReportesComponent implements OnInit {
   public actividades:any;
   public modulo:any;
   public act:any= [];
+  public PxUact:any= [];
   constructor(
     public repServ: ReportesService,
     public dialogo: MatDialogRef<ReportesComponent>,
@@ -30,12 +31,37 @@ export class ReportesComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.data);
-
     this.modulo = this.data.mod;
     console.log("MODULO:",this.modulo);
+    this.repServ.PUXact(this.data).subscribe(pu=>{
+      if(pu){
 
+        this.PxUact = pu;
+        console.log("------",this.PxUact);
+        for(let i=0; i<this.PxUact.length; i++){
+          console.log(this.PxUact[i].materiales.A);
+          let gg = 0;
+          gg = Number(this.PxUact[i].manoObra.E)*(this.PxUact[i].he_men/100);
+          this.PxUact[i].equipo.H = Number(this.PxUact[i].equipo.F)+Number(gg);
+          let ii = 0;
+          ii =  (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H))*(Number(this.PxUact[i].g_grales)/100);
+          let jj = 0;
+          jj = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii)*(Number(this.PxUact[i].utilidad)/100);
+          let kk = 0;
+          kk = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii+jj)*(Number(this.PxUact[i].it)/100);
+          let ll = 0;
+          ll = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii+jj+kk);
+          this.PxUact[i].I = ii;
+          this.PxUact[i].J = jj;
+          this.PxUact[i].K = kk;
+          this.PxUact[i].L = ll;
+          this.PxUact[i].G = gg;
+
+        }
+      }
+    });
     this.verActividades();
-
+    this.getPUact(1);
   }
 
   verActividades(){
@@ -50,37 +76,43 @@ export class ReportesComponent implements OnInit {
             let d = {
               id_proyec:this.data.id_proyec,
               id_mod:this.data.idModulo,
-              id_actividad:this.actividades[i].id_actividad
+              id_actividad:Number(this.actividades[i].id_actividad)
             }
-            this.repServ.PUXact(d).subscribe(r=>{
+            console.log(d);
+            this.repServ.PUXact2(d).subscribe(r=>{
+              console.log("ACTIVIDAD:",r);
               if(r){
+                console.log("ACTIVIDAD:",r);
                 this.results = r;
                 this.act.push(this.results);
-
               }
-              return this.results;
-            });
 
+            });
            // this.getPUact(d);
            console.log(this.act);
           }
         }
         else{
           console.log("sin datos");
-
         }
       }
     });
   }
 
   getPUact(data:any){
-    this.repServ.PUXact(data).subscribe(r=>{
+    let d = {
+      id_proyec:this.data.id_proyec,
+      id_mod:this.data.idModulo,
+      id_actividad:153
+    }
+    this.repServ.PUXact2(d).subscribe(r=>{
+      console.log(r);
+
       if(r){
         this.results = r;
         console.log(this.results);
 
       }
-      return this.results;
     });
    }
 

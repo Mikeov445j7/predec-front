@@ -48,4 +48,8 @@ export class ActividadesService {
     return this._Http.post(this.API+"?quitarRelActvInsumo=1", data);
   }
 
+  pu(){
+    return this._Http.get("http://localhost/pdc/pdc-back/apis/cruds/RpxuAct.php?pxua=1");
+  }
+
 }

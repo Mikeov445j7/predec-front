@@ -7,6 +7,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalComponent } from '../../modal/modal.component';
 import * as moment from 'moment';
 import {FormModuloComponent} from '../../modulos/form-modulo/form-modulo.component';
+import { ReportesService } from 'src/app/servicios/reportes.service';
+import { RpresuXmodComponent } from 'src/app/reportes/RpresuXmod/RpresuXmod.component';
+
 
 @Component({
   selector: 'app-ver-proyecto',
@@ -24,7 +27,8 @@ export class VerProyectoComponent {
     public modServ: ModulosService,
     private route: ActivatedRoute,
     private router:Router,
-    public dialogo: MatDialog
+    public dialogo: MatDialog,
+    public servRep:ReportesService
   ) { }
 
   ngOnInit() {
@@ -82,7 +86,7 @@ export class VerProyectoComponent {
     .afterClosed()
     .subscribe((confirmado:any) => {
       if (confirmado.resultado) {
-
+        console.log(confirmado);
       }
       else {
         console.log(confirmado.data);
@@ -90,6 +94,30 @@ export class VerProyectoComponent {
       }
       this.getModulos();
     });
+  }
+
+  PresMod(){
+
+    this.dialogo.open( RpresuXmodComponent, {
+      width: '80%',
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "rpresuXmod",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
   }
 
 }

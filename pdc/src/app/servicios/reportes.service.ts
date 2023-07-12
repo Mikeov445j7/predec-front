@@ -16,8 +16,16 @@ export class ReportesService {
     reporte1(){
       return this._Http.get(this.API);
     }
-    PUXact(data:any){
+    PUXact2(data:any){
       return this._Http.post(this.API+"preciosUnitariosXActividad.php?PUXact=1", data);
     }
+
+    PUXact(data:any){
+      return this._Http.post(this.API+"RpxuAct.php?pxua=1", data);
+    }
+    RpresuXmod(data:any){
+      return this._Http.post(this.API+"RpresuXmod.php?RpXmod=1", data);
+    }
+
 
 }

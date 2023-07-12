@@ -1,0 +1,277 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion"></div>
+  <div *ngIf="PxUact" class="report" id="report" >
+    <div *ngFor="let a of PxUact" >
+      <div>
+        <table class="customTable">
+           <tr>
+            <td>Análisis de Precios Unitarios Modulo: <b>{{modulo.nombre}}</b></td>
+           </tr>
+           <tr>
+            <td><b>ITEM: </b> {{a.actividad}}</td>
+            <td><b>CANT.: </b>{{a.cantidad}} {{a.unidad}}</td>
+           </tr>
+           <tr>
+            <td><b>PROYECTO: </b> {{a.nom_proy}}</td>
+            <td><b>FECHA: </b> {{a.fechaIni}}</td>
+           </tr>
+           <tr>
+            <td><b>CLIENTE: </b> {{a.cliente}}</td>
+            <td><b>TIPO CAMBIO: </b> {{a.tip_cambio}}</td>
+           </tr>
+        </table>
+        <table class="customTable">
+          <tr style="text-align: center;">
+            <td><b>N°</b></td>
+            <td><b>P</b></td>
+            <td><b>Insumo/Parametro</b></td>
+            <td><b>Unid.</b></td>
+            <td><b>Cant.</b></td>
+            <td><b>P/U (Bs)</b></td>
+            <td><b>Parcial (Bs)</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>A</td>
+            <td><b>MATERIAL</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr *ngIf="!a.materiales.data">
+            <td></td>
+            <td></td>
+            <td>{{a.materiales.msj}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr  *ngFor="let m of a.materiales.listaMateriales">
+              <td></td>
+              <td></td>
+              <td>{{m.nombre}}</td>
+              <td>{{m.unidad}}</td>
+              <td>{{m.cant}}</td>
+              <td>{{m.pu}}</td>
+              <td>{{m.parcial}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><b>TOTAL MATERIALES</b></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;"><b>(A)=</b></td>
+            <td><b>{{a.materiales.A}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>B</td>
+            <td><b>MANO DE OBRA</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr *ngIf="!a.manoObra.data">
+            <td></td>
+            <td></td>
+            <td>{{a.manoObra.msj}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr  *ngFor="let m of a.manoObra.manoObra">
+              <td></td>
+              <td></td>
+              <td>{{m.nombre}}</td>
+              <td>{{m.unidad}}</td>
+              <td>{{m.cant}}</td>
+              <td>{{m.pu}}</td>
+              <td>{{m.parcial}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>N</td>
+            <td><b>Subtotal Mano de Obra</b></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;"><b>(B)=</b></td>
+            <td><b>{{a.manoObra.B}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>E</td>
+            <td><b>Beneficios Sociales</b></td>
+            <td></td>
+            <td style="text-align: right;">{{a.manoObra.Ben_Soc}}% de</td>
+            <td style="text-align: right;"><b>(N)=</b></td>
+            <td><b>{{a.manoObra.C}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>F</td>
+            <td><b>Impuesto IVA</b></td>
+            <td></td>
+            <td style="text-align: right;">{{a.manoObra.iva}}% de</td>
+            <td style="text-align: right;"><b>(N+E)=</b></td>
+            <td><b>{{a.manoObra.D}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>G</td>
+            <td><b>TOTAL MANO DE OBRA</b></td>
+            <td></td>
+            <td style="text-align: right;"></td>
+            <td style="text-align: right;"><b>(N+E+F)=</b></td>
+            <td><b>{{a.manoObra.E}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>C</td>
+            <td><b>EQUIPO Y MAQUINARIA</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr *ngIf="!a.equipo.data">
+            <td></td>
+            <td></td>
+            <td>{{a.equipo.msj}}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr  *ngFor="let m of a.equipo.equipo">
+              <td></td>
+              <td></td>
+              <td>{{m.nombre}}</td>
+              <td>{{m.unidad}}</td>
+              <td>{{m.cant}}</td>
+              <td>{{m.pu}}</td>
+              <td>{{m.parcial}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><b>Subtotal Equipo</b></td>
+            <td></td>
+            <td style="text-align: right;"></td>
+            <td style="text-align: right;"><b>(C)=</b></td>
+            <td><b>{{a.equipo.F}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>H</td>
+            <td><b>Herramientas menores</b></td>
+            <td></td>
+            <td style="text-align: right;">{{a.he_men}}% de</td>
+            <td style="text-align: right;"><b>(G)=</b></td>
+            <td><b>{{a.G}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>I</td>
+            <td><b>TOTAL EQUIPO Y MAQUINARIA</b></td>
+            <td></td>
+            <td style="text-align: right;"></td>
+            <td style="text-align: right;"><b>(C+H) =</b></td>
+            <td><b>{{a.equipo.H}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>L</td>
+            <td><b> GASTOS GENERALES</b></td>
+            <td></td>
+            <td style="text-align: right;">{{a.g_grales}}% de</td>
+            <td style="text-align: right;"><b>(A+G+I)=</b></td>
+            <td><b>{{a.I}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>M</td>
+            <td><b>Utilidad </b></td>
+            <td></td>
+            <td style="text-align: right;">{{a.utilidad}}% de</td>
+            <td style="text-align: right;"><b>(A+G+I+L)=</b></td>
+            <td><b>{{a.J}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>P</td>
+            <td><b>IT</b></td>
+            <td></td>
+            <td style="text-align: right;">{{a.it}}% de</td>
+            <td style="text-align: right;"><b>(A+G+I+L+M)=</b></td>
+            <td><b>{{a.K}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Q</td>
+            <td><b> TOTAL ITEM </b></td>
+            <td></td>
+            <td></td>
+            <td style="text-align: right;"><b>(A+G+I+L+M+P)=</b></td>
+            <td><b>{{a.L}}</b></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><b>PRECIO ADOPTADO:</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>{{a.L}}</b></td>
+          </tr>
+        </table>
+
+      </div>
+      <br>
+
+    </div>
+  </div>
+  <div style="width: 100%; text-align: center;" >
+    <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="PxUact">
+      EXCEL <mat-icon>table</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="print()" *ngIf="PxUact">
+      IMPRIMIR <mat-icon>print</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" *ngIf="PxUact">
+      CERRAR <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>
+

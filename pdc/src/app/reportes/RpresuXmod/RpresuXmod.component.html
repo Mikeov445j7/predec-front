@@ -1,0 +1,73 @@
+<div class="main-cont-div">
+  <mat-spinner *ngIf="!reporte" style="margin:auto;"></mat-spinner>
+  <div class="sub-titulo-seccion"></div>
+  <div *ngIf="reporte" class="report" id="report" >
+      <div>
+        <table class="customTable">
+           <tr>
+            <td></td>
+            <td><b>PROYECTO: {{reporte.proyecto.nom_proy}}</b> </td>
+            <td><b>LUGAR: {{reporte.proyecto.lugar}}</b></td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b> </b></td>
+            <td><b>FECHA: {{reporte.proyecto.fecha}} </b> </td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b>CLIENTE: {{reporte.proyecto.cliente}} </b> </td>
+            <td><b>TIPO CAMBIO: {{reporte.proyecto.tip_cambio}} </b> </td>
+           </tr>
+        </table>
+        <div *ngFor="let modulos of reporte.modulos" style="width: 100%;">
+          <table class="customTable">
+
+            <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
+              <td style="width: 2%; text-align: right;">></td>
+              <td style="width: 20%;">{{modulos.modulo.nombre}}</td>
+              <td style="width: 5%;"></td>
+              <td style="width: 5%;"></td>
+              <td style="width: 10%;"></td>
+              <td style="width: 10%;">{{modulos.parcial}}</td>
+            </tr>
+            <tr style="font-weight: bold; text-align: center;">
+              <td style="width: 2%;">Nº </td>
+              <td style="width: 20%;">Descripción </td>
+              <td style="width: 5%;">Und. </td>
+              <td style="width: 5%;">Cantidad </td>
+              <td style="width: 10%;">Unitario </td>
+              <td style="width: 10%;">Parcial (Bs) </td>
+            </tr>
+            <tr *ngFor="let a of modulos.listadeActiv">
+              <td></td>
+              <td style="width: 35%;">{{a.actividad.descripcion}}</td>
+              <td style="width: 5%;">{{a.actividad.unidad}}</td>
+              <td style="width: 5%;">{{a.actividad.catidad}}</td>
+              <td style="width: 10%;">{{a.unitario}}</td>
+              <td style="width: 10%;">{{a.parcial}}</td>
+            </tr>
+          </table>
+        </div>
+        <table class="customTable">
+          <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
+            <td>TOTAL PRESUPUESTO:</td>
+            <td>{{totalProyecto}}</td>
+          </tr>
+        </table>
+      </div>
+      <br>
+
+  </div>
+  <div style="width: 100%; text-align: center;" >
+    <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="reporte">
+      EXCEL <mat-icon>table</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="print()" *ngIf="reporte">
+      IMPRIMIR <mat-icon>print</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" *ngIf="reporte">
+      CERRAR <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>

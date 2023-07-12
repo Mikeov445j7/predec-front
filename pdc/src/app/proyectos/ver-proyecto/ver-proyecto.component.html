@@ -1,7 +1,7 @@
 <div class="main-cont-div">
   <div class="seccion" *ngIf="proyecto">
   <div class="sub-titulo-seccion" >PROYECTO: {{proyecto.nombre}}</div>
-
+  <div style="width: 100%; text-align: right;"><button (click)="agregarModulo()" class="btnAgregar"  style="margin-right: 3%;"><b>+</b> AGREGAR MODULO</button></div>
   <table class="customTable" *ngIf="modulos">
     <thead>
       <tr style="border-bottom: 1px solid;">
@@ -23,6 +23,8 @@
     </tr >
   </tbody>
   </table>
-  <div><button (click)="agregarModulo()" class="btnAgregar"  type="submit"><b>+</b> AGREGAR MODULO</button></div>
+    <div  style="margin-top: 3%; text-align: center;">
+      <button mat-flat-button style="background-color:#4F4F4F; color:#279cea; margin-right: 3%;" (click)="PresMod()" >Presupuesto por Módulo</button>
+    </div>
   </div>
 </div>
