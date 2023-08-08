@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+}
+
+.cards{
+    display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+.card{
+  width: 300px;
+  height: 400px;
+  margin: auto;
+  background-color: #ffffff;
+  transition: transform .5s; /* Animation */
+  transition-timing-function: ease-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card-img{
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card-txt{
+  text-align: justify;
+  padding: 3%;
+  width: 300px;
+  font-size: smaller;
+  margin: auto;
+}
+.card-tit{
+
+  margin: auto;
+  margin-top: 1%;
+  text-transform: uppercase;
+  text-align: center;
+  height: 35px;
+  font-size: medium;
+  font-weight: bold;
+  margin-bottom: 1%;
+  padding: 3%;
+}
+.card2{
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  background-color: #ffffff;
+  transition: transform .5s; /* Animation */
+  transition-timing-function: ease-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+mat-stepper{
+  display: none;
+}
+.card2-img{
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.card2-txt{
+  text-align: justify;
+  padding: 3%;
+  width: 280px;
+  font-size: smaller;
+  margin: auto;
+}
+.card2-tit{
+
+  margin: auto;
+  margin-top: 1%;
+  text-transform: uppercase;
+  text-align: center;
+  height: 35px;
+  font-size: medium;
+  font-weight: bold;
+  margin-bottom: 1%;
+  padding: 3%;
+}
+
+/* Don't need button navigation */
+@supports (scroll-snap-type) {
+  .slider > a {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 678px) {
+  .slider {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .slider {
+    width: 98%;
+    margin:auto;
+
+  }
+  .card{
+    display: none;
+  }
+
+  .card2{
+    display: block;
+    text-align: center;
+  }
+  mat-stepper{
+    display: block;
+  }
+}
+
+

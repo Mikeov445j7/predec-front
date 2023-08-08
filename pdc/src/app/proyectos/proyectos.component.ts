@@ -27,42 +27,31 @@ public proyectos = {
   ubicacion:'',
   id_proyecOr:0
 }
-
-/*
-MODULOS
-
-`id_modulo`,
-`id_proyec`,
-`orden`,
-`nombre`,
-`codigo`,
-`id_modOr`,
-`fecha_inicio`,
-`ordenado`
-  */
   public results:any = [];
   public item:any;
-
+  public cargando = false;
   constructor(
     private proyecServ: ProyectosService,
     private router:Router
   ) { }
-
   ngOnInit() {
       this.listar();
   }
   listar(){
+     this.cargando = true;
      this.proyecServ.getProyectosUsuario(localStorage.getItem('id')).subscribe(p=>{
         if(p){
           this.results = p;
+          this.cargando = false;
           console.log(this.results);
         }
      });
   }
-
   buscarItem(param:any){
-    this.proyecServ.buscarPU(param, 1).subscribe(p=>{
+    this.cargando = true;
+    this.proyecServ.buscarPU(param, localStorage.getItem('id')).subscribe(p=>{
       if(p){
+        this.cargando = false;
         console.log(p);
         this.results = p;
       }
@@ -84,7 +73,6 @@ MODULOS
     console.log(i.id_proyec);
     this.router.navigate(['editar-proyecto/'+i.id_proyec]);
   }
-
   agregarItem(){
     this.router.navigate(['nuevo-proyecto']);
   }

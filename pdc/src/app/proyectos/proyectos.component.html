@@ -15,38 +15,38 @@
       NUEVO PROYECTO<mat-icon>add</mat-icon>
     </button>
    </div>
-
-  <table class="customTable" *ngIf="results.length">
+   <mat-spinner *ngIf="cargando" style="margin:auto;"></mat-spinner>
+  <table class="customTable" *ngIf="!cargando">
     <thead>
       <tr style="border-bottom: 1px solid;">
         <th>nombre</th>
-        <th>codigo</th>
-        <th>Fecha de Creacion</th>
-        <th>Beneficios Sociales</th>
-        <th>IVA</th>
-        <th>Herramientas Menores</th>
-        <th>Gastos Generales</th>
-        <th>Utilidad</th>
-        <th>IT</th>
+        <th class="opcional3">codigo</th>
+        <th class="opcional3">Fecha de Creacion</th>
+        <th class="opcional2">Beneficios Sociales</th>
+        <th class="opcional1">IVA</th>
+        <th class="opcional2">Herramientas Menores</th>
+        <th class="opcional2">Gastos Generales</th>
+        <th class="opcional3">Utilidad</th>
+        <th class="opcional1">IT</th>
         <th>cliente</th>
-        <th>Tipo de Cambio</th>
-        <th>Ubicacion</th>
+        <th class="opcional1">Tipo de Cambio</th>
+        <th class="opcional4">Ubicacion</th>
       </tr>
     </thead>
     <tbody>
     <tr *ngFor="let item of results" style="border-bottom: 1px solid;" (click)="selecItem(item)">
       <td>{{item.nombre}}</td>
-      <td>{{item.codigo}}</td>
-      <td>{{item.fecha_creacion}}</td>
-      <td>{{item.Ben_Soc}}</td>
-      <td>{{item.iva}}</td>
-      <td>{{item.he_men}}</td>
-      <td>{{item.g_grales}}</td>
-      <td>{{item.utilidad}} </td>
-      <td>{{item.IT}}</td>
-      <td>{{item.cliente}}</td>
-      <td>{{item.tip_cambio}}</td>
-      <td>{{item.ubicacion}}</td>
+      <td class="opcional3">{{item.codigo}}</td>
+      <td class="opcional3">{{item.fecha_creacion}}</td>
+      <td class="opcional2">{{item.Ben_Soc}}</td>
+      <td class="opcional1">{{item.iva}}</td>
+      <td class="opcional2">{{item.he_men}}</td>
+      <td class="opcional2">{{item.g_grales}}</td>
+      <td class="opcional3">{{item.utilidad}} </td>
+      <td class="opcional1">{{item.IT}}</td>
+      <td class="opcional5">{{item.cliente}}</td>
+      <td class="opcional1">{{item.tip_cambio}}</td>
+      <td class="opcional4">{{item.ubicacion}}</td>
       <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="EditItem(item)"><mat-icon >edit</mat-icon></button></td>
       <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)"><mat-icon >visibility</mat-icon></button></td>
     </tr >

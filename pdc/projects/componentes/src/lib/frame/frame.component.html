@@ -1,13 +1,13 @@
 
 
 <div class="header">
-  <div class="logo" style="background-image: url('assets/img/titulo.png');">
-
+  <div class="logo" style="cursor: pointer;" (click)="page()" style="background-image: url('assets/img/logo1.png');">
   </div>
-  <div class="boton">
-    <button mat-mini-fab  style="background-color:#4F4F4F; color:#EAB127;" (click)="drawer.toggle()">
-    <mat-icon>menu</mat-icon>
-  </button></div>
+  <div class="boton" *ngIf="verMenu">
+      <button mat-mini-fab  style="background-color:#4F4F4F; color:#EAB127;" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  </div>
 </div>
 <mat-drawer-container class="example-container" autosize [hasBackdrop]="true">
   <mat-drawer #drawer class="sidenav" mode="side" position="end">
@@ -21,20 +21,23 @@
         {{name}}
       </div>
     </div>
-
-    <mat-selection-list [multiple]="false">
-
-      <div *ngFor = "let links of menu">
-        <mat-list-option >
+    <mat-selection-list >
+        <mat-list-option *ngFor = "let links of menu" >
           <mat-list-item (click)="drawer.toggle()"  routerLink="{{links.ruta}}">
-            <mat-icon style="color:#4F4F4F;"> {{links.icono}}</mat-icon> &nbsp;&nbsp; {{links.label}}
-           </mat-list-item>
+            <mat-icon style="color:#4F4F4F;">{{links.icono}}</mat-icon>{{links.label}}
+          </mat-list-item>
         </mat-list-option>
-      </div>
     </mat-selection-list>
   </mat-drawer>
   <mat-drawer-content>
+    <div class="home-buton" *ngIf="verMenu">
+      <button mat-mini-fab  (click)="atras()" style="background-color:#4F4F4F; color:#EAB127;">
+        <mat-icon>arrow_back</mat-icon>
+     </button>
+      <button mat-mini-fab  (click)="ir()" style="background-color:#4F4F4F; color:#EAB127;">
+          <mat-icon >home</mat-icon>
+      </button>
+    </div>
     <router-outlet></router-outlet>
-
   </mat-drawer-content>
 </mat-drawer-container>

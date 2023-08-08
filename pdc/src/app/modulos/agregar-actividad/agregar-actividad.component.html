@@ -12,16 +12,37 @@
      </div>
      <div *ngIf="listo">
       <div class="tit-seccion">
-          <div>NOMBRE:{{actiData.descripcion}}</div>
-          <div>UNIDAD:{{actiData.descripcion}}</div>
-          <div>PU:{{relACtMod.unitario}}</div>
+          <div><b>NOMBRE: {{actiData.descripcion}}</b></div>
+          <div><b>UNIDAD: {{actiData.unidad}}</b></div>
+          <div><b>PU: {{relACtMod.unitario | number : '1.2-2'}}</b></div>
+          <div><b>CORRELATIVO: {{relACtMod.orden}}</b></div>
       </div>
-      <mat-form-field class="input-buscar" appearance="fill">
-        <mat-label>Cantidad</mat-label>
-        <input type="number" required="true" matInput placeholder="Cantidad"  #cant >
-     </mat-form-field>
-     <span><b>{{actiData.unidad}}</b></span>
-     <button mat-flat-button style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarActividad(cant.value)"><mat-icon >add</mat-icon>Agregar Actividad</button>
+      <form #relForm = "ngForm">
+        <mat-form-field class="input-buscar" appearance="fill">
+          <mat-label>ORDEN DE EJECUCION</mat-label>
+          <input type="number" required matInput placeholder="Orden" name="orden"  #orden [(ngModel)]="relACtMod.orden" >
+        </mat-form-field>
+        <mat-form-field class="input-buscar" appearance="fill">
+          <mat-label>CANTIDAD</mat-label>
+          <input type="number" required matInput placeholder="Cantidad" name="catidad" #catidad [(ngModel)]="relACtMod.catidad">
+        </mat-form-field><span><b>{{actiData.unidad}}</b></span>
+        <!--
+             <mat-form-field>
+          <mat-label>FECHA INICIO</mat-label>
+          <input matInput [matDatepicker]="picker" name="fecha_ini_actv" #fecha_ini_actv [(ngModel)]="relACtMod.fecha_ini_actv">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>FECHA FIN</mat-label>
+          <input matInput [matDatepicker]="picker2" name="fecha_fin_actv" #fecha_fin_actv [(ngModel)]="relACtMod.fecha_fin_actv">
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        -->
+
+      </form>
+     <button mat-flat-button style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarActividad(relForm.value)"><mat-icon >add</mat-icon>Agregar Actividad</button>
      </div>
   <div class="list" *ngIf="actividades.length && mostrar">
     <table class="customTable" >

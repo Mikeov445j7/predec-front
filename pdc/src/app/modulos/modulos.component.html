@@ -1,29 +1,46 @@
 <div class="cont-div" *ngIf="modulo">
   <div class="sub-titulo-seccion">{{modulo.tipo}} {{modulo.nombre}}</div>
-  <div style="width: 100%; text-align: right;"><button (click)="agregarActividad()" class="btnAgregar" style="margin-right: 3%;"><b>+</b> AGREGAR ACTIVIDAD</button></div>
-  <table class="customTable" *ngIf="actividades">
-    <thead>
-      <tr style="border-bottom: 1px solid;">
-        <th>Nombre</th>
-        <th>Cantidad</th>
-        <th>unidad</th>
-        <th>P/U</th>
-        <th>Total</th>
+  <div  style="width: 100%; text-align: left;">
+    <button mat-flat-button (click)="editarmodulo(modulo)" style="background-color:#4F4F4F; color:#2792ea;" class="btnAgregar" ><mat-icon >edit</mat-icon>EDITAR MODULO</button>
+  </div>
+  <div style="width: 100%; text-align: right;">
+    <button mat-flat-button (click)="agregarActividad()" style="background-color:#4F4F4F; color:#EAB127;" class="btnAgregar" ><mat-icon >add</mat-icon> AGREGAR ACTIVIDAD</button>
+  </div>
+  <mat-spinner *ngIf="!actividades"  style="margin:auto;"></mat-spinner>
+  <div class="scroll">
+    <table class="customTable" *ngIf="actividades">
+      <thead>
+        <tr style="border-bottom: 1px solid;">
+          <th>N°</th>
+          <th>Nombre</th>
+          <th>Cant.</th>
+          <th>unid</th>
+          <th>P/U</th>
+          <th>Total</th>
+          <th>Fechas</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of actividades" style="border: 1px solid; text-align: center;" >
+        <td>{{item.orden}}</td>
+        <td>{{item.descripcion}}</td>
+        <td>{{item.catidad}}</td>
+        <td>{{item.unidad}}</td>
+        <td>{{item.unitario | number : '1.2-2'}}</td>
+        <td>{{item.total | number : '1.2-2'}}</td>
+        <!--
+          <td class="opcional1">{{item.fecha_ini_actv | date : 'dd-MM-YYYY'}}/{{item.fecha_fin_actv | date : 'dd-MM-YYY'}}</td>
+        -->
+        <td><button alt="VER" mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="verAct(item)"><mat-icon >visibility</mat-icon></button></td>
+        <td><button alt="EDITAR CANTIDAD ORDEN" mat-mini-fab style="background-color:#4F4F4F; color:#4eea27;" (click)="editarOrdenCant(item)"><mat-icon >edit</mat-icon></button></td>
+        <td><button alt="QUITAR" mat-mini-fab color="warn" (click)="quitar(item.id_rel_am)"><mat-icon >delete</mat-icon></button></td>
+      </tr >
+    </tbody>
+    </table>
+  </div>
 
-      </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let item of actividades" style="border: 1px solid;" >
-      <td>{{item.descripcion}}</td>
-      <td>{{item.catidad}}</td>
-      <td>{{item.unidad}}</td>
-      <td>{{item.unitario}}</td>
-      <td>{{item.total}}</td>
-      <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="verAct(item)"><mat-icon >visibility</mat-icon></button></td>
-      <td><button mat-mini-fab color="warn" (click)="quitar(item.id_rel_am)"><mat-icon >delete</mat-icon></button></td>
-    </tr >
-  </tbody>
-  </table>
-
-  <div><button (click)="pu()" class="btnAgregar" style="background-color:#4F4F4F; color:#27ea89;"  >PRECIOS UNITARIOS</button></div>
+  <div style="width: 100%; text-align: center;"><button (click)="pu()" class="btnAgregar" style="background-color:#4F4F4F; color:#27ea89;">PRECIOS UNITARIOS</button></div>
+  <!--
+  <div style="width: 100%; text-align: center;"><button (click)="gantt()" class="btnAgregar" style="background-color:#4F4F4F; color:#ea9c27;">CRONOGRAMA</button></div>
+  -->
   </div>

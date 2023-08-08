@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
     public _router: Router,
     public _location: Location,
     private _snackBar: MatSnackBar
+
   ) { }
 
   ngOnInit() {
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginForm: any){
+    this.spinner = true;
     let l:any;
       console.log(loginForm);
       this.serv.userLogin(loginForm).subscribe(l=>{
@@ -55,10 +57,13 @@ export class LoginComponent implements OnInit {
           console.log(l);
           this.usuario = l;
           this.usuario = this.usuario[0];
+          console.log(this.usuario);
+
           localStorage.setItem('mail', this.usuario.mail);
           localStorage.setItem('name', this.usuario.nombre+" "+this.usuario.apellido);
           localStorage.setItem('id', this.usuario.id_us);
-          this._router.navigate(['']);
+          window.location.reload();
+          this.spinner = true;
           //localStorage.setItem('photoUrl', this.socialUser.photoUrl);
         } else {
           this._snackBar.open('Usuario no Encontrado revise sus datos ', "CERRAR",{
@@ -67,28 +72,10 @@ export class LoginComponent implements OnInit {
             verticalPosition: 'top',
             duration: 5000
           });
+          this.spinner = false;
         }
       });
   }
-
- /* loginWithGoogle(): void {|
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
-    this.socialAuthService.authState.subscribe((user) => {
-      if(user){
-        this.spinner = true;
-        this.socialUser = user;
-        this.isLoggedin = (user != null);
-        console.log("LISTO----------------->>",this.socialUser);
-        localStorage.setItem('email', this.socialUser.email);
-        localStorage.setItem('name', this.socialUser.name);
-        localStorage.setItem('id', this.socialUser.id);
-        localStorage.setItem('photoUrl', this.socialUser.photoUrl);
-        this._router.navigate(['']);
-       }
-     });
-  }*/
-
-
   mostrarMensaje(msj:any){
     console.log(msj);
   }
@@ -105,9 +92,7 @@ export class LoginComponent implements OnInit {
       if(v){
         resp = v;
           if(resp.success==0){
-
             console.log("VERIFICADOOO", v);
-
             this.registrar(ver);
           }
           else{
@@ -128,7 +113,6 @@ export class LoginComponent implements OnInit {
       if(u){
         resp = u;
         console.log(resp);
-
         if(resp.success==1){
           this.registro=false;
           this.ngOnInit();
@@ -148,6 +132,10 @@ export class LoginComponent implements OnInit {
 
   reloadCurrentRoute() {
 
+  }
+
+  inicio(){
+    this._router.navigate(['page']);
   }
 
 }

@@ -1,0 +1,75 @@
+<div class="main-cont-div">
+  <mat-spinner *ngIf="!reporte" style="margin:auto;"></mat-spinner>
+  <div class="sub-titulo-seccion">Desglose de insumos por ítem: MANO DE OBRA</div>
+  <div *ngIf="reporte" class="report" id="report" >
+      <div>
+        <table class="customTable">
+           <tr>
+            <td></td>
+            <td><b>PROYECTO: {{reporte.proyecto.nom_proy}}</b> </td>
+            <td><b>LUGAR: {{reporte.proyecto.lugar}}</b></td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b> </b></td>
+            <td><b>FECHA: {{reporte.proyecto.fecha}} </b> </td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b>CLIENTE: {{reporte.proyecto.cliente}} </b> </td>
+            <td><b>TIPO CAMBIO: {{reporte.proyecto.tip_cambio}} </b> </td>
+           </tr>
+        </table>
+        <div *ngFor="let modulos of reporte.modulos" style="width: 100%;">
+          <table class="customTable" style="width: 100%;">
+            <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
+              <td style="width: 2%;width: 100%;">> {{modulos.modulo.nombre}} </td>
+            </tr>
+          </table>
+          <div *ngFor="let a of modulos.modulo.listadeinsumos">
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; width: 100%;">
+                <td style="">{{a.descripcion}} {{a.unidad}}</td>
+                <td style="">Unid.: {{a.unidad}}</td>
+                <td style="">Cantidad: {{a.cantidad}}</td>
+              </tr>
+            </table>
+            <div>
+              <table class="customTable" style="width: 100%;">
+                <tr>
+                  <td>Nº</td>
+                  <td>Items</td>
+                  <td>Unidad</td>
+                  <td>PU</td>
+                  <td>Cant.</td>
+
+                  <td>Parcial (Bs)</td>
+                <tr>
+                <tr *ngFor="let b of a.Materiales">
+                  <td>-</td>
+                  <td>{{b.insumo}}</td>
+                  <td>{{b.unidad}}</td>
+                  <td>{{b.PU}}</td>
+
+                  <td>{{b.cantXmod}}</td>
+                  <td>{{b.parcial}}</td>
+                <tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+  </div>
+
+</div>
+<div style="width: 100%; text-align: center;" >
+  <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="reporte">
+    EXCEL <mat-icon>table</mat-icon>
+  </button>
+  <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="print()" *ngIf="reporte">
+    IMPRIMIR <mat-icon>print</mat-icon>
+  </button>
+  <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" *ngIf="reporte">
+    CERRAR <mat-icon>print</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,24 @@
+.texto{
+  padding: 1%;
+  text-align: justify;
+  color: #454545;
+  width: 66%;
+  transition: 0.5s;
+  transform: 0.5s;
+  transition-timing-function: ease-out;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  float: left;
+
+}
+.pic{
+  height: 300px;
+  padding: 2%;
+  width: 28%;
+  transition: 0.5s;
+  transform: 0.5s;
+  transition-timing-function: ease-out;
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+}

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   //url: 'http://localhost/pdc/pdc-back/apis/cruds/'
-  url:'https://boliviadark.com/apis/'
+  //url:'https://boliviadark.com/apis/'
+  url:'https://www.predeconst.online/apis/'
 };
 
 /*

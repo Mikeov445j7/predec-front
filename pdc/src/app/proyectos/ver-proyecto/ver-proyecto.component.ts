@@ -9,6 +9,14 @@ import * as moment from 'moment';
 import {FormModuloComponent} from '../../modulos/form-modulo/form-modulo.component';
 import { ReportesService } from 'src/app/servicios/reportes.service';
 import { RpresuXmodComponent } from 'src/app/reportes/RpresuXmod/RpresuXmod.component';
+import { RpresuGralComponent } from 'src/app/reportes/RpresuGral/RpresuGral.component';
+import { RmatXmodComponent } from 'src/app/reportes/RmatXmod/RmatXmod.component';
+import { RmanoObrXmodComponent } from 'src/app/reportes/RmanoObrXmod/RmanoObrXmod.component';
+import { RequipoXmodComponent } from 'src/app/reportes/RequipoXmod/RequipoXmod.component';
+import { RtotalMatxModuComponent } from 'src/app/reportes/RtotalMatxModu/RtotalMatxModu.component';
+import { RtotalManoObraxModuComponent } from 'src/app/reportes/RtotalManoObraxModu/RtotalManoObraxModu.component';
+import { RtotalEquipoxModuComponent } from 'src/app/reportes/RtotalEquipoxModu/RtotalEquipoxModu.component';
+import { RtotalInsumosProyectoComponent } from 'src/app/reportes/RtotalInsumosProyecto/RtotalInsumosProyecto.component';
 
 
 @Component({
@@ -76,7 +84,7 @@ export class VerProyectoComponent {
   }
   agregarModulo(){
     this.dialogo.open( FormModuloComponent, {
-      width: '80%',
+      panelClass: "modal-responisvo",
       data: {
         Proyecto: this.proyecto,
         tipo: "Crear",
@@ -99,7 +107,7 @@ export class VerProyectoComponent {
   PresMod(){
 
     this.dialogo.open( RpresuXmodComponent, {
-      width: '80%',
+      panelClass: "modal-responisvo",
       data: {
         id_proyec: this.idProyecto,
         tipo: "rpresuXmod",
@@ -114,6 +122,180 @@ export class VerProyectoComponent {
       else {
         console.log(confirmado.data);
 
+      }
+      this.getModulos();
+    });
+
+  }
+  ResGral(){
+
+    this.dialogo.open( RpresuGralComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "Rpresupuestogral",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
+  }
+  matMod(){
+    this.dialogo.open( RmatXmodComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "Rpresupuestogral",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
+  }
+
+  equipoMod(){
+    this.dialogo.open( RequipoXmodComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "Rpresupuestogral",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
+  }
+  manoOMod(){
+    this.dialogo.open( RmanoObrXmodComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "Rpresupuestogral",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
+  }
+  totalMaterialXmodulo(){
+    this.dialogo.open( RtotalMatxModuComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "RtotalMatxModu",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+      }
+      this.getModulos();
+    });
+
+  }
+  totalManosObraXmodulo(){
+    this.dialogo.open( RtotalManoObraxModuComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "RtotalManoObraxModu",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+      }
+      this.getModulos();
+    });
+
+  } //totalEquipoXmodulo()
+  totalEquipoXmodulo(){
+    this.dialogo.open( RtotalEquipoxModuComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "RtotalManoObraxModu",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+      }
+      this.getModulos();
+    });
+
+  } //totalEquipoXmodulo()
+  totalinsumoProyecto(){
+    this.dialogo.open( RtotalInsumosProyectoComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "RtotalManoObraxModu",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
       }
       this.getModulos();
     });

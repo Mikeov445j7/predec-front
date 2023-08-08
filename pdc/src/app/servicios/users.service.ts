@@ -9,23 +9,41 @@ export class UsersService {
 
   public API = environment.url+"user.php"
   constructor(
-    private _Http: HttpClient
+    private http: HttpClient
   ) { }
 
     userslistar(){
-      return this._Http.get(this.API+"listar=1");
+      return this.http.get(this.API+"listar=1");
     }
     usersbuscar(parm:any){
-      return this._Http.get(this.API+"?buscar="+parm);
+      return this.http.get(this.API+"?buscar="+parm);
     }
     usersadd(data:any){
-      return this._Http.post(this.API+"?insertar=1", data);
+      return this.http.post(this.API+"?insertar=1", data);
+    }
+    userLogin(data:any){
+      return this.http.post(this.API+"?login=1", data);
     }
     userseditar(id:any, data:any){
-      return this._Http.post(this.API+"?actualizar="+id, data);
+      return this.http.post(this.API+"?actualizar="+id, data);
     }
     usersborrar(id:any){
-      return this._Http.post(this.API+"?borrar="+id, id);
+      return this.http.post(this.API+"?borrar="+id, id);
+    }
+    usersBuscar(parm:any){
+      return this.http.get(this.API+"?buscar="+parm);
+    }
+    verificaUser(mail:any){
+      return this.http.get(this.API+"?verificauser="+mail);
+    }
+    usersAdd(data:any){
+      return this.http.post(this.API+"?insertar=1", data);
+    }
+    usersEditar(id:any, data:any){
+      return this.http.post(this.API+"?actualizar="+id, data);
+    }
+    usersBorrar(id:any){
+      return this.http.post(this.API+"?borrar="+id, id);
     }
 
 }

@@ -26,6 +26,24 @@ import { ActInsumosComponent } from './actividades/act-insumos/act-insumos.compo
 import { ReportesComponent } from './reportes/reportes.component';
 import { PxUactModComponent } from './reportes/pxUactMod/pxUactMod.component';
 import { RpresuXmodComponent } from './reportes/RpresuXmod/RpresuXmod.component';
+import { RpresuGralComponent } from './reportes/RpresuGral/RpresuGral.component';
+import { RmatXmodComponent } from './reportes/RmatXmod/RmatXmod.component';
+import { RmanoObrXmodComponent } from './reportes/RmanoObrXmod/RmanoObrXmod.component';
+import { RequipoXmodComponent } from './reportes/RequipoXmod/RequipoXmod.component';
+import { RtotalMatxModuComponent } from './reportes/RtotalMatxModu/RtotalMatxModu.component';
+import { RtotalManoObraxModuComponent } from './reportes/RtotalManoObraxModu/RtotalManoObraxModu.component';
+import { RtotalEquipoxModuComponent } from './reportes/RtotalEquipoxModu/RtotalEquipoxModu.component';
+import { RtotalInsumosProyectoComponent } from './reportes/RtotalInsumosProyecto/RtotalInsumosProyecto.component';
+import { EditarOrdenCantComponent } from './modulos/editarOrdenCant/editarOrdenCant.component';
+import { RGattModuloComponent } from './reportes/RGattModulo/RGattModulo.component';
+import { PageComponent } from './page/page.component';
+import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { FuncionesComponent } from './page/funciones/funciones.component';
+import { ComoseusaComponent } from './page/comoseusa/comoseusa.component';
+import { PreciosComponent } from './page/precios/precios.component';
+import { QuienesSomosComponent } from './page/quienesSomos/quienesSomos.component';
+import { RegistroComponent } from './page/registro/registro.component';
+
 
 
 
@@ -40,6 +58,7 @@ import { RpresuXmodComponent } from './reportes/RpresuXmod/RpresuXmod.component'
       ModulosComponent,
       FormModuloComponent,
       ActividadesComponent,
+      EditarOrdenCantComponent,
       VerProyectoComponent,
       ModalComponent,
       AgregarActividadComponent,
@@ -47,7 +66,22 @@ import { RpresuXmodComponent } from './reportes/RpresuXmod/RpresuXmod.component'
       ActInsumosComponent,
       ReportesComponent,
       PxUactModComponent,
-      RpresuXmodComponent
+      RpresuXmodComponent,
+      RpresuGralComponent,
+      RmatXmodComponent,
+      RmanoObrXmodComponent,
+      RequipoXmodComponent,
+      RtotalMatxModuComponent,
+      RtotalManoObraxModuComponent,
+      RtotalEquipoxModuComponent,
+      RtotalInsumosProyectoComponent,
+      RGattModuloComponent,
+      PageComponent,
+      FuncionesComponent,
+      ComoseusaComponent,
+      PreciosComponent,
+      QuienesSomosComponent,
+      RegistroComponent
    ],
   imports: [
     BrowserModule,
@@ -57,8 +91,8 @@ import { RpresuXmodComponent } from './reportes/RpresuXmod/RpresuXmod.component'
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ComponentesModule
-
+    ComponentesModule,
+    Ng2PageScrollModule
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy}

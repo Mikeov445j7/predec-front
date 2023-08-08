@@ -83,6 +83,15 @@ export class FormActividadComponent implements OnInit {
     });
 
   }
+  eliminar(data:any){
+    data.id = this.idActividad;
+    console.log(data);
+    this.actServ.borrar(this.idActividad).subscribe(s=>{
+      if(s){
+        this.router.navigate(['actividades/']);
+      }
+    });
+  }
 
   agregarInsumos(tipo:any){
     let msj='';

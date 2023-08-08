@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 import * as moment from 'moment';
@@ -20,18 +20,21 @@ export class FrameComponent implements OnInit {
   public foto:any;
   public name:any;
   constructor(
+    private _location: Location,
     public serv: ComponentesService,
     private router: Router,
   ) { }
 
   ngOnInit() {
     console.log(localStorage.getItem('mail'));
-
     if(localStorage.getItem('mail')&&localStorage.getItem('id')){
       this.verMenu = true;
       this.name = localStorage.getItem('name');
+      this.router.navigate(['home']);
     }else{
-      this.router.navigate(['login']);
+      this.verMenu = false;
+      this.router.navigate(['page']);
+      //this.router.navigate(['login']);
     }
   }
 
@@ -39,6 +42,17 @@ export class FrameComponent implements OnInit {
     this.serv.LogOut();
     this.router.navigate(['login']);
     window.location.reload();
+  }
+
+
+  ir(){
+    this.router.navigate(['home']);
+  }
+  atras(){
+    this._location.back();
+  }
+  page(){
+    this.router.navigate(['page']);
   }
 
 

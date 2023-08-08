@@ -1,0 +1,39 @@
+<div class="modal-cont">
+
+   <div *ngIf="listo">
+    <div class="sub-titulo-seccion">EDITAR PARAMETROS</div>
+    <form #editForm = "ngForm">
+      <mat-form-field class="input-buscar" appearance="fill">
+        <mat-label>ORDEN DE EJECUCION</mat-label>
+        <input type="number" required matInput placeholder="Orden" name="orden"  #orden [(ngModel)]="dat.orden" >
+     </mat-form-field>
+      <mat-form-field class="input-buscar" appearance="fill">
+        <mat-label>CANTIDAD</mat-label>
+        <input type="number" required matInput placeholder="Cantidad" name="catidad" #catidad [(ngModel)]="dat.catidad">
+     </mat-form-field>
+     <!--
+           <mat-form-field>
+      <mat-label>FECHA INICIO</mat-label>
+      <input matInput [matDatepicker]="picker" name="fecha_ini_actv" #fecha_ini_actv [(ngModel)]="dat.fecha_ini_actv">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>FECHA FIN</mat-label>
+      <input matInput [matDatepicker]="picker2" name="fecha_fin_actv" #fecha_fin_actv [(ngModel)]="dat.fecha_fin_actv">
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+     -->
+    </form>
+
+    <div style="width: 100%; text-align: center;">
+      <button mat-flat-button style="background-color:#4F4F4F; color:#EAB127;" (click)="editardatos(editForm.value)">
+        <mat-icon >save</mat-icon>GUARDAR CAMBIOS
+      </button>
+    </div>
+
+
+   </div>
+
+</div>

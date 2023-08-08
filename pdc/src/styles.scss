@@ -1,9 +1,10 @@
+@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
 /* You can add global styles to this file, and also import other style files */
 
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #454545;}
+html, body { height: 100%; background-color: #454545; scroll-behavior: smooth; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: #454545; }
 /* width */
 ::-webkit-scrollbar {
   width: 5px;
@@ -150,34 +151,35 @@ table.customTable {
   width: 100%;
   background-color: #FFFFFF;
   border-collapse: collapse;
-  border-width: 0px;
-  border-color: #FFFFFF;
-  border-style: solid;
   color: #454545;
+}
+table.customTable tr {
+  color: #454545;
+  border-bottom: 1px solid #e2dfdf;;
 }
 table.customTable tr:hover{
   transition: 0.5s;
   transform: 0.5s;
   transition-timing-function: ease-out;
-  cursor: pointer;
+}
+table.customTable tr:nth-child(odd) td{
+  background:#eeeaea;
+}
+table.customTable tr:nth-child(even) td{
+   background:#fff;
 }
 
 table.customTable tr:hover{
 
-  color: #000;
-  font-weight: bold;
+
 }
+
 table.customTable th {
-  border-width: 1px;
-  border-color: #fff;
-  border-style: solid;
   padding: 5px;
   text-transform: uppercase;
+  color: #EAB127;
 }
 table.customTable td{
-  border-width: 1px;
-  border-color: #bdb8b8;
-  border-style: solid;
   padding: 5px;
 }
 
@@ -209,4 +211,164 @@ table.customTable thead {
 mat-mini-fab{
   background-color:#4F4F4F;
   color:#EAB127;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #353535 !important;
+}
+.opcional{
+
+}
+.modal-responisvo{
+  width:80%;
+}
+mat-dialog-container{
+  max-width: 80%;
+  margin: auto;
+}
+.mat-step-header .mat-step-label{
+  color: #4F4F4F;
+}
+.mat-step-header .mat-step-icon {
+  color: #EAB127;
+  background-color: #4F4F4F;
+}
+@media only screen and (max-width: 1206px) {
+  .opcional1{
+    display:none;
+  }
+
+}
+
+@media only screen and (max-width: 1030px) {
+  .opcional1{
+    display:none;
+  }
+  .opcional2{
+    display:none;
+  }
+  .main-cont-div{
+    width: 100%;
+  }
+
+
+
+
+}
+
+@media only screen and (max-width: 678px) {
+  .opcional1{
+    display:none;
+  }
+  .opcional2{
+    display:none;
+  }
+  .opcional3{
+    display:none;
+  }
+  .main-cont-div{
+    width: 100%;
+  }
+  .cont-div{
+    width: 100%;
+  }
+  .titulo-seccion{
+    font-size: 14px;
+    text-align: left;
+
+  }
+  .sub-titulo-seccion{
+    font-size: 12px;
+    text-align: left;
+  }
+  .modal-responisvo{
+    width:90%;
+  }
+  mat-dialog-container{
+    max-width: 90%;
+    margin: auto;
+  }
+
+
+}
+@media only screen and (max-width: 420px) {
+  .opcional1{
+    display:none;
+  }
+  .opcional2{
+    display:none;
+  }
+  .opcional3{
+    display:none;
+  }
+  .opcional4{
+    display:none;
+  }
+  .main-cont-div{
+    width: 100%;
+  }
+  .cont-div{
+    width: 100%;
+  }
+  .titulo-seccion{
+    font-size: 14px;
+    text-align: left;
+
+  }
+  .sub-titulo-seccion{
+    font-size: 12px;
+    text-align: left;
+  }
+  .modal-responisvo{
+    width:100%;
+  }
+  mat-dialog-container{
+    max-width: 100%;
+    margin: auto;
+  }
+
+
+}
+
+@media only screen and (max-width: 306px) {
+  .opcional1{
+    display:none;
+  }
+  .opcional2{
+    display:none;
+  }
+  .opcional3{
+    display:none;
+  }
+  .opcional4{
+    display:none;
+  }
+  .opcional5{
+    display:none;
+  }
+  .main-cont-div{
+    width: 100%;
+  }
+  .cont-div{
+    width: 100%;
+  }
+  .titulo-seccion{
+    font-size: 14px;
+    text-align: left;
+
+  }
+  .sub-titulo-seccion{
+    font-size: 12px;
+    text-align: left;
+  }
+  .modal-responisvo{
+    width:100%;
+  }
+  mat-dialog-container{
+    max-width: 100%;
+    margin: auto;
+  }
+
+
+
 }

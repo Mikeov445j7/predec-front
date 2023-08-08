@@ -1,0 +1,65 @@
+<div class="main-cont-div">
+  <mat-spinner *ngIf="!reporte" style="margin:auto;"></mat-spinner>
+  <div class="sub-titulo-seccion"></div>
+  <div *ngIf="reporte" class="report" id="report" >
+      <div>
+        <table class="customTable">
+           <tr>
+            <td></td>
+            <td><b>PROYECTO: {{reporte.proyecto.nom_proy}}</b> </td>
+            <td><b>LUGAR: {{reporte.proyecto.lugar}}</b></td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b> </b></td>
+            <td><b>FECHA: {{reporte.proyecto.fecha}} </b> </td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b>CLIENTE: {{reporte.proyecto.cliente}} </b> </td>
+            <td><b>TIPO CAMBIO: {{reporte.proyecto.tip_cambio}} </b> </td>
+           </tr>
+        </table>
+
+          <table class="customTable">
+            <tr style="font-weight: bold; text-align: center;">
+              <td style="width: 2%;">Nº </td>
+              <td style="width: 20%;">insumos </td>
+              <td style="width: 5%;">Und. </td>
+              <td style="width: 5%;">Cantidad </td>
+              <td style="width: 10%;">Unitario </td>
+              <td style="width: 10%;">Costo Total </td>
+            </tr>
+            <tr *ngFor="let a of insumos">
+              <td></td>
+              <td style="width: 35%;">{{a.insumo}}</td>
+              <td style="width: 5%;">{{a.unid}}</td>
+              <td style="width: 5%;">{{a.TotalModulo}}</td>
+              <td style="width: 10%;">{{a.pUnitario}}</td>
+              <td style="width: 10%;"></td>
+            </tr>
+          </table>
+
+        <table class="customTable">
+          <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
+            <td>TOTAL</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <br>
+
+  </div>
+  <div style="width: 100%; text-align: center;" >
+    <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="reporte">
+      EXCEL <mat-icon>table</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="print()" *ngIf="reporte">
+      IMPRIMIR <mat-icon>print</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" *ngIf="reporte">
+      CERRAR <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>
+

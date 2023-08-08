@@ -1,0 +1,19 @@
+.div-form{
+  width: 50%;
+  margin: auto;
+}
+.btnDiv span{
+  cursor: pointer;
+  color:#4F4F4F;
+  padding: 1%;
+}
+.btnDiv span:hover{
+  color:#EAB127;
+  font-size: medium;
+}
+@media only screen and (max-width: 420px) {
+  .div-form{
+    width: 90%;
+    margin: auto;
+  }
+}

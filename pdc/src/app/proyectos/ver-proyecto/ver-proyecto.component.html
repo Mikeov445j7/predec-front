@@ -1,7 +1,24 @@
 <div class="main-cont-div">
   <div class="seccion" *ngIf="proyecto">
   <div class="sub-titulo-seccion" >PROYECTO: {{proyecto.nombre}}</div>
-  <div style="width: 100%; text-align: right;"><button (click)="agregarModulo()" class="btnAgregar"  style="margin-right: 3%;"><b>+</b> AGREGAR MODULO</button></div>
+
+  <div style="width: 100%; text-align: right;">
+    <button mat-flat-button [matMenuTriggerFor]="menu" *ngIf="modulos" style="background-color:#4F4F4F; color:#eaa627;">REPORTES</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item style="color:#4F4F4F; " (click)="PresMod()" >Presupuesto por Módulo</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="ResGral()" >Resumen General</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="matMod()" >Materiales por Actividad</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="manoOMod()" >Mano de Obra por Actividad</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="equipoMod()" >Equipo por Actividad</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="totalMaterialXmodulo()" >Materiales Por Modulos</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="totalManosObraXmodulo()" >Mano de Obra Por Modulos</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="totalEquipoXmodulo()" >Equipo Por Modulos</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="totalinsumoProyecto()" >Desglose de insumos general: Materiales</button>
+    </mat-menu>
+
+  </div>
+  <mat-spinner *ngIf="!modulos"  style="margin:auto;"></mat-spinner>
+  <div style="width: 100%; text-align: right;"><button (click)="agregarModulo()" mat-flat-button  style="background-color:#4F4F4F; color:#eaa627;"><b>+</b> AGREGAR MODULO</button></div>
   <table class="customTable" *ngIf="modulos">
     <thead>
       <tr style="border-bottom: 1px solid;">
@@ -9,11 +26,10 @@
         <th>codigo</th>
         <th>Fecha de inicio</th>
         <th>ORDEN</th>
-
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of modulos" style="border-bottom: 1px solid;">
+    <tr *ngFor="let item of modulos" style="border-bottom: 1px solid; text-align: center;">
       <td>{{item.nombre}}</td>
       <td>{{item.codigo}}</td>
       <td>{{item.fecha_inicio}}</td>
@@ -23,8 +39,14 @@
     </tr >
   </tbody>
   </table>
-    <div  style="margin-top: 3%; text-align: center;">
-      <button mat-flat-button style="background-color:#4F4F4F; color:#279cea; margin-right: 3%;" (click)="PresMod()" >Presupuesto por Módulo</button>
+    <!--
+          <div  style="margin-top: 3%; text-align: center;">
+      <button mat-flat-button style="background-color:#4F4F4F; color:#279cea; margin-right: 3%; margin-top: 3%;" (click)="PresMod()" >Presupuesto por Módulo</button>
+      <button mat-flat-button style="background-color:#4F4F4F; color:#eae727; margin-right: 3%; margin-top: 3%;" (click)="ResGral()" >Resumen General</button>
+      <button mat-flat-button style="background-color:#4F4F4F; color:#ea4427; margin-right: 3%; margin-top: 3%;" (click)="matMod()" >Materiales por Módulo</button>
+      <button mat-flat-button style="background-color:#4F4F4F; color:#27ea31; margin-right: 3%; margin-top: 3%;" (click)="manoOMod()" >Mano de Obra por Módulo</button>
+      <button mat-flat-button style="background-color:#4F4F4F; color:#ea2789; margin-right: 3%; margin-top: 3%;" (click)="equipoMod()" >Equipo por Módulo</button>
     </div>
+    -->
   </div>
 </div>

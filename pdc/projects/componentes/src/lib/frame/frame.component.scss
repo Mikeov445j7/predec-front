@@ -74,10 +74,27 @@
 .notif{
   float: right;
 }
-@media only screen and (max-width: 740px) {
+.btn{
+  position: fixed;
+  left:calc(100% - 200px);
+  top:calc(60px);
+}
+.home-buton{
+  position: fixed;
+  left:calc(100% - 200px);
+  width: 100px;
+  top:calc(60px);
+}
 
+
+@media only screen and (max-width: 740px) {
+  .home-buton{
+    left:calc(100% - 100px);
+    width: 100px;
+    top:calc(50px);
+  }
   .sidenav {
-    width: 30%;
+    width: 60%;
   }
   .profilePic{
     width: 30px;
@@ -92,9 +109,12 @@
 }
 
 @media only screen and (max-width: 360px) {
-.prf-img{
-  line-height: 30px;
-}
+  .home-buton{
+    left:calc(100%);
+    width: 100px;
+    top:calc(40px);
+  }
+
 .sidenav {
   width: 50%;
 }

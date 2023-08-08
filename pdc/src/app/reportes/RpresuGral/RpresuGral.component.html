@@ -1,0 +1,56 @@
+<div class="main-cont-div">
+  <mat-spinner *ngIf="!reporte" style="margin:auto;"></mat-spinner>
+  <div class="sub-titulo-seccion">Resumen general</div>
+  <div *ngIf="reporte" class="report" id="report" >
+      <div>
+        <table class="customTable">
+           <tr>
+            <td></td>
+            <td><b>PROYECTO: {{reporte.proyecto.nom_proy}}</b> </td>
+            <td><b>LUGAR: {{reporte.proyecto.lugar}}</b></td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b> </b></td>
+            <td><b>FECHA: {{reporte.proyecto.fecha}} </b> </td>
+           </tr>
+           <tr>
+            <td></td>
+            <td><b>CLIENTE: {{reporte.proyecto.cliente}} </b> </td>
+            <td><b>TIPO CAMBIO: {{reporte.proyecto.tip_cambio}} </b> </td>
+           </tr>
+        </table>
+        <table class="customTable">
+          <tr style="font-weight: bold; text-align: center;">
+            <td>Nº </td>
+            <td>Parámetro </td>
+            <td>Monto (Bs) </td>
+            <td>Monto $US.</td>
+            <td>Fórmula </td>
+            <td> % </td>
+            <td>Inc.</td>
+          </tr>
+          <tr *ngFor="let a of reporte.tabla">
+            <td>{{a.n}}</td>
+            <td>{{a.parametro}}</td>
+            <td>{{a.montoBs}}</td>
+            <td>{{a.montoUS}}</td>
+            <td>{{a.formula}}</td>
+            <td>{{a.porcentaje}}</td>
+            <td>{{a.incidencia}}</td>
+          </tr>
+        </table>
+
+  </div>
+  <div style="width: 100%; text-align: center;" >
+    <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="reporte">
+      EXCEL <mat-icon>table</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="print()" *ngIf="reporte">
+      IMPRIMIR <mat-icon>print</mat-icon>
+    </button>
+    <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" *ngIf="reporte">
+      CERRAR <mat-icon>print</mat-icon>
+    </button>
+  </div>
+</div>

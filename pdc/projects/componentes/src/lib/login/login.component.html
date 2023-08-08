@@ -7,6 +7,7 @@
       </div>
     </div>
   </div>
+  <div *ngIf="!spinner">
     <div class="div-form" *ngIf="!registro">
       <mat-label><h2>INICIO DE SESIÓN</h2></mat-label>
       <form  #loginForm="ngForm">
@@ -27,8 +28,15 @@
         <button mat-raised-button style="background-color:#4F4F4F; color:#EAB127;"  (click)="login(loginForm.value)"> INGRESAR <mat-icon>login</mat-icon></button>
       </div>
 
-      <div class="btnDiv">
-          <span (click)="formRegistro()">REGISTRARSE</span>
+      <div class="btnDiv" style="margin-top: 2%;">
+          <span (click)="formRegistro()">No tienes una cuenta aun? REGISTRATE AQUI</span>
+      </div>
+      <div class="btnDiv" (click)="inicio()" style="margin-top: 2%;">
+        <span>
+        <mat-list-item>
+          <mat-icon style="color:#4F4F4F;">home</mat-icon>INICIO
+        </mat-list-item>
+      </span>
       </div>
     </div>
     <div class="div-form" *ngIf="registro">
@@ -63,8 +71,17 @@
         <button mat-raised-button style="background-color:#4F4F4F; color:#EAB127;" (click)="verificarUser(regForm.value)"> REGISTRARSE <mat-icon>login</mat-icon></button>
       </div>
 
-      <div class="btnDiv" (click)="NoformRegistro()">
-          <span>INGRESAR</span>
+      <div class="btnDiv" (click)="NoformRegistro()" style="margin-top: 2%;">
+          <span> si tienes una cuenta puedes INGRESAR AQUI</span>
+      </div>
+
+      <div class="btnDiv" (click)="inicio()" style="margin-top: 2%;">
+        <span>
+        <mat-list-item>
+          <mat-icon style="color:#4F4F4F;">home</mat-icon>INICIO
+        </mat-list-item>
+      </span>
       </div>
     </div>
+  </div>
 </div>

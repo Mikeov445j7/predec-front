@@ -1,0 +1,96 @@
+<div class="header" style="background-color: #454545;" id="section0">
+
+  <div class="logo" style="">
+    <img src="assets/img/titulo.png" style="width: 70%;">
+  </div>
+  <div class="menu" >
+    <div class="menu-desk">
+      <ul>
+        <li><div class="btnMenu" (click)="navegar(1)">QUIENES SOMOS</div></li>
+        <li><div class="btnMenu" (click)="navegar(2)">FUNCIONES</div></li>
+        <li><div class="btnMenu" (click)="navegar(3)">COMO SE USA</div></li>
+        <li><div class="btnMenu" (click)="navegar(4)">PLANES</div></li>
+        <li><div class="btnMenu" (click)="navegar(5)">REGISTRO</div></li>
+        <li><div class="btnMenu" (click)="navegar(6)">LOGIN</div></li>
+      </ul>
+    </div>
+    <div class="menu-mobile">
+      <button mat-mini-fab style="background-color: #454545; color: #EAB127;" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon >menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navegar(1)">
+          <span>QUIENES SOMOS</span>
+        </button>
+        <button mat-menu-item (click)="navegar(2)">
+          <span>FUNCIONES</span>
+        </button>
+        <button mat-menu-item (click)="navegar(3)">
+          <span>COMO SE USA</span>
+        </button>
+        <button mat-menu-item (click)="navegar(4)">
+          <span>PLANES</span>
+        </button>
+        <button mat-menu-item (click)="navegar(5)">
+          <span>REGISTRO</span>
+        </button>
+        <button mat-menu-item (click)="navegar(6)">
+          <span>LOGIN</span>
+        </button>
+
+      </mat-menu>
+    </div>
+  </div>
+</div>
+
+<div class="P_seccion" id="section1">
+  <router-outlet></router-outlet>
+</div>
+
+<div class="footer-distributed">
+
+      <div class="footer-left">
+
+        <img src="assets/img/logo1.png"  style="width: 20%;">
+
+        <p class="footer-company-name" style="color: #EAB127;">PREDECONST © {{anio}}</p>
+      </div>
+
+      <div class="footer-center">
+
+        <div>
+
+          <p><span>444 S. Cedros Ave</span> Solana Beach, California</p>
+        </div>
+
+        <div>
+
+          <p>+1.555.555.5555</p>
+        </div>
+
+        <div>
+
+          <p><a href="mailto:support@company.com">support@company.com</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-right">
+
+        <p class="footer-company-about">
+          <span>About the company</span>
+          Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+        </p>
+
+        <div class="footer-icons">
+
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-github"></i></a>
+
+        </div>
+
+      </div>
+
+</div>

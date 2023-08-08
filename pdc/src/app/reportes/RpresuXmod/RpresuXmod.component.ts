@@ -49,11 +49,9 @@ export class RpresuXmodComponent implements OnInit {
         console.log(this.reporte.modulos[i].parcial);
         this.totalProyecto = this.totalProyecto + Number(this.reporte.modulos[i].parcial);
       }
-
-
-
-    })
+    });
   }
+
   cerrarDialogo(): void {
     const respuesta = {
       resultado:true,

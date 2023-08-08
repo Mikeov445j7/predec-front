@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModulosService } from '../../servicios/modulos.service';
 import {ActividadesService} from '../../servicios/actividades.service';
+import * as moment from 'moment';
 @Component({
   selector: 'app-agregar-actividad',
   templateUrl: './agregar-actividad.component.html',
@@ -22,6 +23,8 @@ export class AgregarActividadComponent implements OnInit {
     catidad:0,
     unitario:0,
     orden:0,
+    fecha_ini_actv: '',
+    fecha_fin_actv:''
   }
 
   constructor(
@@ -34,6 +37,7 @@ export class AgregarActividadComponent implements OnInit {
 
   ngOnInit() {
     console.log("Confirmar?", this.data);
+    this.relACtMod.orden = this.data.cantActiv;
 
   }
   cerrarDialogo(): void {
@@ -72,10 +76,8 @@ export class AgregarActividadComponent implements OnInit {
     }
   }
   selecItem(item:any){
-
     console.log(item);
     this.actiData = item;
-
     this.actServ.verActividad(Number(item.id_actividad)).subscribe(a=>{
       if(a){
         this.actividad = a;
@@ -83,6 +85,7 @@ export class AgregarActividadComponent implements OnInit {
         this.relACtMod.id_actividad = item.id_actividad;
         this.relACtMod.id_modulo = this.data.modulo.id_modulo;
         this.relACtMod.unitario = Number(this.calculaUnitario());
+        this.relACtMod.orden = this.data.cantActiv;;
         console.log(this.relACtMod);
         this.mostrar = false;
         this.listo = true;
@@ -90,10 +93,16 @@ export class AgregarActividadComponent implements OnInit {
     });
 
   }
-  agregarActividad(cant:any){
-    this.relACtMod.catidad = cant;
-      console.log(this.relACtMod);
-      this.modServ.agregarActividad(this.relACtMod.id_modulo, this.relACtMod).subscribe(m=>{
+  agregarActividad(data:any){
+    //this.relACtMod.catidad = cant;
+    data.fecha_ini_actv = moment().format('YYYY-M-D'); //moment(data.fecha_ini_actv).format('YYYY-M-D');
+    data.fecha_fin_actv = moment().format('YYYY-M-D'); //moment(data.fecha_fin_actv).format('YYYY-M-D');
+    this.relACtMod.catidad = data.catidad;
+    this.relACtMod.orden = data.orden;
+    this.relACtMod.fecha_ini_actv = data.fecha_ini_actv;
+    this.relACtMod.fecha_fin_actv = data.fecha_fin_actv;
+    console.log(this.relACtMod);
+    this.modServ.agregarActividad(this.relACtMod.id_modulo, this.relACtMod).subscribe(m=>{
          if(m){
           console.log(m);
           this.confirmado();

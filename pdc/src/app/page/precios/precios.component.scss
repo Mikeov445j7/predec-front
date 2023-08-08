@@ -1,0 +1,74 @@
+.table-cont{
+  width: 60%;
+  margin: auto;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  padding: 2%;
+}
+.tabla-precios{
+  width: 100%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  color: #454545;
+}
+.tabla-precios tr{
+
+  color:#454545;
+}
+.icono {
+  transform: scale(2);
+  color: #2aad10;
+}
+.icono2 {
+  transform: scale(2);
+  color: #e91e1e;
+}
+.item{
+  width: 40%;
+  padding: 2%;
+  background-color: #EAB127;
+  border-bottom: 1px solid #97721a;
+}
+.libre{
+  background-color: #f1e4c61a;
+  border-bottom: 1px solid #f1e4c63a;
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+}
+.premium{
+  background-color: #c096351a;
+  border-bottom: 1px solid #c0963527;
+  width: 20%;
+  text-align: center;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 678px) {
+
+
+}
+@media only screen and (max-width: 420px) {
+  .table-cont{
+    width: 100%;
+    padding: 1%;
+    margin: auto;
+  }
+  .item{
+    font-size: 13px;
+  }
+  .icono {
+    transform: scale(1);
+
+  }
+  .icono2 {
+    transform: scale(1);
+
+  }
+  h2{
+    font-size: medium;
+  }
+  h1{
+    font-size: large;
+  }
+}

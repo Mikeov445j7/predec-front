@@ -1,0 +1,49 @@
+<div class="div-form">
+  <div *ngIf="cargando">
+    <mat-spinner *ngIf="cargando" style="margin:auto;"></mat-spinner>
+  </div>
+  <div *ngIf="!cargando">
+<div style="width: 100%; margin: auto;">
+  <h4 style="color: #2c2107;">
+    <p>
+      <b>¡APROVECHA!!!!</b>  Ya que los primeros 200 usuarios que adquieran el <b>acceso ILIMITADO</b>
+      el precio de <b>LICENCIA ANUAL</b> será de solo <b>100 Bs.</b> asi que regístrate y adquiere tu acceso <b>PREMIUM</b>
+    </p>
+  </h4>
+</div>
+    <mat-label><h2>REGISTRARSE</h2></mat-label>
+    <form  #regForm="ngForm">
+      <div class="campoForm">
+        <mat-label><h4>CORREO ELECTRONICO</h4></mat-label>
+        <mat-form-field>
+          <input  type="email" matInput  required name="mail" placeholder="EMAIL" #mail [(ngModel)]="userReg.mail">
+        </mat-form-field>
+      </div>
+      <div class="campoForm">
+        <mat-label><h4>INSERTAR SU CONTRASEÑA</h4></mat-label>
+        <mat-form-field>
+          <input  type="password" matInput  required name="password"  placeholder="CONTRASEÑA"  #password [(ngModel)]="userReg.password">
+        </mat-form-field>
+      </div>
+      <div class="campoForm">
+        <mat-label><h4>NOMBRES</h4></mat-label>
+        <mat-form-field>
+          <input  type="text" matInput  required name="nombre" placeholder="NOMBRES" #nombre [(ngModel)]="userReg.nombre">
+        </mat-form-field>
+      </div>
+      <div class="campoForm">
+        <mat-label><h4>APELLIDOS</h4></mat-label>
+        <mat-form-field>
+          <input  type="text" matInput  required name="apellido"  placeholder="APELLIDOS"  #apellido [(ngModel)]="userReg.apellido">
+        </mat-form-field>
+      </div>
+    </form>
+    <div >
+      <button mat-raised-button style="background-color:#4F4F4F; color:#EAB127;" (click)="verificarUser(regForm.value)"> REGISTRARSE <mat-icon>login</mat-icon></button>
+    </div>
+
+    <div class="btnDiv" (click)="login()" style="margin-top: 2%;">
+      <span> si tienes una cuenta puedes INGRESAR AQUI</span>
+    </div>
+  </div>
+</div>

@@ -48,11 +48,15 @@ export class ModulosService {
     quitarActividad(id:any){
       return this._Http.post(this.API+"?quitarAct="+id, id);
     }
-    editar(id:any, data:any){
-      return this._Http.post(this.API+"?actualizar="+id, data);
+    editar(data:any){
+      return this._Http.post(this.API+"?actualizar=1", data);
     }
     borrar(id:any){
-      return this._Http.post(this.API+"?borrar="+id, id);
+      return this._Http.post(this.API+"?borrar=1", id);
+    }
+
+    UpdateRlActModulo(data:any){
+      return this._Http.post(this.API+'?UpdateRlActModulo=1', data);
     }
 
 }

@@ -1,6 +1,7 @@
 <div class="main-cont-div">
   <div class="seccion" *ngIf="data">
-    <div class="sub-titulo-seccion">AGREGAR MODULOS</div>
+    <div class="sub-titulo-seccion" *ngIf="!edit">AGREGAR MODULO</div>
+    <div class="sub-titulo-seccion" *ngIf="edit">EDITAR MODULO</div>
     <form #modform = "ngForm">
       <mat-form-field class="example-full-width">
         <mat-label>NOMBRE</mat-label>
@@ -10,24 +11,35 @@
         <mat-label>CODIGO</mat-label>
         <input required matInput name="codigo" #codigo [(ngModel)]="modulo.codigo">
       </mat-form-field>
+      <!---
       <mat-form-field class="example-full-width">
         <mat-label>FECHA</mat-label>
-        <input type="datetime-local" required matInput name="fecha_inicio" #fecha_inicio [(ngModel)]="modulo.fecha_inicio">
+        <input type="date" required matInput name="fecha_inicio" #fecha_inicio [(ngModel)]="modulo.fecha_inicio">
       </mat-form-field>
+      -->
       <mat-form-field class="example-full-width">
         <mat-label>ORDEN EJECUCION</mat-label>
-        <input type="number" required matInput name="ordenado" #ordenado [(ngModel)]="modulo.ordenado">
+        <input type="number" required matInput name="orden" #orden [(ngModel)]="modulo.orden">
       </mat-form-field>
     </form>
     <div style="width: 100%; text-align: center;">
-      <button *ngIf="edit" mat-raised-button    style="width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="modform.invalid" (click)="eventoBtn(modform.value)">
+      <button *ngIf="edit" mat-raised-button    style="margin:3%; width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="modform.invalid" (click)="editar(modform.value)">
         <mat-icon>save</mat-icon>
         GUARDAR CAMBIOS
+      </button>
+
+      <button *ngIf="edit" mat-raised-button  color="warn" style="margin:3%; width:100%;"  (click)="del()">
+        <mat-icon>delete</mat-icon>
+        ELIMINAR MODULO
       </button>
 
       <button  *ngIf="!edit" mat-raised-button   style="width:100%; background-color:#4F4F4F; color:#EAB127;"  [disabled]="modform.invalid" (click)="eventoBtn(modform.value)">
         <mat-icon>save</mat-icon>
         AGREGAR MODULO
+      </button>
+
+      <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()">
+        CERRAR <mat-icon>close</mat-icon>
       </button>
     </div>
   </div>

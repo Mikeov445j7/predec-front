@@ -28,6 +28,11 @@
           <mat-icon>save</mat-icon>
           REGISTRAR ACTIVIDAD
         </button>
+
+        <button *ngIf="edit" mat-raised-button  color="warn"  [disabled]="formActividad.invalid" (click)="eliminar(formActividad.value)">
+          <mat-icon>save</mat-icon>
+          ELIMINAR ACTIVIDAD
+        </button>
       </div>
   </div>
   <div style="width: 100%;">

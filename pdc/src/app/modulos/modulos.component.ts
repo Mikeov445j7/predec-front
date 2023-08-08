@@ -6,6 +6,9 @@ import { ModalComponent } from '../modal/modal.component';
 import { AgregarActividadComponent } from './agregar-actividad/agregar-actividad.component';
 import { ReportesComponent } from '../reportes/reportes.component';
 import { PxUactModComponent } from '../reportes/pxUactMod/pxUactMod.component';
+import { EditarOrdenCantComponent } from './editarOrdenCant/editarOrdenCant.component';
+import { FormModuloComponent } from './form-modulo/form-modulo.component';
+import { RGattModuloComponent } from '../reportes/RGattModulo/RGattModulo.component';
 
 @Component({
   selector: 'app-modulos',
@@ -16,6 +19,7 @@ export class ModulosComponent {
   public actividades:any;
   public idModulo:any;
   public modulo:any;
+  public count:any;
   constructor(
     public modServ: ModulosService,
     private route: ActivatedRoute,
@@ -56,12 +60,14 @@ export class ModulosComponent {
           for(let i=0; i<this.actividades.length; i++){
             this.actividades[i].total = Number(this.actividades[i].catidad) * Number(this.actividades[i].unitario)
           }
+          this.count = this.actividades.length;
+          this.count = Number(this.count)+1;
         }
         else{
           console.log("sin datos");
 
         }
-        console.log(this.actividades);
+        console.log("actividades:---->"+this.count,this.actividades);
 
       }
     });
@@ -96,6 +102,7 @@ export class ModulosComponent {
       width: '80%',
       data: {
         modulo: this.modulo,
+        cantActiv: this.count,
         tipo: 2,
         cod:1
       }
@@ -118,7 +125,7 @@ export class ModulosComponent {
     this.modServ.quitarActividad(id).subscribe(m=>{
       if(m){
         console.log(m);
-        window.location.reload();
+        this.verModulo();
       }
     });
   }
@@ -152,4 +159,76 @@ export class ModulosComponent {
     });
 
   }
+
+  editarOrdenCant(item:any){
+    this.dialogo.open( EditarOrdenCantComponent, {
+      width: '80%',
+      data: {
+        modulo: this.modulo,
+        actividad: item,
+        tipo: 2,
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+          this.verActividades();
+      }
+      else {
+        console.log(confirmado.data);
+        this.verActividades();
+      }
+        this.verActividades();
+    });
+  }
+
+  editarmodulo(modulo:any){
+
+    this.dialogo.open( FormModuloComponent, {
+      width: '80%',
+      data: {
+        modulo: modulo,
+        tipo: 2,
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+          this.verActividades();
+      }
+      else {
+        console.log(confirmado.data);
+        this.verActividades();
+      }
+        this.verActividades();
+    });
+
+  }
+
+  gantt(){
+    this.dialogo.open( RGattModuloComponent, {
+      width: '80%',
+      data: {
+        lista: 'buuu',
+        tipo: 2,
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+          this.verActividades();
+      }
+      else {
+        console.log(confirmado.data);
+        this.verActividades();
+      }
+        this.verActividades();
+    });
+
+  }
+
+
 }
