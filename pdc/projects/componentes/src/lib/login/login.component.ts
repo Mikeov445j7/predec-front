@@ -43,9 +43,14 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    localStorage.removeItem('mail');
-    localStorage.removeItem('name');
-    localStorage.removeItem('id');
+    if(localStorage.getItem('mail')&&localStorage.getItem('id')){
+      this._router.navigate(['home']);
+    } else{
+      localStorage.removeItem('mail');
+      localStorage.removeItem('name');
+      localStorage.removeItem('id');
+    }
+
   }
 
   login(loginForm: any){
@@ -62,7 +67,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('mail', this.usuario.mail);
           localStorage.setItem('name', this.usuario.nombre+" "+this.usuario.apellido);
           localStorage.setItem('id', this.usuario.id_us);
+          localStorage.setItem('ygtErd#22',  this.usuario.premiun);
+          localStorage.setItem('SFNOM',  this.usuario.ip_user);
+
           window.location.reload();
+
           this.spinner = true;
           //localStorage.setItem('photoUrl', this.socialUser.photoUrl);
         } else {
@@ -109,6 +118,8 @@ export class LoginComponent implements OnInit {
   }
   registrar(r:any){
     let resp:any;
+    console.log(r);
+
     this.serv.usersAdd(r).subscribe(u=>{
       if(u){
         resp = u;

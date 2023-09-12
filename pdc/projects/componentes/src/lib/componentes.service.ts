@@ -31,7 +31,9 @@ export class ComponentesService {
     localStorage.removeItem('name');
     localStorage.removeItem('id');
     localStorage.removeItem('photoUrl');
-    return "sesion terminada";
+    localStorage.removeItem('SFNOM');
+    localStorage.removeItem('ygtErd#22');
+     return "sesion terminada";
   }
   usersListar(){
     return this.http.get(this.API+"?listar=1");

@@ -17,6 +17,9 @@ import { FuncionesComponent } from './page/funciones/funciones.component';
 import { ComoseusaComponent } from './page/comoseusa/comoseusa.component';
 import { PreciosComponent } from './page/precios/precios.component';
 import { RegistroComponent } from './page/registro/registro.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
+import { SetPremiunComponent } from './upgrade/setPremiun/setPremiun.component';
+import { GestionUsuariosComponent } from './upgrade/gestionUsuarios/gestionUsuarios.component';
 
 
 const routes: Routes = [
@@ -37,7 +40,12 @@ const routes: Routes = [
   { path: 'actividades', component: ActividadesComponent},
   { path: 'form-actividad', component:FormActividadComponent},
   { path: 'form-actividad/:id_actividad', component:FormActividadComponent},
+  { path: 'form-Mi-actividad/:us/:mod', component:FormActividadComponent},
+  { path: 'edit-Mi-actividad/:id_actividad/:mod', component:FormActividadComponent},
   { path: 'reportes', component: ReportesComponent},
+  { path: 'upgrd', component: UpgradeComponent},
+  { path: 'setprpredeus/:us', component: SetPremiunComponent},
+  { path: 'gestion-de-usuarios', component: GestionUsuariosComponent},
   { path: 'page', component: PageComponent,
     children: [
       { path: 'quienes-somos', component: QuienesSomosComponent, pathMatch: 'full' },

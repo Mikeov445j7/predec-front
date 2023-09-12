@@ -11,12 +11,9 @@ import { ComponentesService } from '../componentes.service';
   styleUrls: ['./frame.component.scss']
 })
 export class FrameComponent implements OnInit {
-  public menu = [
-    {ruta:'proyectos', label: 'PROYECTOS', icono:'home'},
-    {ruta:'crud-items', label: 'CRUD ITEMS', icono:'list'},
-    {ruta:'actividades', label: 'ACTIVIDADES', icono:'list'},
-  ];
+
   public verMenu= false;
+  public menu:any;
   public foto:any;
   public name:any;
   constructor(
@@ -26,11 +23,23 @@ export class FrameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(localStorage.getItem('mail'));
+
     if(localStorage.getItem('mail')&&localStorage.getItem('id')){
       this.verMenu = true;
       this.name = localStorage.getItem('name');
-      this.router.navigate(['home']);
+//      this.router.navigate(['home']);
+      if(localStorage.getItem('SFNOM')==='M1K30' || localStorage.getItem('SFNOM')==='J4V13RC' ){
+        this.menu =  [
+          {ruta:'proyectos', label: 'PROYECTOS', icono:'home'},
+          {ruta:'crud-items', label: 'CRUD ITEMS', icono:'list'},
+          {ruta:'actividades', label: 'ACTIVIDADES', icono:'list'},
+          {ruta: 'gestion-de-usuarios', label:'GESTION USUARIOS', icono:'list'}
+        ];
+      }else{
+        this.menu = [
+          {ruta:'proyectos', label: 'PROYECTOS', icono:'home'},
+        ];
+      }
     }else{
       this.verMenu = false;
       this.router.navigate(['page']);
@@ -54,6 +63,7 @@ export class FrameComponent implements OnInit {
   page(){
     this.router.navigate(['page']);
   }
+
 
 
 }

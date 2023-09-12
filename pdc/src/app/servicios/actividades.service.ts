@@ -52,4 +52,8 @@ export class ActividadesService {
     return this._Http.get("http://localhost/pdc/pdc-back/apis/cruds/RpxuAct.php?pxua=1");
   }
 
+  misActividades(data:any){
+    return this._Http.post(this.API+"?misActividades=1", data);
+  }
+
 }

@@ -3,6 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ModulosService } from '../../servicios/modulos.service';
 import {ActividadesService} from '../../servicios/actividades.service';
 import * as moment from 'moment';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-agregar-actividad',
   templateUrl: './agregar-actividad.component.html',
@@ -13,6 +14,11 @@ export class AgregarActividadComponent implements OnInit {
   public actiData:any;
   public actividad:any;
   public listo=false;
+  public crearActividades=false;
+  public duenio:any;
+  public p:any;
+  public Pr=true;
+  public cantP:any;
   public buscar = {
     busca:''
   }
@@ -32,12 +38,17 @@ export class AgregarActividadComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:any,
     public modServ: ModulosService,
     public actServ: ActividadesService,
+    private route: ActivatedRoute,
+    private router:Router,
 
   ) { }
 
   ngOnInit() {
+    this.p = localStorage.getItem('ygtErd#22');
+    this.verificarPremium();
     console.log("Confirmar?", this.data);
     this.relACtMod.orden = this.data.cantActiv;
+    this.duenio = localStorage.getItem('id');
 
   }
   cerrarDialogo(): void {
@@ -69,6 +80,7 @@ export class AgregarActividadComponent implements OnInit {
         if(a){
           this.actividades = a;
           this.mostrar = true
+         console.log(this.actividades);
         }
       });
     } else {
@@ -85,7 +97,12 @@ export class AgregarActividadComponent implements OnInit {
         this.relACtMod.id_actividad = item.id_actividad;
         this.relACtMod.id_modulo = this.data.modulo.id_modulo;
         this.relACtMod.unitario = Number(this.calculaUnitario());
-        this.relACtMod.orden = this.data.cantActiv;;
+        if(this.data.cantActiv!=0){
+          this.relACtMod.orden = this.data.cantActiv;
+        } else{
+          this.relACtMod.orden = 1;
+        }
+
         console.log(this.relACtMod);
         this.mostrar = false;
         this.listo = true;
@@ -143,5 +160,34 @@ export class AgregarActividadComponent implements OnInit {
     return materiales + manoObra + equipo;
 
   }
+  misActividades(){
+    const data = {
+      id_us: localStorage.getItem('id')
+    }
+      this.actServ.misActividades(data).subscribe(a=>{
+        if(a){
+          console.log(a);
+          this.actividades = a;
+          this.mostrar = true;
+          this.crearActividades = true;
+        }
+      });
+  }
+  creaMiActividad(){
+    this.confirmado();
+    this.router.navigate(['form-Mi-actividad/2/'+this.data.modulo.id_modulo]);
+  }
 
+  edit(i:any){
+    console.log(i.id_actividad);
+    this.confirmado();
+    this.router.navigate(['edit-Mi-actividad/'+i.id_actividad+'/'+this.data.modulo.id_modulo]); //form-Mi-actividad/:id_actividad/:us
+  }
+  verificarPremium(){
+    if(this.p == 7 || this.p == 8  ){
+      this.Pr = true;
+    } else {
+      this.Pr = false;
+    }
+  }
 }

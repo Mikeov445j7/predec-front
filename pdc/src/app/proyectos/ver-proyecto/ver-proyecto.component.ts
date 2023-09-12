@@ -17,6 +17,7 @@ import { RtotalMatxModuComponent } from 'src/app/reportes/RtotalMatxModu/RtotalM
 import { RtotalManoObraxModuComponent } from 'src/app/reportes/RtotalManoObraxModu/RtotalManoObraxModu.component';
 import { RtotalEquipoxModuComponent } from 'src/app/reportes/RtotalEquipoxModu/RtotalEquipoxModu.component';
 import { RtotalInsumosProyectoComponent } from 'src/app/reportes/RtotalInsumosProyecto/RtotalInsumosProyecto.component';
+import { CopiarproyectoComponent } from '../copiarproyecto/copiarproyecto.component';
 
 
 @Component({
@@ -30,6 +31,8 @@ export class VerProyectoComponent {
   public proyecto:any;
   public modulos:any;
   public actividades:any;
+  public count:any;
+  public id_us:any;
   constructor(
     public proyecServ: ProyectosService,
     public modServ: ModulosService,
@@ -40,7 +43,9 @@ export class VerProyectoComponent {
   ) { }
 
   ngOnInit() {
+
     if(this.route.snapshot.params['idProyecto']){
+      this.id_us = localStorage.getItem('id');
       this.idProyecto = Number(this.route.snapshot.params['idProyecto']);
       this.getProyecto();
     }
@@ -54,7 +59,14 @@ export class VerProyectoComponent {
         this.proyecto = p;
         this.proyecto = this.proyecto[0];
         console.log(this.proyecto);
-        this.getModulos()
+
+        if(this.proyecto.id_us == this.id_us ){
+          this.getModulos();
+        } else {
+          this.router.navigate(['home']);
+        }
+
+
       }
     });
   }
@@ -66,16 +78,41 @@ export class VerProyectoComponent {
         m=mod;
         if(m.success!=0){
           this.modulos = mod;
-          console.log(this.modulos);
+          console.log(this.modulos.length);
+          this.count = this.modulos.length;
         } else {
           console.log("no data");
-
+          this.modulos = [];
+          console.log(this.modulos.length);
+          this.count = this.modulos.length;
         }
 
       }
     });
   }
+  copiarProyecto(){
 
+    this.dialogo.open( CopiarproyectoComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "rpresuXmod",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
+  }
 
   selecItem(item:any){
     console.log(item.id_modulo);
@@ -87,6 +124,7 @@ export class VerProyectoComponent {
       panelClass: "modal-responisvo",
       data: {
         Proyecto: this.proyecto,
+        cant: this.count,
         tipo: "Crear",
         cod:1
       }

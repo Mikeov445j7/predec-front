@@ -1,44 +1,50 @@
+<div class="btnDiv" (click)="registro()" style="margin-top: 4%;">
+  <h2><button> Registrate aqui</button></h2>
+</div>
+
 <div class="cards">
       <div class="card">
-        <div class="card-tit">Gestión de Proyectos: </div>
+        <div class="card-tit">PRESUPUESTOS DE CONSTRUCCIÓN: </div>
         <div class="card-img" style="background-image: url('assets/img/22.jpg');">
         </div>
-        <div class="card-txt">Permite crear y gestionar un Proyecto de Construcción  además de poder configurar parámetros generales del mismo (I.V.A., I.T., tipos de cambio, etc.). Posteriormente usar estos en el cálculo final del presupuesto de la obra. </div>
+        <div class="card-txt">Elabora presupuestos de Obras en Linea, Fácil y rápido </div>
       </div>
       <div class="card">
-        <div class="card-tit">Gestión de Módulos: </div>
+        <div class="card-tit">CALCULA LA CANTIDAD DE MATERIALES: </div>
         <div class="card-img" style="background-image: url('assets/img/33.jpg');">
         </div>
-        <div class="card-txt">Crear y administrar los módulos los cuales según cronograma serán incluidos en un proyecto, así mismo insertar a estos las Actividades Constructivas que serán parte del mismo. </div>
+        <div class="card-txt">Predeconst te permite calcular la cantidad de Materiales que requieres en tu proyecto.</div>
       </div>
       <div class="card">
-        <div class="card-tit">Gestión de Actividades: </div>
+        <div class="card-tit">GASTOS EN MANO DE OBRA: </div>
         <div class="card-img" style="background-image: url('assets/img/44.jpg');">
         </div>
-        <div class="card-txt">La aplicación permite escoger o crear las actividades, nuestra base de datos está cargada con una gran cantidad de actividades constructivas, que pueden ser incluidas en los diferentes Módulos de cualquier Proyecto creado dentro del sistema, de tal manera que el cálculo de precios unitarios e insumos es automático e instantáneo. </div>
+        <div class="card-txt">También puedes calcular el costo de Mano de Obra en tu proyecto.</div>
       </div>
       <div class="card">
-        <div class="card-tit">Calculo de Precios Unitarios e Insumos: </div>
+        <div class="card-tit">RÁPIDO Y EFICIENTE: </div>
         <div class="card-img" style="background-image: url('assets/img/55.jpg');">
         </div>
-        <div class="card-txt">Una de grandes ventajas que posee PREDECONST es el cálculo en tiempo real de cualquier proyecto que se esté gestionando, esta Aplicación permite poder acceder al cálculo  del presupuesto de la obra incluso desde un dispositivo móvil. </div>
+        <div class="card-txt">Puedes usar desde cualquier dispositivo (Computadora o Smartphone) para tener acceso a tu proyecto en cualquier momento y lugar. </div>
       </div>
-      <div class="card">
+   <!---
+         <div class="card">
         <div class="card-tit">Exportación de Proyectos:</div>
         <div class="card-img" style="background-image: url('assets/img/66.jpg');">
         </div>
         <div class="card-txt">PREDECONST le permite exportar  cualquier parte del proyecto a formatos de Excel, Word, etc. Listo para ser impresos en formatos ya establecidos o fácilmente editables. </div>
       </div>
+    -->
 </div>
 
 <div class="cards2">
   <mat-stepper class="cards2" [linear]="isLinear" #stepper>
     <mat-step label="Proyectos" >
       <div class="card2">
-        <div class="card2-tit">Gestión de Proyectos: </div>
+        <div class="card2-tit">PRESUPUESTOS DE CONSTRUCCIÓN: </div>
         <div class="card2-img" style="background-image: url('assets/img/22.jpg');">
         </div>
-        <div class="card2-txt">Permite crear y gestionar un Proyecto de Construcción  además de poder configurar parámetros generales del mismo (I.V.A., I.T., tipos de cambio, etc.). Posteriormente usar estos en el cálculo final del presupuesto de la obra. </div>
+        <div class="card2-txt">Elabora presupuestos de Obras en Linea, Fácil y rápido. </div>
       </div>
         <div>
           <button mat-button matStepperNext>SIGUIENTE</button>
@@ -47,10 +53,10 @@
     </mat-step>
     <mat-step label="Módulos">
       <div class="card2">
-        <div class="card2-tit">Gestión de Módulos: </div>
+        <div class="card2-tit">CALCULA LA CANTIDAD DE MATERIALES: </div>
         <div class="card2-img" style="background-image: url('assets/img/33.jpg');">
         </div>
-        <div class="card2-txt">Crear y administrar los módulos los cuales según cronograma serán incluidos en un proyecto, así mismo insertar a estos las Actividades Constructivas que serán parte del mismo. </div>
+        <div class="card2-txt">Predeconst te permite calcular la cantidad de Materiales que requieres en tu proyecto. </div>
       </div>
       <div>
           <button mat-button matStepperPrevious>ATRAS</button>
@@ -59,10 +65,10 @@
     </mat-step>
     <mat-step label="Actividades">
       <div class="card2">
-        <div class="card2-tit">Gestión de Actividades: </div>
+        <div class="card2-tit">GASTOS EN MANO DE OBRA: </div>
         <div class="card2-img" style="background-image: url('assets/img/44.jpg');">
         </div>
-        <div class="card2-txt">La aplicación permite escoger o crear las actividades, nuestra base de datos está cargada con una gran cantidad de actividades constructivas, que pueden ser incluidas en los diferentes Módulos de cualquier Proyecto creado dentro del sistema, de tal manera que el cálculo de precios unitarios e insumos es automático e instantáneo. </div>
+        <div class="card2-txt">También puedes calcular el costo de Mano de Obra en tu proyecto. </div>
       </div>
       <div>
           <button mat-button matStepperPrevious>ATRAS</button>
@@ -71,17 +77,18 @@
     </mat-step>
     <mat-step label="Calculo">
       <div class="card2">
-        <div class="card2-tit">Calculo de Precios Unitarios e Insumos: </div>
+        <div class="card2-tit">RÁPIDO Y EFICIENTE: </div>
         <div class="card2-img" style="background-image: url('assets/img/55.jpg');">
         </div>
-        <div class="card2-txt">Una de grandes ventajas que posee PREDECONST es el cálculo en tiempo real de cualquier proyecto que se esté gestionando, esta Aplicación permite poder acceder al cálculo  del presupuesto de la obra incluso desde un dispositivo móvil. </div>
+        <div class="card2-txt">Puedes usar desde cualquier dispositivo (Computadora o Smartphone) para tener acceso a tu proyecto en cualquier momento y lugar.  </div>
       </div>
       <div>
           <button mat-button matStepperPrevious>ATRAS</button>
-          <button mat-button matStepperNext>SIGUIENTE</button>
+
       </div>
     </mat-step>
-    <mat-step label="Exportación">
+    <!--
+      <mat-step label="Exportación">
       <div class="card2">
         <div class="card2-tit">Exportación de Proyectos:</div>
         <div class="card2-img" style="background-image: url('assets/img/66.jpg');">
@@ -95,6 +102,7 @@
         <button mat-button (click)="stepper.reset()">INICIO</button>
       </div>
     </mat-step>
+    -->
   </mat-stepper>
 </div>
 

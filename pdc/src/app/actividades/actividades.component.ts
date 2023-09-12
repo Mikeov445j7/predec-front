@@ -22,11 +22,7 @@ export class ActividadesComponent {
     public repServ:ReportesService,
     public actServ: ActividadesService,
     public dialogo: MatDialog
-
   ){}
-
-
-
   ngOnInit(){
 
   }
@@ -43,36 +39,11 @@ export class ActividadesComponent {
       this.mostrar = false;
     }
   }
-
   agregarItem(item:any){
     this.router.navigate(['form-actividad']);
   }
-
   selecItem(i:any){
     console.log(i.id_actividad);
     this.router.navigate(['form-actividad/'+i.id_actividad]);
-
-    /*this.actServ.getUno(i.id_actividad).subscribe(a=>{
-      this.dialogo.open( FormActividadComponent, {
-        width: '80%',
-        data: {
-          tipo: 2,
-          data: i.id_actividad,
-          mensaje: 'Actividad: '+i.descripcion,
-          actividad:i,
-          cod:1
-        }
-      })
-      .afterClosed()
-      .subscribe((confirmado:any) => {
-        if (confirmado.resultado) {
-            console.log("hecho",confirmado);
-        }
-        else {
-            console.log(confirmado.data);
-        }
-      });
-
-    });*/
   }
 }

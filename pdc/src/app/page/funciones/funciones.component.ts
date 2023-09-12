@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-funciones',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FuncionesComponent implements OnInit {
   public isLinear = true;
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
+  }
+  registro(){
+    this.router.navigate(['page/registro']);
   }
 
 }

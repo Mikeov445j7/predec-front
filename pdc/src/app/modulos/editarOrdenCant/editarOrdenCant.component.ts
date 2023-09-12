@@ -21,6 +21,15 @@ export class EditarOrdenCantComponent implements OnInit {
     fecha_ini_actv: '',
     fecha_fin_actv:''
   }
+  public relACtMod = {
+    id_modulo: 0,
+    id_actividad:0,
+    catidad:0,
+    unitario:0,
+    orden:0,
+    fecha_ini_actv: '',
+    fecha_fin_actv:''
+  }
 
   public mostrar = false;
 
@@ -35,9 +44,23 @@ export class EditarOrdenCantComponent implements OnInit {
   ngOnInit() {
     console.log("Confirmar?", this.data);
     this.dat.orden = this.data.actividad.orden;
-    this.dat.catidad = this.data.actividad.catidad;
+    this.dat.catidad = this.data.actividad.cantidad;
     this.dat.fecha_ini_actv = this.data.actividad.fecha_ini_actv;
     this.dat.fecha_fin_actv = this.data.actividad.fecha_fin_actv;
+    console.log(this.data);
+
+    this.actServ.verActividad(Number(this.data.id_actividad)).subscribe(a=>{
+      if(a){
+        this.actividad = a;
+        console.log(this.actividad);
+        this.relACtMod.id_actividad = this.data.id_actividad;
+        this.relACtMod.id_modulo = this.data.modulo.id_modulo;
+        this.relACtMod.orden = this.data.cantActiv;;
+        console.log(this.relACtMod);
+        this.mostrar = false;
+        this.listo = true;
+      }
+    });
   }
   cerrarDialogo(): void {
     const respuesta = {
@@ -66,6 +89,8 @@ export class EditarOrdenCantComponent implements OnInit {
       this.modServ.UpdateRlActModulo(datUP).subscribe(r=>{
         this.espera=false;
         if(r){
+          console.log(r);
+
           this.confirmado();
         }
       });

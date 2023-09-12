@@ -63,10 +63,10 @@
 
 </div>
 <div style="width: 100%; text-align: center;" >
-  <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="exportToExcel()" *ngIf="reporte">
+  <button mat-flat-button   style="margin:3%; background-color: #019414; color: #fff;" (click)="verificarPremiun(1)" *ngIf="reporte">
     EXCEL <mat-icon>table</mat-icon>
   </button>
-  <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="print()" *ngIf="reporte">
+  <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="verificarPremiun(2)" *ngIf="reporte">
     IMPRIMIR <mat-icon>print</mat-icon>
   </button>
   <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" *ngIf="reporte">

@@ -43,6 +43,24 @@
   text-align: center;
   font-weight: bold;
 }
+.btnDiv{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.btnDiv button{
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 2%;
+  background-color:#EAB127;
+  color:#4F4F4F;
+  border-radius: 6px;
+}
+.btnDiv button:hover{
+  background-color: #4F4F4F;
+  color:#EAB127;
+}
 
 @media only screen and (max-width: 678px) {
 
@@ -70,5 +88,8 @@
   }
   h1{
     font-size: large;
+  }
+  .regbtn{
+    width: 100%;
   }
 }

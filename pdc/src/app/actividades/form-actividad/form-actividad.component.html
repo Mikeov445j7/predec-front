@@ -28,10 +28,9 @@
           <mat-icon>save</mat-icon>
           REGISTRAR ACTIVIDAD
         </button>
-
-        <button *ngIf="edit" mat-raised-button  color="warn"  [disabled]="formActividad.invalid" (click)="eliminar(formActividad.value)">
-          <mat-icon>save</mat-icon>
-          ELIMINAR ACTIVIDAD
+        <button  mat-raised-button   style="background-color:#4F4F4F; color:#27ea62;"  (click)="volverModulo()">
+          <mat-icon>back</mat-icon>
+          VOLVER AL MODULO
         </button>
       </div>
   </div>
@@ -174,6 +173,12 @@
           </table>
         </div>
       </div>
+    </div>
+    <div style="width: 100%; text-align: center;">
+      <button *ngIf="edit" mat-raised-button  color="warn"  [disabled]="formActividad.invalid" (click)="eliminar(formActividad.value)">
+        <mat-icon>save</mat-icon>
+        ELIMINAR ACTIVIDAD
+      </button>
     </div>
   </div>
 </div>

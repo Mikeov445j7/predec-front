@@ -12,21 +12,22 @@ export class FormProyectoComponent implements OnInit {
   public titulo:any;
   public idProyecto:any;
   public proyecto:any;
+  public fecha = moment().format('dd-mm-yyyy');
 
   public proyectos = {
     id_proyec:0,
-    id_us:1,
+    id_us:localStorage.getItem('id'),
     nombre:'',
     codigo:0,
     fecha_creacion: moment().format('dd-mm-yyyy'),
-    Ben_Soc:0,
-    iva:0,
-    he_men: 0,
-    g_grales: 0,
-    utilidad:0,
-    IT:0,
+    Ben_Soc:55,
+    iva:14.94,
+    he_men: 5,
+    g_grales: 7,
+    utilidad:10,
+    IT:3.09,
     cliente:'',
-    tip_cambio:0,
+    tip_cambio:6.96,
     fecha:moment().format('dd-mm-yyyy'),
     ubicacion:'',
     id_proyecOr:0
@@ -57,7 +58,7 @@ export class FormProyectoComponent implements OnInit {
         this.edit= true;
         this.proyectos = {
           id_proyec:this.proyecto.id_proyec,
-          id_us:this.proyecto.id_us,
+          id_us:localStorage.getItem('id'),
           nombre:this.proyecto. nombre,
           codigo:this.proyecto.codigo,
           fecha_creacion:this.proyecto.fecha_creacion,
@@ -85,8 +86,10 @@ export class FormProyectoComponent implements OnInit {
   }
 
   registarProyecto(data:any){
-    console.log(data);
+
     data.id_us = localStorage.getItem('id');
+    data.fecha_creacion = moment(data.fecha_creacion).format('YYYY-M-D');
+    console.log(data);
     data.id_proyecOr=1;
     this.proyecServ.add(data).subscribe(r=>{
       if(r){

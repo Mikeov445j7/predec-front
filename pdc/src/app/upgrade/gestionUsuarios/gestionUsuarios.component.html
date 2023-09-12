@@ -1,0 +1,66 @@
+<div class="cont-div">
+  <div class="titulo-seccion">GESTION DE USUARIOS</div>
+  <mat-tab-group>
+    <mat-tab label="GENERAL">
+      <div *ngIf="contar">
+        <div class="card-usuario">
+          <div class="sub-titulo-seccion">Usuarios Premium</div>
+          <div class="img" style="background-image: url('assets/img/premium.png');"></div>
+          <div class="cantidad">{{contar.premium}}</div>
+          <div style="clear: both;"></div>
+        </div>
+        <div class="card-usuario">
+          <div class="sub-titulo-seccion">Usuarios Cuentas Gratis</div>
+          <div class="img" style="background-image: url('assets/img/normal.png');"></div>
+          <div class="cantidad">{{contar.libre}}</div>
+          <div style="clear: both;"></div>
+
+        </div>
+        <div class="card-usuario">
+          <div class="sub-titulo-seccion">Usuarios con Acceso de Nivel</div>
+          <div class="img" style="background-image: url('assets/img/admin.png');"></div>
+          <div class="cantidad">{{contar.admins}}</div>
+          <div style="clear: both;"></div>
+
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Buscar, listar Usuarios">
+      <mat-form-field class="input-buscar" appearance="fill">
+        <mat-label>Buscar <i style="color: #aaa;"> (por C.I., Correo Electronico)</i></mat-label>
+        <input  required="true" matInput placeholder="Buscar CI, correo" name="busca" id="busca" #busca   (keyup)="buscar(busca.value)" (keydown.enter)="buscar(busca.value)" >
+      </mat-form-field>
+            <button mat-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="buscar(busca.value)">
+              <mat-icon>search</mat-icon>
+            </button>
+            <div class="list" *ngIf="mostrar&&usuarios.length">
+              <table class="customTable" >
+                <thead>
+                  <tr style="border-bottom: 1px solid;">
+                    <th>C.I.</th>
+                    <th>Nombre</th>
+                    <th>CORREO</th>
+                    <th>ACCESO</th>
+                    <th>EXPIRACION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let item of usuarios" style="border-bottom: 1px solid;" >
+                  <td>{{item.ci}}</td>
+                  <td>{{item.nombre}} {{item.apellidos}}</td>
+                  <td>{{item.mail}}</td>
+                  <td *ngIf="item.premiun==='7'">PREMIUM</td>
+                  <td *ngIf="item.premiun==='0'">LIBRE</td>
+                  <td *ngIf="item.premiun==='7'">{{item.fecha_Expiracion}}</td>
+                </tr >
+              </tbody>
+              </table>
+             </div>
+    </mat-tab>
+   <!--
+     <mat-tab label="Third"> Content 3 </mat-tab>
+   -->
+  </mat-tab-group>
+
+
+</div>

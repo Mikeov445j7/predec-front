@@ -9,6 +9,8 @@ import { PxUactModComponent } from '../reportes/pxUactMod/pxUactMod.component';
 import { EditarOrdenCantComponent } from './editarOrdenCant/editarOrdenCant.component';
 import { FormModuloComponent } from './form-modulo/form-modulo.component';
 import { RGattModuloComponent } from '../reportes/RGattModulo/RGattModulo.component';
+import { ReportesService } from '../servicios/reportes.service';
+import { Modal_PremiumComponent } from '../modal_Premium/modal_Premium.component';
 
 @Component({
   selector: 'app-modulos',
@@ -20,22 +22,30 @@ export class ModulosComponent {
   public idModulo:any;
   public modulo:any;
   public count:any;
+  public data:any;
+  public PxUact:any;
+  public p:any;
+
   constructor(
     public modServ: ModulosService,
     private route: ActivatedRoute,
     private router:Router,
-    public dialogo: MatDialog
+    public dialogo: MatDialog,
+    public repServ: ReportesService,
+    public dia: MatDialog,
   ){}
 
 
 
   ngOnInit(){
     if(this.route.snapshot.params['idModulo']){
+      this.p = localStorage.getItem('ygtErd#22');
       console.log("");
       this.idModulo = Number(this.route.snapshot.params['idModulo']);
       console.log(this.idModulo);
       this.verModulo();
     }
+
   }
 
   verModulo(){
@@ -45,30 +55,57 @@ export class ModulosComponent {
         console.log(m);
         this.modulo = m;
         this.modulo = this.modulo[0];
-        this.verActividades();
+        this.data = {
+          idModulo: this.idModulo,
+          id_proyec: this.modulo.id_proyec,
+          orden: this.modulo.orden,
+          nombre: this.modulo.nombre,
+          codigo: this.modulo.codigo,
+          id_modOr: this.modulo.id_modOr,
+          fecha_inicio: this.modulo.fecha_inicio,
+          ordenado:this.modulo.ordenado
+        }
+        console.log("------------",this.data);
+        this.verActividades2();
       }
     });
   }
 
-  verActividades(){
-    this.modServ.getACtividadesModulo(this.idModulo).subscribe(act=>{
-      let a:any;
-      if(act){
-        a = act;
-        if(a.success!=0){
-          this.actividades = act
-          for(let i=0; i<this.actividades.length; i++){
-            this.actividades[i].total = Number(this.actividades[i].catidad) * Number(this.actividades[i].unitario)
-          }
-          this.count = this.actividades.length;
-          this.count = Number(this.count)+1;
-        }
-        else{
-          console.log("sin datos");
 
+  verActividades2(){
+     this.repServ.PUXact(this.data).subscribe(pu=>{
+      this.PxUact = pu;
+      if(this.PxUact.success!==0){
+        for(let i=0; i<this.PxUact.length; i++){
+          let gg = 0;
+          gg = Number(this.PxUact[i].manoObra.E)*(this.PxUact[i].he_men/100);
+          this.PxUact[i].equipo.H = Number(this.PxUact[i].equipo.F)+Number(gg);
+          let ii = 0;
+          ii =  (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H))*(Number(this.PxUact[i].g_grales)/100);
+          let jj = 0;
+          jj = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii)*(Number(this.PxUact[i].utilidad)/100);
+          let kk = 0;
+          kk = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii+jj)*(Number(this.PxUact[i].it)/100);
+          let ll = 0;
+          ll = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii+jj+kk);
+          this.PxUact[i].I = ii.toFixed(2);
+          this.PxUact[i].J = jj.toFixed(2);
+          this.PxUact[i].K = kk.toFixed(2);
+          this.PxUact[i].L = ll.toFixed(2);
+          this.PxUact[i].G = gg.toFixed(2);
         }
-        console.log("actividades:---->"+this.count,this.actividades);
+        for(let i=0; i<this.PxUact.length; i++){
+          this.PxUact[i].totalMod =  Number(this.PxUact[i].L) * Number(this.PxUact[i].cantidad);
+          this.PxUact[i].totalMod = this.PxUact[i].totalMod.toFixed(2);
+        }
+        this.count = this.PxUact.length;
+        this.count = Number(this.count)+1;
 
+        console.log(this.PxUact);
+
+      }else {
+        this.PxUact =[];
+        this.count  = 1
       }
     });
   }
@@ -81,7 +118,7 @@ export class ModulosComponent {
             data: {
               tipo: 1,
               data: item.id_actividad,
-              mensaje: 'Actividad: '+item.descripcion,
+              mensaje: 'Actividad: '+item.actividad,
               cod:1
             }
         })
@@ -110,13 +147,13 @@ export class ModulosComponent {
     .afterClosed()
     .subscribe((confirmado:any) => {
       if (confirmado.resultado) {
-          this.verActividades();
+        this.verModulo();
       }
       else {
         console.log(confirmado.data);
-        this.verActividades();
+        this.verModulo();
       }
-        this.verActividades();
+        this.verModulo();
     });
   }
 
@@ -130,6 +167,40 @@ export class ModulosComponent {
     });
   }
 
+  verificarPremiun(r:any, item:any){
+    if( this.p == 7 || this.p == 8 ){
+
+      if(r==1){
+        this.editarOrdenCant(item);
+      }
+      if(r==2){
+        this.quitar(item);
+      }
+
+    }
+    else{
+      console.log("NOOOOOOOOOO");
+      this.dia.open( Modal_PremiumComponent, {
+        width: '80%',
+        data: {
+
+        }
+      })
+      .afterClosed()
+      .subscribe((confirmado:any) => {
+        if (confirmado.resultado) {
+
+        }
+        else {
+          console.log(confirmado.data);
+
+        }
+
+      });
+
+    }
+
+  }
 
   pu(){
     let data = {
@@ -149,13 +220,13 @@ export class ModulosComponent {
     .afterClosed()
     .subscribe((confirmado:any) => {
       if (confirmado.resultado) {
-          this.verActividades();
+        this.verModulo();
       }
       else {
         console.log(confirmado.data);
-        this.verActividades();
+        this.verModulo();
       }
-        this.verActividades();
+      this.verModulo();
     });
 
   }
@@ -173,13 +244,13 @@ export class ModulosComponent {
     .afterClosed()
     .subscribe((confirmado:any) => {
       if (confirmado.resultado) {
-          this.verActividades();
+        this.verModulo();
       }
       else {
         console.log(confirmado.data);
-        this.verActividades();
+        this.verModulo();
       }
-        this.verActividades();
+      this.verModulo();
     });
   }
 
@@ -196,13 +267,13 @@ export class ModulosComponent {
     .afterClosed()
     .subscribe((confirmado:any) => {
       if (confirmado.resultado) {
-          this.verActividades();
+        this.verModulo();
       }
       else {
         console.log(confirmado.data);
-        this.verActividades();
+        this.verModulo();
       }
-        this.verActividades();
+      this.verModulo();
     });
 
   }
@@ -219,13 +290,13 @@ export class ModulosComponent {
     .afterClosed()
     .subscribe((confirmado:any) => {
       if (confirmado.resultado) {
-          this.verActividades();
+        this.verModulo();
       }
       else {
         console.log(confirmado.data);
-        this.verActividades();
+        this.verModulo();
       }
-        this.verActividades();
+      this.verModulo();
     });
 
   }

@@ -14,7 +14,7 @@ export class FormModuloComponent implements OnInit {
   public edit= false;
   public modulo = {
     id_proyec:0,
-    orden:0,
+    orden:1,
     nombre:'',
     codigo:'',
     id_modOr:0,
@@ -31,10 +31,16 @@ export class FormModuloComponent implements OnInit {
 
   ngOnInit() {
     console.log("Confirmar?", this.data);
+    if(this.data.cant===0){
+      this.modulo.orden = 1;
+    } else{
+      this.modulo.orden =this.data.cant+1;
+    }
     if(this.data.modulo){
       this.edit = true;
       console.log(this.edit, this.data);
       this.modulo = this.data.modulo;
+
     }
   }
   cerrarDialogo(): void {
@@ -76,10 +82,14 @@ export class FormModuloComponent implements OnInit {
     modform.id_modulo = this.data.modulo.id_modulo;
     modform.id_modOr = modform.orden
     modform.ordenado = modform.orden;
+    modform.fecha_inicio = moment().format('YYYY-M-D'),
+
+    console.log(modform);
 
     this.modServ.editar(modform).subscribe(m=>{
       if(m){
-         this.confirmado();
+        console.log(m);
+        this.confirmado();
       }
     });
   }
@@ -88,7 +98,9 @@ export class FormModuloComponent implements OnInit {
       id_modulo:this.data.modulo.id_modulo
     }
     this.modServ.borrar(id).subscribe(m=>{
+      this.router.navigate(['ver-proyecto/'+this.data.modulo.id_proyec]);
       console.log(m);
+      this.confirmado();
 
     });
   }

@@ -1,0 +1,79 @@
+.cont-div{
+  width:100%;
+  margin:auto
+}
+.btn-cont{
+  width: 70%;
+  margin: auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.card-usuario{
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+  border-radius: 10px;
+  margin-bottom: 3%;
+
+}
+.btn1{
+  padding: 2%;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%);
+  background-size: 200% auto;
+  color: white;
+  font-size: large;
+  margin-bottom: 4%;
+  border-radius: 5px;
+  transition: 0.5s;
+  transform: 0.5s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+
+}
+.btn1:hover{
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 0 20px #eee;
+}
+.btn2{
+  padding: 2%;
+  width: 80%;
+  margin: auto;
+  text-align: center;
+  background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
+  background-size: 200% auto;
+  color: white;
+
+  font-size: large;
+  margin-bottom: 4%;
+  border-radius: 5px;
+  transition: 0.5s;
+  transform: 0.5s;
+  transition-timing-function: ease-out;
+  cursor: pointer;
+  box-shadow: 3px 3px 3px 3px rgb(247, 247, 247);
+
+}
+.btn2:hover{
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 0 20px #eee;
+}
+
+@media only screen and (max-width: 420px) {
+
+
+
+}

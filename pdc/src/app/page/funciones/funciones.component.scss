@@ -85,6 +85,24 @@ mat-stepper{
   margin-bottom: 1%;
   padding: 3%;
 }
+.btnDiv{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.btnDiv button{
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 2%;
+  background-color:#EAB127;
+  color:#4F4F4F;
+  border-radius: 6px;
+}
+.btnDiv button:hover{
+  background-color: #4F4F4F;
+  color:#EAB127;
+}
 
 /* Don't need button navigation */
 @supports (scroll-snap-type) {
@@ -114,6 +132,9 @@ mat-stepper{
   }
   mat-stepper{
     display: block;
+  }
+  .regbtn{
+    width: 100%;
   }
 }
 

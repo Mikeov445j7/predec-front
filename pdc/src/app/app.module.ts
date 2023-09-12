@@ -43,6 +43,11 @@ import { ComoseusaComponent } from './page/comoseusa/comoseusa.component';
 import { PreciosComponent } from './page/precios/precios.component';
 import { QuienesSomosComponent } from './page/quienesSomos/quienesSomos.component';
 import { RegistroComponent } from './page/registro/registro.component';
+import { UpgradeComponent } from './upgrade/upgrade.component';
+import { SetPremiunComponent } from './upgrade/setPremiun/setPremiun.component';
+import { Modal_PremiumComponent } from './modal_Premium/modal_Premium.component';
+import { GestionUsuariosComponent } from './upgrade/gestionUsuarios/gestionUsuarios.component';
+import { CopiarproyectoComponent } from './proyectos/copiarproyecto/copiarproyecto.component';
 
 
 
@@ -81,7 +86,12 @@ import { RegistroComponent } from './page/registro/registro.component';
       ComoseusaComponent,
       PreciosComponent,
       QuienesSomosComponent,
-      RegistroComponent
+      RegistroComponent,
+      UpgradeComponent,
+      SetPremiunComponent,
+      Modal_PremiumComponent,
+      GestionUsuariosComponent,
+      CopiarproyectoComponent
    ],
   imports: [
     BrowserModule,

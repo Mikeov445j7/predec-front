@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ReportesService } from '../../servicios/reportes.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ModulosService } from '../../servicios/modulos.service';
 import {ActividadesService} from '../../servicios/actividades.service';
 import * as XLSX from 'xlsx';
+import { Modal_PremiumComponent } from 'src/app/modal_Premium/modal_Premium.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 
@@ -18,6 +20,7 @@ export class RtotalEquipoxModuComponent implements OnInit {
   public reporte:any;
   public modulos:any=[];
   public totalProyecto:any;
+  public p:any;
 
   constructor(
     public repServ: ReportesService,
@@ -25,9 +28,13 @@ export class RtotalEquipoxModuComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data:any,
     public modServ: ModulosService,
     public actServ: ActividadesService,
+    private route: ActivatedRoute,
+    private router:Router,
+    public dia: MatDialog,
   ) { }
 
   ngOnInit() {
+    this.p = localStorage.getItem('ygtErd#22');
     console.log(this.data);
     this.repServ.RtotalEquipoxModu(this.data).subscribe(r=>{
       this.reporte = r;
@@ -54,6 +61,40 @@ export class RtotalEquipoxModuComponent implements OnInit {
       data: "Operación Cancelada"
     }
     this.dialogo.close(respuesta);
+  }
+  verificarPremiun(r:any){
+    if( this.p == 7 || this.p == 8 ){
+
+      if(r==1){
+        this.exportToExcel();
+      }
+      if(r==2){
+        this.print();
+      }
+
+    }
+    else{
+      console.log("NOOOOOOOOOO");
+      this.dia.open( Modal_PremiumComponent, {
+        width: '80%',
+        data: {
+
+        }
+      })
+      .afterClosed()
+      .subscribe((confirmado:any) => {
+        if (confirmado.resultado) {
+
+        }
+        else {
+          console.log(confirmado.data);
+
+        }
+
+      });
+
+    }
+
   }
 
   exportToExcel(): void {

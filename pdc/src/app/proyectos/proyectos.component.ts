@@ -30,11 +30,15 @@ public proyectos = {
   public results:any = [];
   public item:any;
   public cargando = false;
+  public p:any;
+  public Pr=true;
+  public cantP:any;
   constructor(
     private proyecServ: ProyectosService,
     private router:Router
   ) { }
   ngOnInit() {
+    this.p = localStorage.getItem('ygtErd#22');
       this.listar();
   }
   listar(){
@@ -43,9 +47,24 @@ public proyectos = {
         if(p){
           this.results = p;
           this.cargando = false;
-          console.log(this.results);
+          this.cantP = this.results.length;
+          console.log(this.cantP);
+          if(this.cantP==0){
+            this.Pr = true;
+
+          }
+          if(this.cantP>=1){
+            this.verificarPremium();
+          }
         }
      });
+  }
+  verificarPremium(){
+    if(this.p == 7 || this.p == 8  ){
+      this.Pr = true;
+    } else {
+      this.Pr = false;
+    }
   }
   buscarItem(param:any){
     this.cargando = true;
@@ -75,6 +94,9 @@ public proyectos = {
   }
   agregarItem(){
     this.router.navigate(['nuevo-proyecto']);
+  }
+  premiun(){
+    this.router.navigate(['upgrd']);
   }
 
 

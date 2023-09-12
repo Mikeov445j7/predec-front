@@ -13,6 +13,7 @@ import * as moment from 'moment';
 })
 export class PageComponent implements OnInit {
   public anio:any;
+  public log = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,9 @@ export class PageComponent implements OnInit {
   ngOnInit() {
     this.router.navigate(['funciones'], {relativeTo: this.route});
     this.anio = moment().format('YYYY');
+    if(localStorage.getItem('mail')&&localStorage.getItem('id')){
+      this.log= false;
+    }
   }
 
   scroll(id:any){

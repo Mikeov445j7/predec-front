@@ -22,3 +22,53 @@
   background-repeat: no-repeat;
   float: left;
 }
+
+.footer-icons a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color:  #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+.btnDiv{
+  width: 100%;
+  margin: auto;
+  text-align: center;
+}
+.btnDiv button{
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 2%;
+  background-color:#EAB127;
+  color:#4F4F4F;
+  border-radius: 6px;
+}
+.btnDiv button:hover{
+  background-color: #4F4F4F;
+  color:#EAB127;
+}
+
+@media only screen and (max-width: 420px) {
+  .pic{
+    display:none;
+  }
+  .texto{
+    width: 100%;
+  }
+  .regbtn{
+    width: 100%;
+  }
+
+}
+
+

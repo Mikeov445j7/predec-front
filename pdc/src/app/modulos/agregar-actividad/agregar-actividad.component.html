@@ -1,7 +1,13 @@
 <div class="main-cont-div">
 
     <div class="buscar" *ngIf="!listo">
-      <div class="tit-seccion"><h2>Agregar Actividad</h2></div>
+      <div class="tit-seccion">
+        <h2>Agregar Actividad</h2>
+        <div style="width: 100%; text-align: right;">
+          <button (click)="misActividades()" *ngIf="Pr" class="btnAgregar" style="background-color:#4F4F4F; color:#ffac4e;">Mis Actividades</button>
+          <button *ngIf="crearActividades" (click)="creaMiActividad()" class="btnAgregar" style="background-color:#4F4F4F; color:#4eafff;">Crear Actividad</button>
+        </div>
+      </div>
       <mat-form-field class="input-buscar" appearance="fill">
          <mat-label>Buscar</mat-label>
          <input  required="true" matInput placeholder="Buscar Actividad" name="busca" id="busca" #busca   (keyup)="buscarActividad(busca.value)" (keydown.enter)="buscarActividad(busca.value)" >
@@ -24,25 +30,11 @@
         </mat-form-field>
         <mat-form-field class="input-buscar" appearance="fill">
           <mat-label>CANTIDAD</mat-label>
-          <input type="number" required matInput placeholder="Cantidad" name="catidad" #catidad [(ngModel)]="relACtMod.catidad">
+          <input type="number" required matInput placeholder="Cantidad" value="{{relACtMod.catidad}}" name="catidad" #catidad [(ngModel)]="relACtMod.catidad">
         </mat-form-field><span><b>{{actiData.unidad}}</b></span>
-        <!--
-             <mat-form-field>
-          <mat-label>FECHA INICIO</mat-label>
-          <input matInput [matDatepicker]="picker" name="fecha_ini_actv" #fecha_ini_actv [(ngModel)]="relACtMod.fecha_ini_actv">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>FECHA FIN</mat-label>
-          <input matInput [matDatepicker]="picker2" name="fecha_fin_actv" #fecha_fin_actv [(ngModel)]="relACtMod.fecha_fin_actv">
-          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-        -->
 
       </form>
-     <button mat-flat-button style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarActividad(relForm.value)"><mat-icon >add</mat-icon>Agregar Actividad</button>
+     <button mat-flat-button  style="background-color:#4F4F4F; color:#EAB127;" (click)="agregarActividad(relForm.value)"><mat-icon >add</mat-icon>Agregar Actividad</button>
      </div>
   <div class="list" *ngIf="actividades.length && mostrar">
     <table class="customTable" >
@@ -61,8 +53,21 @@
           <mat-icon>add</mat-icon>
           </button>
         </td>
+        <td>
+          <button mat-mini-fab *ngIf="item.id_us===duenio" style="background-color:#4F4F4F; color:#2782ea91;" (click)="edit(item)">
+          <mat-icon>edit</mat-icon>
+          </button>
+        </td>
       </tr >
     </tbody>
     </table>
    </div>
+
+
 </div>
+   <div style="width: 100%; text-align: center;">
+    <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()">
+      CERRAR <mat-icon>close</mat-icon>
+    </button>
+  </div>
+

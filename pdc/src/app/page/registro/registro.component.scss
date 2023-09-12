@@ -2,18 +2,30 @@
   width: 50%;
   margin: auto;
 }
-.btnDiv span{
-  cursor: pointer;
-  color:#4F4F4F;
-  padding: 1%;
+.btnDiv{
+  width: 100%;
+  margin: auto;
+  text-align: center;
 }
-.btnDiv span:hover{
+.btnDiv button{
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 3%;
+  background-color:#EAB127;
+  color:#4F4F4F;
+  border-radius: 6px;
+}
+.btnDiv button:hover{
+  background-color: #4F4F4F;
   color:#EAB127;
-  font-size: medium;
 }
 @media only screen and (max-width: 420px) {
   .div-form{
     width: 90%;
     margin: auto;
+  }
+  .regbtn{
+    width: 100%;
+    height: 45px;
   }
 }

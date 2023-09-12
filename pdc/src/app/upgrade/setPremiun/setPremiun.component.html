@@ -1,0 +1,41 @@
+<div class="main-cont-div" *ngIf="autorizado">
+  <div class="titulo-seccion">ASIGNAR CUENTA PAGO </div>
+  <div class="sub-titulo-seccion">USUARIO</div>
+  <div class="card-usuario">
+      <table *ngIf="usuario">
+        <tr>
+          <td><b>Nombre:</b> </td>
+          <td>{{usuario.nombre}} {{usuario.apellido}}</td>
+        </tr>
+        <tr>
+          <td><b>Correo Electronico:</b> </td>
+          <td>{{usuario.mail}}</td>
+        </tr>
+        <tr>
+          <td><b>Carnet de Identidad:</b> </td>
+          <td>{{usuario.ci}}</td>
+        </tr>
+      </table>
+  </div>
+  <div></div>
+  <div class="btn-cont">
+     <div class="btn1"  (click)="SetPremiun(1)">
+      <div>ASIGNAR UN MES</div>
+      <div><b>Expirara el: {{fechaMes}}</b></div>
+     </div>
+  </div>
+  <div class="btn-cont">
+    <div class="btn2" (click)="SetPremiun(2)">
+      <div>ASIGNAR UN AÑO</div>
+      <div><b>Expirara el: {{fechaAnio}}</b></div>
+     </div>
+
+  </div>
+
+  <div>
+    <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="atras()" >
+      CERRAR <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+</div>

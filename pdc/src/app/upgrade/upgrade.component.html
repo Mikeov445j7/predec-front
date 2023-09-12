@@ -1,0 +1,195 @@
+<div class="cont-div" style="">
+
+  <div class="cards2">
+    <div class="card2-tit" style="margin-top: 2%;">
+      <h1 style="text-align: center;">OBTENER PREMIUM</h1>
+    </div>
+    <mat-stepper class="cards2"  #stepper>
+      <mat-step label="VERIFICACION DE DATOS" >
+        <div class="card2">
+          <div class="card2-tit"></div>
+          <div class="card2-txt">
+            <form  #regForm="ngForm">
+              <div class="campoForm">
+                <mat-label><h4>CORREO ELECTRONICO</h4></mat-label>
+                <mat-form-field>
+                  <input   disabled="true" type="email" matInput  required name="mail" placeholder="EMAIL" #mail [(ngModel)]="usData.mail">
+                </mat-form-field>
+              </div>
+              <div class="campoForm">
+                <mat-label><h4>NOMBRES</h4></mat-label>
+                <mat-form-field>
+                  <input  type="text" matInput  required name="nombre" placeholder="NOMBRES" #nombre [(ngModel)]="usData.nombre">
+                </mat-form-field>
+              </div>
+              <div class="campoForm">
+                <mat-label><h4>APELLIDOS</h4></mat-label>
+                <mat-form-field>
+                  <input  type="text" matInput  required name="apellido"  placeholder="APELLIDOS"  #apellido [(ngModel)]="usData.apellido">
+                </mat-form-field>
+              </div>
+
+              <div class="campoForm">
+                <mat-label><h4>CARNET DE INDENTIDAD</h4></mat-label>
+                <mat-form-field>
+                  <input  type="text" matInput  required name="ci" placeholder="DOCUMENTO DE IDENTIDAD" #ci [(ngModel)]="usData.ci">
+                </mat-form-field>
+              </div>
+
+              <div class="campoForm">
+                <mat-label><h4>TELEFONO MOVIL <i>(Ejem. +591xxxxxxxx)</i></h4></mat-label>
+                <mat-form-field>
+                  <input  type="text" matInput  required name="cel" placeholder="TELEFONO MOVIL" #cel [(ngModel)]="usData.cel">
+                </mat-form-field>
+              </div>
+              <button  mat-raised-button style="background-color:  #4F4F4F; color:#27bdea; text-align: center;"   type="submit" (click)="save(regForm.value)">
+                           Guardar Cambios<mat-icon>save</mat-icon>
+              </button>
+            </form>
+
+          </div>
+        </div>
+          <div style="width: 100%; text-align: right;">
+            <button mat-button matStepperNext>SIGUIENTE</button>
+          </div>
+
+      </mat-step>
+      <mat-step label="TERMINOS Y CONDICIONES">
+        <div class="card2">
+          <div class="card2-tit" style="margin-top: 2%; text-align: center; width: 100%;">
+            <h1 style="">TERMINOS Y CONDICIONES DE USO DE LA <b>APLICACIÓN</b></h1>
+          </div>
+          <div style="max-height: 350px; overflow-y: scroll; text-align: justify;">
+            <div style="width: 85%; margin: auto;">
+
+
+              <h2>
+               1. OBJETO
+             </h2>
+
+               <p>Estos Términos y Condiciones regulan el acceso y utilización de la <b>APLICACIÓN</b> <b> PREDECONST</b>, que <b>CIENSO</b>. pone a disposición de los usuarios.</p>
+               <ul>
+                 <li>
+                   Esta versión de la <b>APLICACIÓN</b> está disponible de forma gratuita y por medio de suscripciones anuales o mensuales para funciones específicas y avanzadas de la misma.
+                 </li>
+                 <li>
+                   El acceso a la <b>APLICACIÓN</b> supone que el usuario reconoce ha aceptado y consentido sin reservas de las presentes condiciones de uso.
+                 </li>
+                 <li>
+                   La <b>APLICACIÓN</b> tiene el objetivo de la elaboración de Presupuestos de Construcción.
+                 </li>
+               </ul>
+               <p>
+                 Algunos de los colectivos que pueden beneficiarse de este proyecto son para todos los públicos. En el diseño y desarrollo de esta <b>APLICACIÓN</b> han intervenido profesionales especialistas así como un grupo de usuarios que participaron en el periodo de prueba.
+                 La <b>APLICACIÓN</b> se pone a disposición de los usuarios para su uso personal
+               </p>
+               <h2>
+                 2. DERECHOS DE PROPIEDAD INTELECTUAL E INDUSTRIAL
+               </h2>
+               <p>
+                 Los derechos de propiedad intelectual e industrial sobre la <b>APLICACIÓN</b> son titularidad de <b>CIENSO</b>, correspondiéndole el ejercicio exclusivo de los derechos de explotación de los mismos en cualquier forma y, en especial, los derechos de reproducción, distribución, comunicación pública y transformación.
+               </p>
+               <p>
+                 El usuario reconoce que la reproducción, modificación, distribución, comercialización, descompilación, desensamblado, utilización de técnicas de ingeniería inversa o de cualquier otro medio para obtener el código fuente, transformación o publicación de cualquier resultado de pruebas de referencias no autorizadas de cualquiera de los elementos y utilidades integradas dentro del desarrollo constituye una infracción de los derechos de propiedad intelectual de <b>CIENSO</b>,  obligándose, en consecuencia, a no realizar ninguna de las acciones mencionadas.
+               </p>
+               <h2>
+                   3. POLITICA DE PRIVACIDAD
+               </h2>
+                 <p>
+                   De conformidad con lo dispuesto en las normativas vigentes en protección de datos personales, se informa que los datos de carácter personal proporcionados mediante la aceptación de estos Términos y Condiciones, formarán parte de un fichero responsabilidad de <b>CIENSO</b>. y que estos serán tratados con la finalidad descrita en el apartado “1. OBJETO” de este documento y serán conservados mientras dure la relación contractual objeto del uso de la <b>APLICACIÓN</b>, con el único objetivo de facilitar la introducción de mejoras en futuras versiones de la <b>APLICACIÓN</b>, también podrá realizarse el tratamiento de la información de las instalaciones, accesos de usuarios, datos demográficos, pantallas e interacción del usuario y bloqueos y excepciones.
+                 </p>
+                 <p>
+                   <b>CIENSO</b> se reserva la facultad de efectuar, en cualquier momento y sin necesidad de previo aviso, modificaciones y actualizaciones en la <b>APLICACIÓN</b>. Asimismo, también se reserva el derecho a modificar los presentes Términos y Condiciones con el objetivo de adaptarlos a las posibles novedades legislativas y cambios en la propia <b>APLICACIÓN</b>, así como a las que se puedan derivar de los códigos tipos existentes en la materia o por motivos estratégicos o corporativos.
+                 </p>
+                 <h2>
+                   4. EXCLUSIÓN DE RESPONSABILIDAD
+                 </h2>
+                   <p>
+                     <b>CIENSO</b>. se reserva el derecho de editar, actualizar, modificar, suspender, eliminar o finalizar los servicios ofrecidos por la <b>APLICACIÓN</b>, incluyendo todo o parte de su contenido, sin necesidad de previo aviso, así como de modificar la forma o tipo de acceso a esta.
+                   </p>
+                   <p>
+                     Las posibles causas de modificación pueden tener lugar, por motivos tales, como su adaptación a las posibles novedades legislativas y cambios en la propia <b>APLICACIÓN</b>, así como a las que se puedan derivar de los códigos tipos existentes en la materia o por motivos estratégicos o corporativos.
+                   </p>
+                   <p>
+                     <b>CIENSO</b>. no será responsable del uso de la <b>APLICACIÓN</b> por un menor de edad, siendo la descarga y uso de la <b>APLICACIÓN</b> de la exclusiva responsabilidad del usuario.
+                   </p>
+                   <p>
+                     La <b>APLICACIÓN</b> se presta “tal y como es” y sin ninguna clase de garantía. <b>CIENSO</b>. no se hace responsable de la calidad final de la <b>APLICACIÓN</b> ni de que ésta sirva y cumpla con todos los objetivos de la misma. No obstante lo anterior, <b>CIENSO</b>. se compromete en la medida de sus posibilidades a contribuir a mejorar la calidad de la <b>APLICACIÓN</b> , pero no puede garantizar la precisión ni la actualidad del contenido de la misma.
+                   </p>
+                   <p>
+                     La responsabilidad de uso de la <b>APLICACIÓN</b> corresponde solo al usuario. Salvo lo establecido en estos Términos y Condiciones, <b>CIENSO</b>. no es responsable de ninguna pérdida o daño que se produzca en relación con la descarga o el uso de la <b>APLICACIÓN</b>, tales como los producidos como consecuencia de fallos, averías o bloqueos en el funcionamiento de la <b>APLICACIÓN</b> (por ejemplo, y sin carácter limitativo: error en las líneas de comunicaciones, defectos en el hardware o software de la <b>APLICACIÓN</b> o fallos en la red de Internet). Igualmente, <b>CIENSO</b>. tampoco será responsable de los daños producidos como consecuencia de un uso indebido o inadecuado de la <b>APLICACIÓN</b> por parte de los usuarios.
+                   </p>
+                   <h2>
+                     5. LEGISLACIÓN Y FUERO
+                   </h2>
+                   <p>
+                     El usuario acepta que la legislación aplicable y los Juzgados y Tribunales competentes para conocer de las divergencias derivadas de la interpretación o <b>APLICACIÓN</b> de este clausulado son los españoles, y se somete, con renuncia expresa a cualquier otro fuero, a los juzgados y tribunales.
+                   </p>
+
+            </div>
+          </div>
+          <div style="width: 75%; margin: auto; margin-top: 3%; ">
+            <mat-checkbox name="acep" #acep class="example-margin" (click)="Aceptar(acep)" style="color: #ea3e27;">ACEPTO TODOS LO TERMINOS Y CONDICIONES</mat-checkbox>
+          </div>
+        </div>
+        <div style="width: 100%; text-align: right;">
+            <button mat-button matStepperPrevious>ATRAS</button>
+            <button mat-button  matStepperNext *ngIf="a">SIGUIENTE</button>
+        </div>
+      </mat-step>
+      <mat-step  disable label="SOLICITUD" >
+        <div class="card2">
+
+          <div class="card2-txt" style="width: 75%; margin: auto;" *ngIf="!a">
+            <h1 style="color: rgb(247, 63, 39);">
+              DEBE ACEPTAR NUESTROS TERMINOS Y CONDICIONES
+
+            </h1>
+            <button mat-button matStepperPrevious>ATRAS</button>
+          </div>
+          <div class="card2-tit" *ngIf="a">
+            <p>
+              <b>¡APROVECHA!!!!</b>  Ya que los primeros 200 usuarios que adquieran el <b>acceso ILIMITADO</b>
+              el precio de <b>LICENCIA ANUAL</b> será de solo <b>100 Bs.</b> asi que regístrate y adquiere tu acceso <b>PREMIUM</b>
+            </p>
+          </div>
+          <div *ngIf="a" style="width: 80%; margin: auto;">
+            <table class="tabla-precios" style="width: 100%;">
+              <tr>
+                <th class="premium">
+                  <h1>PREMIUM</h1>
+                  <h5 style="text-decoration: line-through;">149.99 Bs.</h5>
+                  <h4 style="color: rgb(247, 63, 39);"><b>99.90 Bs. ANUAL</b></h4>
+                  <h4 style="color: rgb(247, 63, 39);"><b>24.90 BS. MENSUAL</b></h4>
+                </th>
+              </tr>
+              </table>
+              <div>
+                <a  href="https://api.whatsapp.com/send?phone=+591|72410009&text=Hola%20PREDECONST%20quisiera%20obtener%20una%20cuenta%20de%20PAGO%20%E2%80%98%20https://www.predeconst.online/set.php?set={{id_us}}%20%E2%80%99" target="_blank">
+                  <div class="whatapp" >
+
+                    <div class="logo">
+                      <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="whatsapp" class="svg-inline--fa fa-whatsapp fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"></path></svg>
+                    </div>
+                    <div class="texto">
+                       <div class="t">
+                        COLICITA TU COMPRA AHORA<br>
+                        CLICK AQUI!
+                       </div>
+                    </div>
+                    <div style="clear: both;"></div>
+
+                  </div>
+                </a>
+              </div>
+          </div>
+
+        </div>
+        <div style="width: 100%; text-align: center;">
+
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </div>
+
+</div>

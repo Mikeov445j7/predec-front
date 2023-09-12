@@ -6,9 +6,9 @@
   <div style="width: 100%; text-align: right;">
     <button mat-flat-button (click)="agregarActividad()" style="background-color:#4F4F4F; color:#EAB127;" class="btnAgregar" ><mat-icon >add</mat-icon> AGREGAR ACTIVIDAD</button>
   </div>
-  <mat-spinner *ngIf="!actividades"  style="margin:auto;"></mat-spinner>
+  <mat-spinner *ngIf="!PxUact"  style="margin:auto;"></mat-spinner>
   <div class="scroll">
-    <table class="customTable" *ngIf="actividades">
+    <table class="customTable" *ngIf="PxUact">
       <thead>
         <tr style="border-bottom: 1px solid;">
           <th>N°</th>
@@ -21,19 +21,19 @@
         </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of actividades" style="border: 1px solid; text-align: center;" >
+      <tr *ngFor="let item of PxUact" style="border: 1px solid; text-align: center;" >
         <td>{{item.orden}}</td>
-        <td>{{item.descripcion}}</td>
-        <td>{{item.catidad}}</td>
+        <td>{{item.actividad}}</td>
+        <td>{{item.cantidad}}</td>
         <td>{{item.unidad}}</td>
-        <td>{{item.unitario | number : '1.2-2'}}</td>
-        <td>{{item.total | number : '1.2-2'}}</td>
+        <td>{{item.L | number : '1.2-2'}}</td>
+        <td>{{item.totalMod | number : '1.2-2'}}</td>
         <!--
           <td class="opcional1">{{item.fecha_ini_actv | date : 'dd-MM-YYYY'}}/{{item.fecha_fin_actv | date : 'dd-MM-YYY'}}</td>
         -->
         <td><button alt="VER" mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="verAct(item)"><mat-icon >visibility</mat-icon></button></td>
-        <td><button alt="EDITAR CANTIDAD ORDEN" mat-mini-fab style="background-color:#4F4F4F; color:#4eea27;" (click)="editarOrdenCant(item)"><mat-icon >edit</mat-icon></button></td>
-        <td><button alt="QUITAR" mat-mini-fab color="warn" (click)="quitar(item.id_rel_am)"><mat-icon >delete</mat-icon></button></td>
+        <td><button alt="EDITAR CANTIDAD ORDEN" mat-mini-fab style="background-color:#4F4F4F; color:#4eea27;" (click)="verificarPremiun(1,item)"><mat-icon >edit</mat-icon></button></td>
+        <td><button alt="QUITAR" mat-mini-fab color="warn" (click)="verificarPremiun(2, item.id_rel_am)"><mat-icon >delete</mat-icon></button></td>
       </tr >
     </tbody>
     </table>

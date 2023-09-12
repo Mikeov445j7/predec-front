@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 export class ProyectosService {
 
   public API = environment.url+"proyectos.php";
+  public API2 = environment.url+"copiarProyecto.php";
   constructor(
     private _Http: HttpClient
   ) { }
@@ -39,5 +40,9 @@ export class ProyectosService {
     }
     borrar(id:any){
       return this._Http.post(this.API+"?borrar="+id, id);
+    }
+
+    CopiarProyecto(data:any){
+      return this._Http.post(this.API2+"?CopiarProyecto=1", data);
     }
 }

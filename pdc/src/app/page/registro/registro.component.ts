@@ -69,7 +69,9 @@ export class RegistroComponent implements OnInit {
 
   registrar(r:any){
     let resp:any;
-    this.serv.usersAdd(r).subscribe(u=>{
+    console.log(r);
+
+      this.serv.usersAdd(r).subscribe(u=>{
       if(u){
         resp = u;
         console.log(resp);
@@ -89,6 +91,7 @@ export class RegistroComponent implements OnInit {
     });
 
   }
+
   login(){
     this._router.navigate(['login']);
 

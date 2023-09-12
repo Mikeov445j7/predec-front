@@ -45,5 +45,17 @@ export class UsersService {
     usersBorrar(id:any){
       return this.http.post(this.API+"?borrar="+id, id);
     }
+    userVerus(data:any){
+      return this.http.post(this.API+"?verUs=1", data);
+    }
+    userEditar(data:any){
+      return this.http.post(this.API+"?editar=1", data);
+    }
+    setPremiun(data:any){
+      return this.http.post(this.API+"?premiun=1", data);
+    }
+    contarUs(){
+      return this.http.get(this.API+"?contarUs=1");
+    }
 
 }

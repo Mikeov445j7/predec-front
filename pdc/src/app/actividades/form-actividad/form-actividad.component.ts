@@ -23,6 +23,8 @@ export class FormActividadComponent implements OnInit {
     public grupos:any;
     public edit = false;
     public act:any;
+    public us:any;
+    public modulo:any;
   constructor(
     public actServ: ActividadesService,
     private route: ActivatedRoute,
@@ -35,7 +37,6 @@ export class FormActividadComponent implements OnInit {
       if(g){
         this.grupos = g;
         console.log(this.grupos);
-
       }
     });
     if(this.route.snapshot.params['id_actividad']){
@@ -52,6 +53,15 @@ export class FormActividadComponent implements OnInit {
     } else {
       this.edit = false;
     }
+    if(this.route.snapshot.params['us']){
+      this.us=localStorage.getItem('id');
+      this.actividad.id_us = Number(localStorage.getItem('id'));
+      console.log(this.us);
+    }
+    if(this.route.snapshot.params['mod']){
+      this.modulo = this.route.snapshot.params['mod']
+      console.log(this.modulo);
+    }
   }
 
 
@@ -60,14 +70,15 @@ export class FormActividadComponent implements OnInit {
     this.actividad.unidad = data.unidad;
     this.actividad.grupos_actividad = data.grupos_actividad;
     console.log(this.actividad);
-
     this.actServ.add(this.actividad).subscribe(a=>{
       let success:any;
       if(a){
         success = a;
+
         console.log(success);
+
         //this.agregarInsumos(success.lastId);
-        this.router.navigate(['form-actividad/'+success.lastId]);
+        this.router.navigate(['form-actividad/'+success]);
 
         }
     })
@@ -130,7 +141,6 @@ export class FormActividadComponent implements OnInit {
   }
   agrgarinsumo(insumo:any){
     console.log(insumo);
-
   }
 
   quitarInsumo(tipo:number, item:any){
@@ -152,6 +162,13 @@ export class FormActividadComponent implements OnInit {
       }
     });
 
+  }
+
+  volverModulo(){
+    //ver-modulo/25
+    console.log(this.modulo);
+
+    this.router.navigate(['ver-modulo/'+this.modulo]);
   }
 
 }

@@ -1,0 +1,39 @@
+.card-usuario{
+  width: 70%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 3px 3px 3px 3px rgb(221, 220, 220);
+  border-radius: 10px;
+  margin-bottom: 3%;
+
+}
+.img{
+  float: left;
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+.cantidad{
+  float: left;
+  width: 240px;
+  height: 60px;
+  font-size: 60px;
+
+}
+
+@media only screen and (max-width: 420px) {
+  .card-usuario{
+    width: 100%;
+
+  }
+  .cantidad{
+    font-size: xx-large;
+  }
+
+
+}
+
