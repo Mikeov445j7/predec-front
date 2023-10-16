@@ -33,7 +33,7 @@
         -->
         <td><button alt="VER" mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="verAct(item)"><mat-icon >visibility</mat-icon></button></td>
         <td><button alt="EDITAR CANTIDAD ORDEN" mat-mini-fab style="background-color:#4F4F4F; color:#4eea27;" (click)="verificarPremiun(1,item)"><mat-icon >edit</mat-icon></button></td>
-        <td><button alt="QUITAR" mat-mini-fab color="warn" (click)="verificarPremiun(2, item.id_rel_am)"><mat-icon >delete</mat-icon></button></td>
+        <td><button alt="QUITAR" mat-mini-fab color="warn" (click)="abrirModal(item.id_rel_am)"><mat-icon >delete</mat-icon></button></td>
       </tr >
     </tbody>
     </table>
@@ -44,3 +44,22 @@
   <div style="width: 100%; text-align: center;"><button (click)="gantt()" class="btnAgregar" style="background-color:#4F4F4F; color:#ea9c27;">CRONOGRAMA</button></div>
   -->
   </div>
+
+
+
+  <div class="fondo" *ngIf="modal">
+    <div class="modal">
+
+      <div style="width: 100%; text-align: center;" >
+        <div class="sub-titulo-seccion" style="width: 100%; text-align: center;">ESTA SEGURO DE BORRAR LA ACTIVIDAD?</div>
+        <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="quitar()" >
+          SI
+        </button>
+        <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="closeModal()">
+          CANCELAR
+        </button>
+      </div>
+    </div>
+  </div>
+
+

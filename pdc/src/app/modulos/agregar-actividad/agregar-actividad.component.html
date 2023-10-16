@@ -45,8 +45,34 @@
         </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of actividades" style="border-bottom: 1px solid;" >
-        <td>{{item.descripcion}}</td>
+      <tr *ngFor="let item of actividades"  style="border-bottom: 1px solid;" >
+        <td *ngIf="item.id_us==='0'">{{item.descripcion}}</td>
+        <td *ngIf="item.id_us==='0'">{{item.unidad}}</td>
+        <td *ngIf="item.id_us==='0'">
+          <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)">
+          <mat-icon>add</mat-icon>
+          </button>
+        </td>
+        <td *ngIf="item.id_us==='0'">
+          <button mat-mini-fab *ngIf="item.id_us===duenio" style="background-color:#4F4F4F; color:#2782ea91;" (click)="edit(item)">
+          <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr >
+    </tbody>
+    </table>
+   </div>
+   <div class="list" *ngIf="actividades2.length && mostrar">
+    <table class="customTable" >
+      <thead>
+        <tr style="border-bottom: 1px solid;">
+          <th>Nombre</th>
+          <th>Unidad</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of actividades2"   style="border-bottom: 1px solid;" >
+        <td >{{item.descripcion}}</td>
         <td>{{item.unidad}}</td>
         <td>
           <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)">

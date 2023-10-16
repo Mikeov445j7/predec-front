@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AgregarActividadComponent implements OnInit {
   public actividades:any = [];
+  public actividades2:any = [];
   public actiData:any;
   public actividad:any;
   public listo=false;
@@ -75,6 +76,7 @@ export class AgregarActividadComponent implements OnInit {
     });
   }
   buscarActividad(param:string){
+    this.actividades2 = [];
     if(param.length>=3){
       this.actServ.buscar(param).subscribe(a=>{
         if(a){
@@ -164,10 +166,11 @@ export class AgregarActividadComponent implements OnInit {
     const data = {
       id_us: localStorage.getItem('id')
     }
+    this.actividades = [];
       this.actServ.misActividades(data).subscribe(a=>{
         if(a){
           console.log(a);
-          this.actividades = a;
+          this.actividades2 = a;
           this.mostrar = true;
           this.crearActividades = true;
         }

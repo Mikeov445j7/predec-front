@@ -1,8 +1,8 @@
 <div class="main-cont-div">
   <div class="sub-titulo-seccion"></div>
   <mat-form-field class="input-buscar" appearance="fill">
-    <mat-label>Buscar <i style="color: #aaa;"> (por C.I., Correo Electronico)</i></mat-label>
-    <input  required="true" matInput placeholder="Buscar CI, correo" name="busca" id="busca" #busca   (keyup)="buscar(busca.value)" (keydown.enter)="buscar(busca.value)" >
+    <mat-label>Buscar <i style="color: #aaa;"> (por celular, Correo Electronico)</i></mat-label>
+    <input  required="true" matInput placeholder="Buscar celular, correo" name="busca" id="busca" #busca   (keyup)="buscar(busca.value)" (keydown.enter)="buscar(busca.value)" >
   </mat-form-field>
         <button mat-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="buscar(busca.value)">
           <mat-icon>search</mat-icon>
@@ -11,7 +11,7 @@
           <table class="customTable" >
             <thead>
               <tr style="border-bottom: 1px solid;">
-                <th>C.I.</th>
+                <th>Movil</th>
                 <th>Nombre</th>
                 <th>CORREO</th>
 
@@ -19,7 +19,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let item of usuarios" style="border-bottom: 1px solid;" >
-              <td>{{item.ci}}</td>
+              <td>{{item.cel}}</td>
               <td>{{item.nombre}} {{item.apellidos}}</td>
               <td>{{item.mail}}</td>
               <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)"><mat-icon >local_shipping</mat-icon></button></td>

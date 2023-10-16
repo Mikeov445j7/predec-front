@@ -4,22 +4,26 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import { ModulosService } from '../../servicios/modulos.service';
 import {ActividadesService} from '../../servicios/actividades.service';
 import * as XLSX from 'xlsx';
-import { Modal_PremiumComponent } from 'src/app/modal_Premium/modal_Premium.component';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { Modal_PremiumComponent } from 'src/app/modal_Premium/modal_Premium.component';
 
 @Component({
-  selector: 'app-pxUactMod',
-  templateUrl: './pxUactMod.component.html',
-  styleUrls: ['./pxUactMod.component.scss']
+  selector: 'app-RtiempoxActiv',
+  templateUrl: './RtiempoxActiv.component.html',
+  styleUrls: ['./RtiempoxActiv.component.scss']
 })
-export class PxUactModComponent implements OnInit {
-  public PxUact:any=[];
+export class RtiempoxActivComponent implements OnInit {
+
+
+
   public modulo:any;
+  public reporte:any;
+  public modulos:any=[];
+  public totalProyecto:any;
   public p:any;
   constructor(
     public repServ: ReportesService,
-    public dialogo: MatDialogRef<PxUactModComponent>,
+    public dialogo: MatDialogRef<RtiempoxActivComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any,
     public modServ: ModulosService,
     public actServ: ActividadesService,
@@ -28,40 +32,33 @@ export class PxUactModComponent implements OnInit {
     public dia: MatDialog,
   ) { }
 
+
   ngOnInit() {
     this.p = localStorage.getItem('ygtErd#22');
     console.log(this.data);
-    this.modulo = this.data.mod;
-    console.log("MODULO:",this.modulo);
-    this.repServ.PUXact(this.data).subscribe(pu=>{
-      if(pu){
-        this.PxUact = pu;
+    this.repServ.RmanoObrXmod(this.data).subscribe(r=>{
+      let horasMod = 0;
+      this.reporte = r;
+      console.log(this.reporte.modulos);
+      for(let i=0; i<this.reporte.modulos.length; i++){
+        horasMod = 0;
+          for(let j=0; j<this.reporte.modulos[i].modulo.listadeinsumos.length; j++){
 
-        for(let i=0; i<this.PxUact.length; i++){
-          console.log(this.PxUact[i].materiales.A);
-          let gg = 0;
-          gg = Number(this.PxUact[i].manoObra.E)*(this.PxUact[i].he_men/100);
-          this.PxUact[i].equipo.H = Number(this.PxUact[i].equipo.F)+Number(gg);
-          let ii = 0;
-
-          ii =  (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H))*(Number(this.PxUact[i].g_grales)/100);
-          let jj = 0;
-          jj = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii)*(Number(this.PxUact[i].utilidad)/100);
-          let kk = 0;
-          kk = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii+jj)*(Number(this.PxUact[i].it)/100);
-          let ll = 0;
-          ll = (Number(this.PxUact[i].materiales.A) + Number(this.PxUact[i].manoObra.E) + Number(this.PxUact[i].equipo.H)+ii+jj+kk);
-          this.PxUact[i].I = ii.toFixed(2);
-          this.PxUact[i].J = jj.toFixed(2);
-          this.PxUact[i].K = kk.toFixed(2);
-          this.PxUact[i].L = ll.toFixed(2);
-          this.PxUact[i].G = gg.toFixed(2);
-
-          console.log("------",this.PxUact);
-        }
+            if(this.reporte.modulos[i].modulo.listadeinsumos[j].parcial!==0){
+              this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad = this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales[0].cantXmod;
+              this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad = (this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad * Number(this.reporte.modulos[i].modulo.listadeinsumos[j].cantidad)).toFixed(2);
+              horasMod = horasMod + Number(this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad);
+            }else {
+              this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad = 0;
+            }
+          }
+          this.reporte.modulos[i].modulo.horasMod = horasMod;
+          console.log(this.reporte.modulos[i].modulo);
       }
+
     });
   }
+
   cerrarDialogo(): void {
     const respuesta = {
       resultado:true,
@@ -69,16 +66,15 @@ export class PxUactModComponent implements OnInit {
     }
     this.dialogo.close(respuesta);
   }
+
   verificarPremiun(r:any){
     if( this.p == 7 || this.p == 8 ){
-
       if(r==1){
         this.exportToExcel();
       }
       if(r==2){
         this.print();
       }
-
     }
     else{
       console.log("NOOOOOOOOOO");
@@ -95,18 +91,13 @@ export class PxUactModComponent implements OnInit {
         }
         else {
           console.log(confirmado.data);
-
         }
-
       });
-
     }
-
   }
 
-
   exportToExcel(): void {
-    const nombre = 'Analisis_PU_'+this.modulo.nombre+'.xlsx'
+    const nombre = 'Presupuesto_por_módulo.xlsx'
     const element = document.getElementById('report');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
     const book: XLSX.WorkBook = XLSX.utils.book_new();
@@ -123,7 +114,7 @@ export class PxUactModComponent implements OnInit {
     popupWin?.document.write(`
       <html>
         <head>
-          <title>Analisis_PU_ ${this.modulo.nombre} </title>
+          <title>Presupuesto_por_módulo</title>
           <meta name="viewport" content="width=10000, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 
@@ -221,5 +212,4 @@ export class PxUactModComponent implements OnInit {
     popupWin?.document.close();
 
   }
-
 }

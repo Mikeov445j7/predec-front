@@ -5,3 +5,37 @@
    max-height: 500px;
    overflow-y: scroll;
 }
+
+
+.fondo {
+
+  background: rgba(0,0,0,0.5);
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  z-index: 1500;
+}
+.modal{
+  display: flex;
+  justify-content: center;
+  background: rgb(255, 255, 255);
+  width: 40%;
+  height: 12%;
+  position:absolute;
+  top:30%;
+  left:30%;
+}
+
+@media only screen and (max-width: 420px) {
+  .modal{
+    width: 80%;
+    height: 12%;
+    position:absolute;
+    top:30%;
+    left:10%;
+  }
+
+
+}

@@ -13,15 +13,27 @@
       <button mat-menu-item style="color:#4F4F4F; " (click)="totalMaterialXmodulo()" >Materiales Por Modulos</button>
       <button mat-menu-item style="color:#4F4F4F; " (click)="totalManosObraXmodulo()" >Mano de Obra Por Modulos</button>
       <button mat-menu-item style="color:#4F4F4F; " (click)="totalEquipoXmodulo()" >Equipo Por Modulos</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="PlanillaTiemposXActividad()" >Planilla de Tiempos Por Actividad</button>
+      <button mat-menu-item style="color:#4F4F4F; " (click)="PlanillaTiempos()" >Planilla de Tiempos Por Modulos</button>
       <!--
              <button mat-menu-item style="color:#4F4F4F; " (click)="totalinsumoProyecto()" >Desglose de insumos general: Materiales</button>
+             Planilla de tiempos
       -->
     </mat-menu>
 
   </div>
-  <mat-spinner *ngIf="!modulos"  style="margin:auto;"></mat-spinner>
-  <div style="width: 100%; text-align: right;"><button (click)="agregarModulo()" mat-flat-button  style="background-color:#4F4F4F; color:#eaa627;"><b>+</b> AGREGAR MODULO</button></div>
-  <div style="width: 100%; text-align: left;"><button (click)="copiarProyecto()" mat-flat-button  style="background-color:#4F4F4F; color:#27a3ea;"><b><--</b> Enviar Proyecto</button></div>
+
+  <div style="width: 100%; text-align: left; margin-bottom: 1%;">
+    <button (click)="agregarModulo()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#eaa627;"> <mat-icon>add</mat-icon> AGREGAR MODULO</button>
+    <button (click)="copiarProyecto()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#27a3ea;"> <mat-icon>arrow_upward</mat-icon> ENVIAR PROYECTO</button>
+    <button (click)="misprecios()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#46ac03;"> <mat-icon>price_change</mat-icon> MIS PRECIOS </button>
+  </div>
+
+  <div *ngIf="!modulos"  style="text-align: center;">
+    <mat-spinner  style="margin:auto;"></mat-spinner>
+    <h3>Cargando Proyectos ......</h3>
+  </div>
+
   <table class="customTable" *ngIf="modulos">
     <thead>
       <tr style="border-bottom: 1px solid;">

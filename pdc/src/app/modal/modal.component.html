@@ -2,7 +2,10 @@
 <div class="main-cont-div">
   <div class="seccion" *ngIf="actividad">
 
-    <div class="sub-titulo-seccion">{{data.mensaje}}</div>
+    <div class="sub-titulo-seccion">
+      {{data.mensaje}}
+      <h3 style="color:rgb(231, 26, 26)">VISTA PREVIA DE LA ACTIVIDAD NO CONTEMPLA TU PRECIOS</h3>
+    </div>
     <div class="ver-actividad">
       <div class="insumos"> Materiales </div>
       <table class="customTable" *ngIf="actividad.materiales!=='SIN MATERIALES'">

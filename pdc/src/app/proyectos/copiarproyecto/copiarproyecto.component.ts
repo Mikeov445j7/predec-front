@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dial
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import { UsersService } from 'src/app/servicios/users.service';
+import { Modal_PremiumComponent } from 'src/app/modal_Premium/modal_Premium.component';
 
 @Component({
   selector: 'app-copiarproyecto',
@@ -18,6 +19,8 @@ export class CopiarproyectoComponent implements OnInit {
   public aceptar=false;
   public id_proyec:any;
   public enviado=false;
+  public Premium=false;
+  public p:any;
   constructor(
     public proyecServ: ProyectosService,
     public dialogo: MatDialogRef<CopiarproyectoComponent>,
@@ -25,13 +28,42 @@ export class CopiarproyectoComponent implements OnInit {
     private route: ActivatedRoute,
     private router:Router,
     private usServ: UsersService,
+    public dia: MatDialog,
   ) { }
 
   ngOnInit() {
     console.log(this.data);
+    this.p = localStorage.getItem('ygtErd#22');
     this.id_proyec = this.data.id_proyec;
-
+    this.verificarPremiun();
   }
+  verificarPremiun(){
+    if( this.p == 7 || this.p == 8 ){
+        this.Premium = true;
+    }
+    else{
+      console.log("NOOOOOOOOOO");
+      this.dia.open( Modal_PremiumComponent, {
+        width: '80%',
+        data: {
+
+        }
+      })
+      .afterClosed()
+      .subscribe((confirmado:any) => {
+        if (confirmado.resultado) {
+
+        }
+        else {
+          console.log(confirmado.data);
+
+        }
+
+      });
+
+    }
+  }
+
   buscar(ci:any){
     if(ci.length>=3){
       this.usServ.usersBuscar(ci).subscribe(u=>{

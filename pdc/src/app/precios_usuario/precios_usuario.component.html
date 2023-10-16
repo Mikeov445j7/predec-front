@@ -1,0 +1,238 @@
+<div class="main-cont-div">
+  <div class="sub-titulo-seccion">Lista de insumos</div>
+
+  <mat-form-field>
+    <mat-label>Seleccione Tipo</mat-label>
+    <mat-select  (selectionChange)="getTipo($event)" >
+      <mat-option *ngFor="let op of itemsTipo" name="tipo" id="tipo" #tipo value="{{op.id}}" >
+        {{op.desc}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-flat-button color="primary"  style="background-color:#4F4F4F; color:#eaa627;"  type="submit" (click)="getPrecios()"><mat-icon>price_change</mat-icon> Mis Precios</button>
+  <div *ngIf="cargando">
+    <div *ngIf="!results.length"  style="text-align: center;">
+      <mat-spinner  style="margin:auto;"></mat-spinner>
+      <h3>Cargando Insumos ......</h3>
+    </div>
+  </div>
+ <div class="list" *ngIf="!editar">
+
+  <div class="table" *ngIf="results.length && !verMisPU" >
+    <div class="sub-titulo-seccion">Insumos Registrados en Este Proyecto</div>
+    <div *ngFor="let itemM of results">
+
+      <div class="sub-titulo-seccion nombremodulo">Modulo: {{itemM.nombre}}</div>
+      <table class="customTable">
+        <thead>
+          <tr style="border-bottom: 1px solid;">
+            <th>id</th>
+            <th>descripcion</th>
+            <th>unidad</th>
+            <th>PU Bs.</th>
+            <!--<th *ngIf="item===2">MES</th>
+            <th *ngIf="item===2">JORNAL</th>--->
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let items of itemM.insumos" style="border-bottom: 1px solid;" >
+          <td *ngIf="item===3">{{items.id_mat}}</td>
+          <td *ngIf="item===1">{{items.id_equip}}</td>
+          <td *ngIf="item===2">{{items.id_mo}}</td>
+          <td>{{items.descripcion}}</td>
+
+          <td>{{items.unidad}}</td>
+
+          <td>
+            <span>{{items.PU}}</span>
+          <!---
+                        <span *ngIf="selectItem">
+              <input type="number" name="pu" #pu value="{{items.PU}}">
+              <button style="background-color:#4F4F4F; color:#EAB127;" (click)="pus(pu.value)">Guardar</button>
+            </span>
+          -->
+
+          </td>
+          <!--<td *ngIf="item===2">{{items.jornal}}</td>
+          <td *ngIf="item===2">{{items.mes}}</td>--->
+          <td *ngIf="!selectItem"><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(items)"><mat-icon >edit</mat-icon></button></td>
+          <!--
+            <td>{{item.grupo_insumo}}</td>
+          -->
+        </tr >
+      </tbody>
+        </table>
+    </div>
+
+  </div>
+
+ </div>
+ <div class="list2" *ngIf="misPrecios && verMisPU">
+  <div class="sub-titulo-seccion">Mis precios para este Proyecto</div>
+  <div>
+    <div class="sub-titulo-seccion">Materiales</div>
+    <table class="customTable" *ngIf="misPrecios.materiales!==0">
+      <thead>
+        <tr style="border-bottom: 1px solid;">
+          <th>id</th>
+          <th>descripcion</th>
+          <th>unidad</th>
+          <th>PU Bs.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of misPrecios.materiales" style="border-bottom: 1px solid;" >
+          <td>{{items.id_mat}}</td>
+          <td>{{items.descripcion}}</td>
+          <td>{{items.unidad}}</td>
+          <td>
+            <span >{{items.pu_us}}</span>
+            <!---
+                          <span *ngIf="selectItem">
+              <input type="number" name="pu" #pu value="{{items.pu_us | number}}">
+              <button style="background-color:#4F4F4F; color:#EAB127;" (click)="pus(pu.value)">Guardar</button>
+            </span>
+            -->
+          </td>
+          <td *ngIf="!selectItem"><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem2(items)"><mat-icon >edit</mat-icon></button></td>
+          <td *ngIf="!selectItem"><button mat-mini-fab color = "warn" (click)="abrirModal(items)"><mat-icon >delete</mat-icon></button></td>
+        </tr >
+      </tbody>
+    </table>
+    <div *ngIf="misPrecios.materiales===0">SIN PRECIOS EN MATERIALES</div>
+  </div>
+  <div>
+    <div class="sub-titulo-seccion" >Mano de Obra</div>
+    <table class="customTable" *ngIf="misPrecios.manoObra!==0">
+      <thead>
+        <tr style="border-bottom: 1px solid;">
+          <th>id</th>
+          <th>descripcion</th>
+          <th>unidad</th>
+          <th>PU Bs.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of misPrecios.manoObra" style="border-bottom: 1px solid;" >
+          <td>{{items.id_mo}}</td>
+          <td>{{items.descripcion}}</td>
+          <td>{{items.unidad}}</td>
+          <td>
+            <span>{{items.pu_us}}</span>
+            <!---
+            <span *ngIf="selectItem">
+              <input type="number" name="pu" #pu value="{{items.pu_us | number }}">
+              <button style="background-color:#4F4F4F; color:#EAB127;" (click)="pus(pu.value)">Guardar</button>
+            </span>
+            -->
+          </td>
+          <td *ngIf="!selectItem"><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem2(items)"><mat-icon >edit</mat-icon></button></td>
+          <td *ngIf="!selectItem"><button mat-mini-fab color = "warn" (click)="abrirModal(items)"><mat-icon >delete</mat-icon></button></td>
+        </tr >
+      </tbody>
+    </table>
+    <div *ngIf="misPrecios.manoObra===0">SIN PRECIOS EN MANO DE OBRA</div>
+  </div>
+  <div>
+    <div class="sub-titulo-seccion">Equipo</div>
+    <table class="customTable" *ngIf="misPrecios.equipo!==0">
+      <thead>
+        <tr style="border-bottom: 1px solid;">
+          <th>id</th>
+          <th>descripcion</th>
+          <th>unidad</th>
+          <th>PU Bs.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of misPrecios.equipo" style="border-bottom: 1px solid;" >
+          <td>{{items.id_equip}}</td>
+          <td>{{items.descripcion}}</td>
+          <td>{{items.unidad}}</td>
+          <td>
+            <span>{{items.pu_us}}</span>
+             <!---
+                      <span *ngIf="selectItem">
+                      <input type="number" name="pu" #pu value="{{items.pu_us}}">
+                      <button style="background-color:#4F4F4F; color:#EAB127;" (click)="pus(pu.value)">Guardar</button>
+            </span>
+            -->
+          </td>
+          <td *ngIf="!selectItem"><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem2(items)"><mat-icon >edit</mat-icon></button></td>
+          <td *ngIf="!selectItem"><button mat-mini-fab color = "warn" (click)="abrirModal(items)"><mat-icon >delete</mat-icon></button></td>
+        </tr >
+      </tbody>
+    </table>
+    <div *ngIf="misPrecios.equipo===0">SIN PRECIOS EN EQUIPO</div>
+
+  </div>
+
+ </div>
+ <div class="editar" *ngIf="editar">
+      <table class="customTable" *ngIf="edit!==0">
+      <thead>
+        <tr style="border-bottom: 1px solid;">
+          <th>id</th>
+          <th>descripcion</th>
+          <th>unidad</th>
+          <th>PU Bs.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let items of edit" style="border-bottom: 1px solid;" >
+          <td>{{items.id_mat}}</td>
+          <td>{{items.descripcion}}</td>
+          <td>{{items.unidad}}</td>
+          <td>
+            <span *ngIf="!selectItem">{{items.pu_us}}</span>
+            <span *ngIf="selectItem">
+              <input type="number" name="pu" #pu value="{{items.pu_us}}">
+              <button style="background-color:#4F4F4F; color:#EAB127;" (click)="pus(pu.value)">Guardar</button>
+            </span>
+          </td>
+          <td *ngIf="!selectItem"><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem2(items)"><mat-icon >edit</mat-icon></button></td>
+          <td *ngIf="!selectItem"><button mat-mini-fab color = "warn" (click)="abrirModal(items)"><mat-icon >delete</mat-icon></button></td>
+        </tr >
+      </tbody>
+      </table>
+ </div>
+
+ <div style="text-align: center;">
+  <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="cerrarDialogo()" >
+    CERRAR <mat-icon>print</mat-icon>
+  </button>
+</div>
+ </div>
+
+
+
+ <div class="fondo" *ngIf="modal">
+  <div class="modal">
+
+    <div style="width: 100%; text-align: center;" >
+      <div class="sub-titulo-seccion" style="width: 100%; text-align: center;">ESTA SEGURO DE BORRAR EL PU DE ESTE INSUMO?</div>
+      <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="afirmativo()" >
+        SI
+      </button>
+      <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="closeModal()">
+        CANCELAR
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div class="fondo" *ngIf="modal2">
+  <div class="modal">
+
+    <div style="width: 100%; text-align: center;" >
+      <div class="sub-titulo-seccion" style="width: 100%; text-align: center;">Asignar Precios a este Insumo</div>
+      <button  mat-flat-button  style="margin:3%;" color="primary"  (click)="afirmativo()" >
+        GUARDAR
+      </button>
+      <button  mat-flat-button  style="margin:3%;" color="warn"  (click)="closeModal()">
+        CANCELAR
+      </button>
+    </div>
+  </div>
+</div>

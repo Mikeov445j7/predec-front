@@ -26,6 +26,10 @@
           <mat-label>MES</mat-label>
           <input type="number" matInput name="mes" #mes [(ngModel)]="model.mes">
         </mat-form-field>
+        <mat-form-field class="example-full-width" *ngIf="tabla===2">
+          <mat-label>Jerarquia</mat-label>
+          <input type="number" matInput name="jerarquia" #jerarquia [(ngModel)]="model.jerarquia">
+        </mat-form-field>
       </form>
       <div style="width: 100%; text-align: center;">
         <button *ngIf="edit" mat-raised-button style="width:100%" color="primary" [disabled]="itemForm.invalid" (click)="eventoBtn(itemForm.value)">

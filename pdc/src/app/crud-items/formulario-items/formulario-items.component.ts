@@ -25,7 +25,8 @@ export class FormularioItemsComponent implements OnInit {
     PU: 0,
     jornal:0,
     mes: 0,
-    grupo_insumo: 0
+    grupo_insumo: 0,
+    jerarquia:0
   };
   constructor(
     private route: ActivatedRoute,
@@ -79,6 +80,7 @@ export class FormularioItemsComponent implements OnInit {
             this.model.PU = Number(this.itemResult.PU);
             this.model.mes = Number(this.itemResult.jornal);
             this.model.jornal = Number(this.itemResult.mes);
+            this.model.jerarquia = Number(this.itemResult.jerarquia);
             console.log(this.itemResult);
           }
         });

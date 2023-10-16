@@ -25,6 +25,8 @@ export class ModulosComponent {
   public data:any;
   public PxUact:any;
   public p:any;
+  public modal= false;
+  public id_del:any;
 
   constructor(
     public modServ: ModulosService,
@@ -52,7 +54,6 @@ export class ModulosComponent {
     this.modServ.getUno(this.idModulo).subscribe(m=>{
 
       if(m){
-        console.log(m);
         this.modulo = m;
         this.modulo = this.modulo[0];
         this.data = {
@@ -65,7 +66,6 @@ export class ModulosComponent {
           fecha_inicio: this.modulo.fecha_inicio,
           ordenado:this.modulo.ordenado
         }
-        console.log("------------",this.data);
         this.verActividades2();
       }
     });
@@ -75,6 +75,7 @@ export class ModulosComponent {
   verActividades2(){
      this.repServ.PUXact(this.data).subscribe(pu=>{
       this.PxUact = pu;
+      console.log("----------------------------",this.PxUact);
       if(this.PxUact.success!==0){
         for(let i=0; i<this.PxUact.length; i++){
           let gg = 0;
@@ -101,7 +102,7 @@ export class ModulosComponent {
         this.count = this.PxUact.length;
         this.count = Number(this.count)+1;
 
-        console.log(this.PxUact);
+        console.log("----------------------------",this.PxUact);
 
       }else {
         this.PxUact =[];
@@ -157,16 +158,6 @@ export class ModulosComponent {
     });
   }
 
-  quitar(id:any){
-    console.log(id);
-    this.modServ.quitarActividad(id).subscribe(m=>{
-      if(m){
-        console.log(m);
-        this.verModulo();
-      }
-    });
-  }
-
   verificarPremiun(r:any, item:any){
     if( this.p == 7 || this.p == 8 ){
 
@@ -174,7 +165,7 @@ export class ModulosComponent {
         this.editarOrdenCant(item);
       }
       if(r==2){
-        this.quitar(item);
+        this.quitar();
       }
 
     }
@@ -299,6 +290,32 @@ export class ModulosComponent {
       this.verModulo();
     });
 
+  }
+
+  abrirModal(id:any){
+    this.modal = true;
+    this.id_del = Number(id);
+  }
+
+  afirmativo(){
+    this.quitar();
+  }
+
+  closeModal(){
+    this.modal = false;
+    this.id_del = 0
+  }
+
+
+  quitar(){
+    console.log(this.id_del);
+    this.modServ.quitarActividad(this.id_del).subscribe(m=>{
+      if(m){
+        console.log(m);
+        this.verModulo();
+        this.modal = false;
+      }
+    });
   }
 
 

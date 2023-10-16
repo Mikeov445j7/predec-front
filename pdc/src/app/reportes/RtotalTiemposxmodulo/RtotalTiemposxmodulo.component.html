@@ -25,13 +25,14 @@
 
             <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
               <td style="width: 2%; text-align: right;">></td>
-              <td style="width: 20%;">{{modulos.nombre}}</td>
+              <td style="width: 20%;">{{modulos.modulo.nombre}}</td>
               <td style="width: 5%;"></td>
               <td style="width: 5%;"></td>
               <td style="width: 10%;"></td>
-              <td style="width: 10%;">Parcial: {{modulos.totalModulo}}</td>
+              <td style="width: 10%;">Parcial: {{modulos.modulo.horasMod}} Hrs.</td>
             </tr>
-            <tr style="font-weight: bold; text-align: center;">
+            <!--
+              <tr style="font-weight: bold; text-align: center;">
               <td style="width: 2%;">Nº </td>
               <td style="width: 20%;">Descripción </td>
               <td style="width: 5%;">Und. </td>
@@ -47,18 +48,20 @@
               <td style="width: 10%;">{{a.pUnitario}}</td>
               <td style="width: 10%;">{{a.costoT}}</td>
             </tr>
+            -->
           </table>
         </div>
         <table class="customTable">
           <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
-            <td>TOTAL PRESUPUESTO:</td>
-            <td>{{totalProyecto}}</td>
+            <td>TOTAL TIEMPO:</td>
+            <td>{{totalProyecto}} Hrs.</td>
           </tr>
           <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
             <td></td>
             <td>Calculado por http://predeconst.online/</td>
           </tr>
         </table>
+
       </div>
       <br>
 
@@ -75,3 +78,4 @@
     </button>
   </div>
 </div>
+

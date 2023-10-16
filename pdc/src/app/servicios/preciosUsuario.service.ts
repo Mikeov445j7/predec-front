@@ -5,16 +5,17 @@ import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
-  })
-export class MaterialesService {
+})
+export class PreciosUsuarioService {
 
-  public API = environment.url+'materiales.php';
+
+public API = environment.url+'preciosUsuario.php';
 
 constructor(
   private _Http: HttpClient
 ) { }
-  ver(){
-    return this._Http.get(this.API+"?listar=1");
+  ver(data:any){
+    return this._Http.post(this.API+"?listar=1", data);
   }
   getUno(id:any){
     return this._Http.get(this.API+"?consultar="+id);
@@ -25,10 +26,14 @@ constructor(
   add(data:any){
     return this._Http.post(this.API+"?insertar=1", data);
   }
-  editar(id:any, data:any){
-    return this._Http.post(this.API+"?actualizar="+id, data);
+  editar(data:any){
+    return this._Http.post(this.API+"?actualizar=1", data);
   }
-  borrar(id:any){
-    return this._Http.post(this.API+"?borrar="+id, id);
+  borrar(data:any){
+    return this._Http.post(this.API+"?borrar=1", data);
   }
+  verificar(data:any){
+    return this._Http.post(this.API+"?verificar=1", data);
+  }
+
 }

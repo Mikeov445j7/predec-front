@@ -48,6 +48,9 @@ import { SetPremiunComponent } from './upgrade/setPremiun/setPremiun.component';
 import { Modal_PremiumComponent } from './modal_Premium/modal_Premium.component';
 import { GestionUsuariosComponent } from './upgrade/gestionUsuarios/gestionUsuarios.component';
 import { CopiarproyectoComponent } from './proyectos/copiarproyecto/copiarproyecto.component';
+import { Precios_usuarioComponent } from './precios_usuario/precios_usuario.component';
+import { RtotalTiemposxmoduloComponent } from './reportes/RtotalTiemposxmodulo/RtotalTiemposxmodulo.component';
+import { RtiempoxActivComponent } from './reportes/RtiempoxActiv/RtiempoxActiv.component';
 
 
 
@@ -91,7 +94,10 @@ import { CopiarproyectoComponent } from './proyectos/copiarproyecto/copiarproyec
       SetPremiunComponent,
       Modal_PremiumComponent,
       GestionUsuariosComponent,
-      CopiarproyectoComponent
+      CopiarproyectoComponent,
+      Precios_usuarioComponent,
+      RtotalTiemposxmoduloComponent,
+      RtiempoxActivComponent
    ],
   imports: [
     BrowserModule,

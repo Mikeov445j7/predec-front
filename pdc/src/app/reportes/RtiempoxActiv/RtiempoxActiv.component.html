@@ -1,6 +1,6 @@
 <div class="main-cont-div">
   <mat-spinner *ngIf="!reporte" style="margin:auto;"></mat-spinner>
-  <div class="sub-titulo-seccion">Desglose de insumos por ítem: EQUIPO</div>
+  <div class="sub-titulo-seccion">Desglose de insumos por ítem: MANO DE OBRA</div>
   <div *ngIf="reporte" class="report" id="report" >
       <div>
         <table class="customTable">
@@ -23,43 +23,43 @@
         <div *ngFor="let modulos of reporte.modulos" style="width: 100%;">
           <table class="customTable" style="width: 100%;">
             <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; ">
-              <td style="width: 2%;width: 100%;">> {{modulos.modulo.nombre}} </td>
+              <td style="width: 2%;width: 100%;">Mod.: {{modulos.modulo.nombre}} </td>
             </tr>
-
           </table>
-          <div *ngFor="let a of modulos.modulo.listadeinsumos">
-            <table style="width: 100%; border-collapse: collapse;">
+          <div >
+            <table  style="width: 100%; border-collapse: collapse;">
               <tr style="background-color: #d8d8d8; border: 2px solid #000; font-weight: bold; width: 100%;">
-                <td style="">{{a.descripcion}} {{a.unidad}}</td>
-                <td style="">Unid.: {{a.unidad}}</td>
-                <td style="">Cantidad: {{a.cantidad}}</td>
+                <td style="width: 75%; max-width: 76%;">ACTIVIDAD</td>
+                <td style=""> UNIDAD </td>
+                <td style=""> CANT. </td>
+                <td style=""> HORAS </td>
+              </tr>
+              <tr *ngFor="let a of modulos.modulo.listadeinsumos" style="border: 1px solid #000;  width: 100%;">
+                <td style="width: 75%; max-width: 76%;">{{a.descripcion}}</td>
+                <td style="">{{a.unidad}}</td>
+                <td style="">{{a.cantidad}}</td>
+                <td style="">{{a.totalHorasActividad}}</td>
               </tr>
             </table>
-            <div>
-              <table class="customTable" style="width: 100%;">
-                <tr>
-                  <td>Nº</td>
-                  <td>Items</td>
-                  <td>Unidad</td>
-                  <td>PU</td>
-                  <td>Cant.</td>
-                  <td>Parcial (Bs)</td>
-                <tr>
-                <tr *ngFor="let b of a.Materiales">
-                  <td>-</td>
-                  <td>{{b.insumo}}</td>
-                  <td>{{b.unidad}}</td>
-                  <td>{{b.PU}}</td>
-
-                  <td>{{b.cantXmod}}</td>
-                  <td>{{b.parcial}}</td>
-                <tr>
-              </table>
-              <div style="text-align: center; font-weight: bold;"> Calculado por http://predeconst.online/</div>
-            </div>
           </div>
-        </div>
+          <table class="customTable">
+            <tr>
+             <td></td>
+             <td><b>TOTAL Hrs:  </b> </td>
+             <td><b>{{modulos.modulo.horasMod}} </b> </td>
+            </tr>
+         </table>
 
+
+        </div>
+        <table class="customTable">
+          <tr>
+           <td></td>
+           <td>Calculado por http://predeconst.online/ </td>
+           <td></td>
+          </tr>
+
+       </table>
   </div>
 
 </div>

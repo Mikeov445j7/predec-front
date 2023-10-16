@@ -18,6 +18,9 @@ import { RtotalManoObraxModuComponent } from 'src/app/reportes/RtotalManoObraxMo
 import { RtotalEquipoxModuComponent } from 'src/app/reportes/RtotalEquipoxModu/RtotalEquipoxModu.component';
 import { RtotalInsumosProyectoComponent } from 'src/app/reportes/RtotalInsumosProyecto/RtotalInsumosProyecto.component';
 import { CopiarproyectoComponent } from '../copiarproyecto/copiarproyecto.component';
+import { Precios_usuarioComponent } from 'src/app/precios_usuario/precios_usuario.component';
+import { RtotalTiemposxmoduloComponent } from 'src/app/reportes/RtotalTiemposxmodulo/RtotalTiemposxmodulo.component';
+import { RtiempoxActivComponent } from 'src/app/reportes/RtiempoxActiv/RtiempoxActiv.component';
 
 
 @Component({
@@ -33,6 +36,7 @@ export class VerProyectoComponent {
   public actividades:any;
   public count:any;
   public id_us:any;
+  public premium:any;
   constructor(
     public proyecServ: ProyectosService,
     public modServ: ModulosService,
@@ -46,11 +50,12 @@ export class VerProyectoComponent {
 
     if(this.route.snapshot.params['idProyecto']){
       this.id_us = localStorage.getItem('id');
+      this.premium = localStorage.getItem('ygtErd#22');
       this.idProyecto = Number(this.route.snapshot.params['idProyecto']);
       this.getProyecto();
     }
 
-    }
+  }
 
 
   getProyecto(){
@@ -96,7 +101,8 @@ export class VerProyectoComponent {
       panelClass: "modal-responisvo",
       data: {
         id_proyec: this.idProyecto,
-        tipo: "rpresuXmod",
+        id_us: this.id_us,
+        tipo: "misprecios",
         cod:1
       }
     })
@@ -113,7 +119,32 @@ export class VerProyectoComponent {
     });
 
   }
+  misprecios(){
 
+    this.dialogo.open( Precios_usuarioComponent, {
+      maxWidth: '100vw',
+      width: '100%',
+      panelClass: 'full-screen-modal',
+      data: {
+        id_proyec: this.idProyecto,
+        id_us: this.id_us,
+        tipo: "misprecios",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+
+      }
+      this.getModulos();
+    });
+
+  }
   selecItem(item:any){
     console.log(item.id_modulo);
     this.router.navigate(['ver-modulo/'+item.id_modulo]);
@@ -210,7 +241,6 @@ export class VerProyectoComponent {
     });
 
   }
-
   equipoMod(){
     this.dialogo.open( RequipoXmodComponent, {
       panelClass: "modal-responisvo",
@@ -338,6 +368,46 @@ export class VerProyectoComponent {
       this.getModulos();
     });
 
+  }
+  PlanillaTiemposXActividad(){
+    this.dialogo.open( RtiempoxActivComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "RtotalTiemposxmodulo",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+      }
+      this.getModulos();
+    });
+  }
+  PlanillaTiempos(){
+    this.dialogo.open( RtotalTiemposxmoduloComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        id_proyec: this.idProyecto,
+        tipo: "RtotalTiemposxmodulo",
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+      }
+      else {
+        console.log(confirmado.data);
+      }
+      this.getModulos();
+    });
   }
 
 }

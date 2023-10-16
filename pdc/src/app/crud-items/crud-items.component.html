@@ -34,6 +34,7 @@
         <th>PU Bs.</th>
         <th *ngIf="item===2">MES</th>
         <th *ngIf="item===2">JORNAL</th>
+        <th *ngIf="item===2">Jerarquia</th>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +47,7 @@
       <td>{{items.PU}}</td>
       <td *ngIf="item===2">{{items.jornal}}</td>
       <td *ngIf="item===2">{{items.mes}}</td>
+      <td *ngIf="item===2">{{items.jerarquia}}</td>
       <!--
         <td>{{item.grupo_insumo}}</td>
       -->
