@@ -186,11 +186,16 @@ table.customTable th {
 }
 table.customTable td{
   padding: 5px;
+  border: 1px solid;
 }
 
 table.customTable thead {
   background-color: #4F4F4F;
   color: #EAB127;
+}
+table td {
+  border: 1px solid #4F4F4F;
+  font-size: 11px;
 }
 
 

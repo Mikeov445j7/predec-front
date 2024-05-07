@@ -10,7 +10,7 @@ export class ComponentesService {
    //API:string='http://localhost/pdc/pdc-back/apis/cruds/user.php';
 
    //API:string='https://boliviadark.com/apis/user.php';
-   API:string='https://www.predeconst.online/apis/user.php';
+   API:string='https://predecons.online/apis/user.php';
   constructor(
     private http:HttpClient,
   ) { }

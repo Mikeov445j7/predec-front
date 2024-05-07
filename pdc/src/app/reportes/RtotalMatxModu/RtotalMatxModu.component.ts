@@ -45,7 +45,7 @@ export class RtotalMatxModuComponent implements OnInit {
         for(let j=0; j<this.reporte.modulos[i].insumos.length; j++){
           sum = sum + this.reporte.modulos[i].insumos[j].costoT;
         }
-        this.reporte.modulos[i].totalModulo = sum.toFixed(2);
+        this.reporte.modulos[i].totalModulo = sum;
       }
       this.totalProyecto = 0;
       for(let i=0; i<this.reporte.modulos.length; i++){

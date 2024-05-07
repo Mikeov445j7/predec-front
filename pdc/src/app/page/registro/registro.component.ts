@@ -16,7 +16,8 @@ export class RegistroComponent implements OnInit {
     mail:'',
     password:'',
     nombre:'',
-    apellido:''
+    apellido:'',
+    cel:''
    }
    public usuario:any;
    public registro= false;

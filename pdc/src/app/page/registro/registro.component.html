@@ -4,12 +4,14 @@
   </div>
   <div *ngIf="!cargando">
 <div style="width: 100%; margin: auto;">
-  <h4 style="color: #2c2107;">
+  <!---
+      <h4 style="color: #2c2107;">
     <p>
       <b>¡APROVECHA!!!!</b>  Ya que los primeros 200 usuarios que adquieran el <b>acceso ILIMITADO</b>
       el precio de <b>LICENCIA ANUAL</b> será de solo <b>100 Bs.</b> asi que regístrate y adquiere tu acceso <b>PREMIUM</b>
     </p>
   </h4>
+    --->
 </div>
     <mat-label><h2>REGISTRARSE</h2></mat-label>
     <form  #regForm="ngForm">
@@ -35,6 +37,12 @@
         <mat-label><h4>APELLIDOS</h4></mat-label>
         <mat-form-field>
           <input  type="text" matInput  required name="apellido"  placeholder="APELLIDOS"  #apellido [(ngModel)]="userReg.apellido">
+        </mat-form-field>
+      </div>
+      <div class="campoForm">
+        <mat-label><h4>Numero Movil <i style="color: #aaa;">(+591xxxxxx)</i></h4></mat-label>
+        <mat-form-field>
+          <input  type="text" matInput   name="cel"  placeholder="cel"  #cel [(ngModel)]="userReg.cel">
         </mat-form-field>
       </div>
     </form>
