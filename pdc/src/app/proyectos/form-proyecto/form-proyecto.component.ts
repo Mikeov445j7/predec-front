@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProyectosService } from 'src/app/servicios/proyectos.service';
 import * as moment from 'moment';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-form-proyecto',
@@ -35,18 +36,22 @@ export class FormProyectoComponent implements OnInit {
   public edit = false;
 
   constructor(
+    public dialogo: MatDialogRef<FormProyectoComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any,
     public proyecServ: ProyectosService,
     private route: ActivatedRoute,
     private router:Router,
   ) { }
 
   ngOnInit() {
-    if(this.route.snapshot.params['idProyecto']){
-      this.idProyecto = Number(this.route.snapshot.params['idProyecto']);
+    if(this.data.idProyecto){
+      this.idProyecto = this.data.idProyecto;
       this.getProyecto();
+      this.edit = true;
+      this.titulo = "EDITAR PROYECTO";
+    } else {
+      this.titulo = "NUEVO PROYECTO"
     }
-      if(this.edit){ this.titulo = "Registrar Nuevo Proyecto"}
-      if(!this.edit){ this.titulo = "Editar Proyecto"}
   }
 
   getProyecto(){
@@ -61,7 +66,7 @@ export class FormProyectoComponent implements OnInit {
           id_us:localStorage.getItem('id'),
           nombre:this.proyecto. nombre,
           codigo:this.proyecto.codigo,
-          fecha_creacion:this.proyecto.fecha_creacion,
+          fecha_creacion:moment(this.proyecto.fecha_creacion).format('yyyy-MM-DD'),
           Ben_Soc:this.proyecto.Ben_Soc,
           iva:this.proyecto.iva,
           he_men: this.proyecto.he_men,
@@ -82,11 +87,9 @@ export class FormProyectoComponent implements OnInit {
   eventoBtn(data:any){
     if(this.edit){ this.editarProyecto(data);}
     if(!this.edit){ this.registarProyecto(data); }
-
   }
 
   registarProyecto(data:any){
-
     data.id_us = localStorage.getItem('id');
     data.fecha_creacion = moment(data.fecha_creacion).format('YYYY-M-D');
     console.log(data);
@@ -94,7 +97,7 @@ export class FormProyectoComponent implements OnInit {
     this.proyecServ.add(data).subscribe(r=>{
       if(r){
         console.log(r);
-        this.router.navigate(['/proyectos']);
+        this.cerrarDialogo();
       }
     });
 
@@ -106,8 +109,7 @@ export class FormProyectoComponent implements OnInit {
     this.proyecServ.editar(this.idProyecto, data).subscribe(r=>{
       if(r){
         console.log(r);
-        this.router.navigate(['/proyectos']);
-
+        this.cerrarDialogo();
       }
     });
 
@@ -121,5 +123,14 @@ export class FormProyectoComponent implements OnInit {
       }
     });
 
+  }
+
+
+  cerrarDialogo(): void {
+    const respuesta = {
+      resultado:true,
+      data: "Operación Cancelada"
+    }
+    this.dialogo.close(respuesta);
   }
 }

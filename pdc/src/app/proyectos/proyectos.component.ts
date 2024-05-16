@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProyectosService } from '../servicios/proyectos.service'
+import { MatDialog } from '@angular/material/dialog';
+import { FormProyectoComponent } from './form-proyecto/form-proyecto.component';
 
 @Component({
   selector: 'app-proyectos',
@@ -35,7 +37,8 @@ public proyectos = {
   public cantP:any;
   constructor(
     private proyecServ: ProyectosService,
-    private router:Router
+    private router: Router,
+    public dialogo: MatDialog,
   ) { }
   ngOnInit() {
     this.p = localStorage.getItem('ygtErd#22');
@@ -89,11 +92,46 @@ public proyectos = {
     //this.router.navigate(['editar-proyecto/'+i.id_proyec]);
   }
   EditItem(i:any){
-    console.log(i.id_proyec);
-    this.router.navigate(['editar-proyecto/'+i.id_proyec]);
+
+    this.dialogo.open( FormProyectoComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        cod: 1,
+        idProyecto:i.id_proyec
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+        this.listar();
+      }
+      else {
+        console.log(confirmado.data);
+        this.listar();
+      }
+
+    });
   }
   agregarItem(){
-    this.router.navigate(['nuevo-proyecto']);
+  this.dialogo.open( FormProyectoComponent, {
+      panelClass: "modal-responisvo",
+      data: {
+        cod:1
+      }
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+        this.listar();
+      }
+      else {
+        console.log(confirmado.data);
+        this.listar();
+      }
+
+    });
   }
   premiun(){
     this.router.navigate(['upgrd']);

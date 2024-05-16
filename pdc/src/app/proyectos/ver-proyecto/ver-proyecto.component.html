@@ -27,6 +27,8 @@
     <button (click)="agregarModulo()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#eaa627;"> <mat-icon>add</mat-icon> AGREGAR MODULO</button>
     <button (click)="copiarProyecto()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#27a3ea;"> <mat-icon>arrow_upward</mat-icon> ENVIAR PROYECTO</button>
     <button (click)="misprecios()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#46ac03;"> <mat-icon>price_change</mat-icon> MIS PRECIOS </button>
+    <button (click)="misprecios()" mat-flat-button  style="margin-right: 2%; background-color:#4F4F4F; color:#46ac03;"> <mat-icon>price_change</mat-icon> MIS PRECIOS </button>
+    <button (click)="editarProyecto()" mat-flat-button style="margin-right: 2%; background-color:#4F4F4F; color:#46ac03;"><mat-icon>edit</mat-icon> EDITAR</button>
   </div>
 
   <div *ngIf="!modulos"  style="text-align: center;">
@@ -50,18 +52,9 @@
       <td>{{item.fecha_inicio}}</td>
       <td>{{item.orden}}</td>
       <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)"><mat-icon >visibility</mat-icon></button></td>
-
     </tr >
   </tbody>
   </table>
-    <!--
-          <div  style="margin-top: 3%; text-align: center;">
-      <button mat-flat-button style="background-color:#4F4F4F; color:#279cea; margin-right: 3%; margin-top: 3%;" (click)="PresMod()" >Presupuesto por Módulo</button>
-      <button mat-flat-button style="background-color:#4F4F4F; color:#eae727; margin-right: 3%; margin-top: 3%;" (click)="ResGral()" >Resumen General</button>
-      <button mat-flat-button style="background-color:#4F4F4F; color:#ea4427; margin-right: 3%; margin-top: 3%;" (click)="matMod()" >Materiales por Módulo</button>
-      <button mat-flat-button style="background-color:#4F4F4F; color:#27ea31; margin-right: 3%; margin-top: 3%;" (click)="manoOMod()" >Mano de Obra por Módulo</button>
-      <button mat-flat-button style="background-color:#4F4F4F; color:#ea2789; margin-right: 3%; margin-top: 3%;" (click)="equipoMod()" >Equipo por Módulo</button>
-    </div>
-    -->
+
   </div>
 </div>

@@ -3,12 +3,11 @@
 
  <div class="list" >
   <div class="buscar">
-    <div class="tit-seccion"><h2>Busqueda</h2></div>
-    <mat-form-field class="input-buscar" appearance="fill">
+    <mat-form-field class="input-buscar" style="width: 50%;">
        <mat-label>Buscar</mat-label>
        <input  required="true" matInput placeholder="NOMBRE PROYECTO" #buscar  (keydown.enter)="buscarItem(buscar.value)" >
     </mat-form-field>
-    <button mat-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="buscarItem(buscar.value)">
+    <button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;"  type="submit" (click)="buscarItem(buscar.value)">
     <mat-icon>search</mat-icon>
     </button>
     <button  mat-raised-button  *ngIf="Pr" style="background-color:  #4F4F4F; color:#EAB127; margin-bottom: 2%;"   type="submit" (click)="agregarItem()">
@@ -37,10 +36,10 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of results" style="border-bottom: 1px solid;" (click)="selecItem(item)">
+    <tr  class="trdata" *ngFor="let item of results" style="border-bottom: 1px solid;" (click)="selecItem(item)">
       <td>{{item.nombre}}</td>
       <td class="opcional3">{{item.codigo}}</td>
-      <td class="opcional3">{{item.fecha_creacion}}</td>
+      <td class="opcional3">{{item.fecha_creacion | date: 'dd/mm/yy'}}</td>
       <td class="opcional2">{{item.Ben_Soc}}</td>
       <td class="opcional1">{{item.iva}}</td>
       <td class="opcional2">{{item.he_men}}</td>
@@ -50,8 +49,6 @@
       <td class="opcional5">{{item.cliente}}</td>
       <td class="opcional1">{{item.tip_cambio}}</td>
       <td class="opcional4">{{item.ubicacion}}</td>
-      <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="EditItem(item)"><mat-icon >edit</mat-icon></button></td>
-      <td><button mat-mini-fab style="background-color:#4F4F4F; color:#EAB127;" (click)="selecItem(item)"><mat-icon >visibility</mat-icon></button></td>
     </tr >
   </tbody>
   </table>

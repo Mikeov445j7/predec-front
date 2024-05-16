@@ -1,14 +1,11 @@
 .scroll{
-   width: 95%;
+   width: 98%;
    padding: 1%;
    margin: auto;
    max-height: 500px;
    overflow-y: scroll;
 }
-
-
 .fondo {
-
   background: rgba(0,0,0,0.5);
   position:absolute;
   top:0px;
@@ -28,6 +25,24 @@
   left:30%;
 }
 
+.panel {
+  position: fixed;
+  left: 99%;
+  top: calc(15% + 60px);
+  width: 0px;
+  transition: 1s;
+  overflow: hidden;
+  z-index: 1000;
+  background-color: #fff;
+
+}
+input:checked+.panel {
+  border-radius: 5px;
+  left: calc(99% - 440px);
+  z-index: 10000;
+  width: 450px;
+  box-shadow: 1px 1px 1px 1px rgba(136, 135, 135, 0.726);
+}
 @media only screen and (max-width: 420px) {
   .modal{
     width: 80%;

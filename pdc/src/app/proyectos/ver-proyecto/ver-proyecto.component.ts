@@ -21,6 +21,7 @@ import { CopiarproyectoComponent } from '../copiarproyecto/copiarproyecto.compon
 import { Precios_usuarioComponent } from 'src/app/precios_usuario/precios_usuario.component';
 import { RtotalTiemposxmoduloComponent } from 'src/app/reportes/RtotalTiemposxmodulo/RtotalTiemposxmodulo.component';
 import { RtiempoxActivComponent } from 'src/app/reportes/RtiempoxActiv/RtiempoxActiv.component';
+import { FormProyectoComponent } from '../form-proyecto/form-proyecto.component';
 
 
 @Component({
@@ -410,4 +411,27 @@ export class VerProyectoComponent {
     });
   }
 
+  editarProyecto() {
+    this.dialogo.open(FormProyectoComponent, {
+      width: '100%',
+      panelClass: "modal-responisvo",
+      data: {
+        cod: 1,
+        idProyecto: this.idProyecto
+      }
+
+    })
+    .afterClosed()
+    .subscribe((confirmado:any) => {
+      if (confirmado.resultado) {
+        console.log(confirmado);
+        this.getProyecto();
+       }
+      else {
+        console.log(confirmado.data);
+        this.getProyecto();
+      }
+
+    });
+  }
 }

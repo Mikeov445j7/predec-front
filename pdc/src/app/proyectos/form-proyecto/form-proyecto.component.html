@@ -1,57 +1,75 @@
+<div class="closeBtn">
+  <button mat-fab color="warn" (click)="cerrarDialogo()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
 <div class="main-cont-div">
   <div class="sub-titulo-seccion">FORMULARIO: {{titulo}}</div>
   <div class="form-div">
       <form #itemForm = "ngForm">
-        <mat-form-field class="example-full-width">
-          <mat-label>NOMBRE</mat-label>
-          <input required matInput name="nombre" #nombre [(ngModel)]="proyectos.nombre">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>CODIGO</mat-label>
-          <input  required matInput name="codigo" #codigo [(ngModel)]="proyectos.codigo">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>CLIENTE</mat-label>
-          <input  matInput name="cliente" #cliente [(ngModel)]="proyectos.cliente">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>UBICACION</mat-label>
-          <input matInput name="ubicacion" #ubicacion [(ngModel)]="proyectos.ubicacion">
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>FECHA</mat-label>
-          <input matInput [matDatepicker]="picker"  value="{{fecha}}" name="fecha_creacion" #fecha_creacion [(ngModel)]="proyectos.fecha_creacion">
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>BENEFICIOS SOCIALES (%)</mat-label>
-          <input type="number" matInput name="Ben_Soc" #Ben_Soc [(ngModel)]="proyectos.Ben_Soc">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>I.V.A. (%)</mat-label>
-          <input type="number" matInput name="iva" #iva [(ngModel)]="proyectos.iva">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>HERRRAMIENTAS MENORES (%)</mat-label>
-          <input type="number" matInput name="he_men" #he_men [(ngModel)]="proyectos.he_men">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>GASTOS GENERALES (%)</mat-label>
-          <input type="number" matInput name="g_grales" #g_grales [(ngModel)]="proyectos.g_grales">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>UTILIDAD (%)</mat-label>
-          <input type="number" matInput name="utilidad" #utilidad [(ngModel)]="proyectos.utilidad">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>IT (%)</mat-label>
-          <input type="number" matInput name="IT" #IT [(ngModel)]="proyectos.IT">
-        </mat-form-field>
-        <mat-form-field class="example-full-width" >
-          <mat-label>TIPO DE CAMBIO ](Bs.)</mat-label>
-          <input type="number" matInput name="tip_cambio" #tip_cambio [(ngModel)]="proyectos.tip_cambio">
-        </mat-form-field>
+
+          <div class="campos">
+            <div class="campoForm">
+              <mat-label>NOMBRE</mat-label><br>
+              <input required matInput name="nombre" #nombre [(ngModel)]="proyectos.nombre">
+            </div>
+          </div>
+          <div class="campos">
+            <div class="campoForm">
+              <mat-label>CLIENTE</mat-label><br>
+              <input matInput name="cliente" #cliente [(ngModel)]="proyectos.cliente">
+            </div>
+            <div class="campoForm">
+              <mat-label>CODIGO</mat-label><br>
+              <input required matInput name="codigo" #codigo [(ngModel)]="proyectos.codigo">
+            </div>
+          </div>
+          <div class="campos">
+            <div class="campoForm">
+              <mat-label>UBICACION</mat-label><br>
+              <input matInput name="ubicacion" #ubicacion [(ngModel)]="proyectos.ubicacion">
+            </div>
+            <div class="campoForm">
+              <mat-label>FECHA</mat-label><br>
+              <input matInput type="date" value="{{proyectos.fecha_creacion}}" name="fecha_creacion" #fecha_creacion [(ngModel)]="proyectos.fecha_creacion">
+            </div>
+            <div class="campoForm">
+              <mat-label>BENEFICIOS SOCIALES (%)</mat-label>
+              <input type="number" matInput name="Ben_Soc" #Ben_Soc [(ngModel)]="proyectos.Ben_Soc">
+            </div>
+          </div>
+          <div class="campos">
+            <div class="campoForm">
+              <mat-label>I.V.A. (%)</mat-label>
+              <input type="number" matInput name="iva" #iva [(ngModel)]="proyectos.iva">
+            </div>
+            <div class="campoForm">
+              <mat-label>HERRRAMIENTAS MENORES (%)</mat-label>
+              <input type="number" matInput name="he_men" #he_men [(ngModel)]="proyectos.he_men">
+            </div>
+            <div class="campoForm">
+              <mat-label>GASTOS GENERALES (%)</mat-label>
+              <input type="number" matInput name="g_grales" #g_grales [(ngModel)]="proyectos.g_grales">
+            </div>
+          </div>
+          <div class="campos">
+            <div class="campoForm">
+              <mat-label>UTILIDAD (%)</mat-label>
+              <input type="number" matInput name="utilidad" #utilidad [(ngModel)]="proyectos.utilidad">
+            </div>
+            <div class="campoForm">
+              <mat-label>IT (%)</mat-label>
+              <input type="number" matInput name="IT" #IT [(ngModel)]="proyectos.IT">
+            </div>
+            <div class="campoForm">
+              <mat-label>TIPO DE CAMBIO(Bs.)</mat-label>
+              <input type="number" matInput name="tip_cambio" #tip_cambio [(ngModel)]="proyectos.tip_cambio">
+            </div>
+          </div>
+
+
+
 
       </form>
       <div style="width: 100%; text-align: center;">

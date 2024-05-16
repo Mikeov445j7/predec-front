@@ -45,19 +45,14 @@ export class RtiempoxActivComponent implements OnInit {
       for(let i=0; i<this.reporte.modulos.length; i++){
         horasMod = 0;
           for(let j=0; j<this.reporte.modulos[i].modulo.listadeinsumos.length; j++){
-
+            horaSuma = 0;
+            promedioActividad = 0;
             if(this.reporte.modulos[i].modulo.listadeinsumos[j].parcial!==0){
               for (let k = 0; k < this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales.length; k++) {
-                //console.log("CANTXactividad: "+this.reporte.modulos[i].modulo.listadeinsumos[j].cantidad);
-                //console.log("insumos: " + this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales[k].insumo);
-                //console.log("cantidad: " + this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales[k].cantidad + "hrs");
-                //console.log("PARCIAL INSUMO: " + Number(this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales[k].cantidad)*Number(this.reporte.modulos[i].modulo.listadeinsumos[j].cantidad));
-                horaSuma = horaSuma + (Number(this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales[k].cantidad) * Number(this.reporte.modulos[i].modulo.listadeinsumos[j].cantidad));
+                horaSuma = horaSuma + Number(this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales[k].cantXmod)
               }
-              //console.log("TOTAL: " + horaSuma);
-              promedioActividad = horaSuma / this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales.length;
+              promedioActividad = horaSuma / Number(this.reporte.modulos[i].modulo.listadeinsumos[j].Materiales.length);
               promedioActividad = Number(promedioActividad.toFixed(2));
-              //console.log("PROMEDIO: " + promedioActividad);
               this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad = promedioActividad;
               horasMod = horasMod + promedioActividad;
 
@@ -65,8 +60,7 @@ export class RtiempoxActivComponent implements OnInit {
               this.reporte.modulos[i].modulo.listadeinsumos[j].totalHorasActividad = 0;
             }
           }
-          this.reporte.modulos[i].modulo.horasMod = Number(horasMod/this.reporte.modulos[i].modulo.listadeinsumos.length).toFixed(2);
-          //console.log(this.reporte.modulos[i].modulo);
+          this.reporte.modulos[i].modulo.horasMod = horasMod.toFixed(2);
       }
 
     });
